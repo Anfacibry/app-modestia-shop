@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 class CaixaDeTextoLogin extends StatefulWidget {
   final String texto;
+  final String exTexto;
   final bool isSenha;
   const CaixaDeTextoLogin(
-      {required this.isSenha, required this.texto, super.key});
+      {required this.isSenha,
+      required this.texto,
+      required this.exTexto,
+      super.key});
 
   @override
   State<CaixaDeTextoLogin> createState() => _CaixaDeTextoLoginState();
@@ -36,7 +40,9 @@ class _CaixaDeTextoLoginState extends State<CaixaDeTextoLogin> {
                       ),
               )
             : null,
-        hintText: widget.texto,
+        labelText: widget.texto,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        hintText: widget.exTexto,
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
           borderSide: BorderSide(
