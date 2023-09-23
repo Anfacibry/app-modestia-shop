@@ -1,5 +1,6 @@
-import 'package:app_fashion_shop/pages/login/components/botao_redes_sociais_login.dart';
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
+import 'package:app_fashion_shop/pages/login/components/imagem_logo.dart';
+import 'package:app_fashion_shop/pages/login/components/lista_botoes_redes.dart';
 import 'package:app_fashion_shop/pages/login/routes/cadastro.dart';
 import 'package:app_fashion_shop/style/estilo_do_app.dart';
 import 'package:flutter/gestures.dart';
@@ -19,28 +20,24 @@ class _TelaInicialState extends State<TelaInicial> {
   bool verificar = false;
   @override
   Widget build(BuildContext context) {
-    ({double altura, double largura}) dimensao =
-        EstyloApp.tamanhoTelaApp(context);
+    final (altura, largura) = EstyloApp.tamanhoTelaApp(context);
+    debugPrint("Altura tela login: $altura");
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
-          height: dimensao.altura,
-          width: dimensao.largura,
+          height: altura,
+          width: largura,
           child: Padding(
             padding: EdgeInsets.only(
-              right: dimensao.largura * .1,
-              left: dimensao.largura * .1,
+              right: largura * .1,
+              left: largura * .1,
             ),
             child: SingleChildScrollView(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
-                      child: Image.asset(
-                        "assets/image/logo.png",
-                        height: dimensao.largura * .8,
-                      ),
-                    ),
+                    ImagemLogo(tamanhaoImagem: largura * .8),
+                    const Padding(padding: EdgeInsets.only(top: 20)),
                     Text(
                       "Faça o login com a sua conta",
                       style: EstyloApp.textoPrincipalh1(tamanho: 20),
@@ -50,7 +47,7 @@ class _TelaInicialState extends State<TelaInicial> {
                       isSenha: false,
                       exTexto: "Ex: joao@gmail.com",
                     ),
-                    const Padding(padding: EdgeInsets.only(top: 20)),
+                    EstyloApp.espacoMinimo,
                     const CaixaDeTextoLogin(
                       texto: "Senha",
                       isSenha: true,
@@ -79,15 +76,15 @@ class _TelaInicialState extends State<TelaInicial> {
                         ),
                       ],
                     ),
-                    const Padding(padding: EdgeInsets.only(top: 20)),
+                    const Padding(padding: EdgeInsets.only(top: 30)),
                     Center(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: CorApp.corPrimaria,
                           foregroundColor: CorApp.corOnPrimaria,
                           fixedSize: Size(
-                            dimensao.largura * .6,
-                            dimensao.largura * .12,
+                            largura * .5,
+                            largura * .10,
                           ),
                           elevation: 5,
                         ),
@@ -108,22 +105,12 @@ class _TelaInicialState extends State<TelaInicial> {
                       ),
                     ),
                     const Padding(padding: EdgeInsets.only(top: 30)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        BotaoRedesSociaisLogin(
-                          largura: dimensao.largura,
-                          imagem: "assets/image/facebook.png",
-                        ),
-                        BotaoRedesSociaisLogin(
-                          largura: dimensao.largura,
-                          imagem: "assets/image/google.png",
-                        ),
-                        BotaoRedesSociaisLogin(
-                          largura: dimensao.largura,
-                          imagem: "assets/image/twitter.png",
-                        ),
-                      ],
+                    ListaBotoesRedes(
+                      isFace: false,
+                      funFacebook: () {},
+                      funGoogle: () {},
+                      funX: () {},
+                      largura: largura,
                     ),
                     const Padding(padding: EdgeInsets.only(top: 20)),
                     Center(
@@ -138,7 +125,9 @@ class _TelaInicialState extends State<TelaInicial> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const TelaDeCadastro(),
+                                  builder: (context) => const TelaDeCadastro(
+                                    imagemPerfil: "assets/image/perfil.png",
+                                  ),
                                 ),
                               );
                             },

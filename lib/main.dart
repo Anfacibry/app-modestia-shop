@@ -1,7 +1,7 @@
-import 'package:app_fashion_shop/theme/cores.dart';
+import 'package:app_fashion_shop/style/theme/cores.dart';
 import 'package:flutter/material.dart';
 
-import 'page/login.dart';
+import 'pages/login/login.dart';
 
 void main() => runApp(const AppFashionShop());
 

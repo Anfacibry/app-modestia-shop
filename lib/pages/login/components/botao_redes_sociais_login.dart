@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
 class BotaoRedesSociaisLogin extends StatelessWidget {
+  final void Function() fun;
   final double largura;
   final String imagem;
   const BotaoRedesSociaisLogin(
-      {required this.largura, required this.imagem, super.key});
+      {required this.fun,
+      required this.largura,
+      required this.imagem,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: fun,
       child: Container(
-        padding: const EdgeInsets.all(2),
+        padding: const EdgeInsets.all(5),
         height: largura * .1,
         width: largura * .2,
         decoration: const BoxDecoration(

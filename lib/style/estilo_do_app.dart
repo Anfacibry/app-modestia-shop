@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 class EstyloApp {
   ///Tamanho pego do app: largura e altura
-  static ({double altura, double largura}) tamanhoTelaApp(
-      BuildContext context) {
+  static (double altura, double largura) tamanhoTelaApp(BuildContext context) {
     double alturaPega = MediaQuery.of(context).size.height;
     double larguraPega = MediaQuery.of(context).size.width;
-    return (altura: alturaPega, largura: larguraPega);
+    return (alturaPega, larguraPega);
   }
+
+  static const Widget espacoMinimo = Padding(padding: EdgeInsets.only(top: 10));
 
   ///Estilos de textos que serão usados no app
   static TextStyle textoPrincipalh1({double tamanho = 20}) => TextStyle(
