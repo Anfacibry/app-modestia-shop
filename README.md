@@ -19,7 +19,17 @@
 
 
 ## Telas de login
-<img src="telas_de_login.png">
+![telas de login](assets\image\telas_de_login.png)
+
+Nas telas de login o usuário poderá fazer login ou se cadastrar preenchendo os campos disponíveis dentro do app ou pode fazer o cadastro com uma conta já existente da **google**, **facebook** ou do **x** (antigo Twitter).
+
+## Corpo do app
+![telas de login](assets\image\corpo_app.png)
+## Status do projeto
+> Todas as telas de login já foram construidas
+>> Tela de login :white_check_mark:
+>> Tela de cadastro:white_check_mark:
+>> Tela de cadastro atravez das redes sociais:white_check_mark:
 
 ## Desenvolvedor do projeto
 | [<img src="https://avatars.githubusercontent.com/u/49923143?v=4" width=115><br><sub>Fabricio Cintra</sub>](https://github.com/Anfacibry)
