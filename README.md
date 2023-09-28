@@ -19,12 +19,12 @@
 
 
 ## Telas de login
-<img src="assets\image\telas_de_login.png">
+![telas de login](telas_de_login.png)
 
 Nas telas de login o usuário poderá fazer login ou se cadastrar preenchendo os campos disponíveis dentro do app ou pode fazer o cadastro com uma conta já existente da **google**, **facebook** ou do **x** (antigo Twitter).
 
 ## Corpo do app
-<img src="assets\image\corpo_app.png">
+![Corpo do app](corpo_app.png)
 ## Status do projeto
 > Todas as telas de login já foram construidas
 >> Tela de login :white_check_mark:
