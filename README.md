@@ -10,13 +10,13 @@
 ## Índice 
 
 * [Modéstia shop](#Modéstia-shop)
-* [Badges](#badges)
 * [Índice](#índice)
 * [Descrição do Projeto](#descrição-do-projeto)
 * [Status do Projeto](#status-do-Projeto)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Desenvolvedor do projeto](#desenvolvedor-do-projeto)
-
+## Descrição do Projeto
+Este projeto tem como finalidade colocar em prática todo o meu conhecimento na linguagem Dart e framework flutter.
 
 ## Telas de login
 ![telas de login](telas_de_login.png)
@@ -28,9 +28,12 @@ Nas telas de login o usuário poderá fazer login ou se cadastrar preenchendo os
 ## Status do projeto
 > Todas as telas de login já foram construidas
 >> Tela de login :white_check_mark:
->>> Tela de cadastro:white_check_mark:
->>> Tela de cadastro atravez das redes sociais:white_check_mark:
+>> Tela de cadastro :white_check_mark:
+>> Tela de cadastro atravez das redes sociais :white_check_mark:
 
+## Tecnologias utilizadas
+<img src="dart.png" height="50" width="50">
+<img src="flutter_logo.png" height="50" width="50">
 ## Desenvolvedor do projeto
 | [<img src="https://avatars.githubusercontent.com/u/49923143?v=4" width=115><br><sub>Fabricio Cintra</sub>](https://github.com/Anfacibry)
 | --- |
