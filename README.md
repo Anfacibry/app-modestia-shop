@@ -28,8 +28,8 @@ Nas telas de login o usuário poderá fazer login ou se cadastrar preenchendo os
 ## Status do projeto
 > Todas as telas de login já foram construidas
 >> Tela de login :white_check_mark:
->> Tela de cadastro:white_check_mark:
->> Tela de cadastro atravez das redes sociais:white_check_mark:
+>>> Tela de cadastro:white_check_mark:
+>>> Tela de cadastro atravez das redes sociais:white_check_mark:
 
 ## Desenvolvedor do projeto
 | [<img src="https://avatars.githubusercontent.com/u/49923143?v=4" width=115><br><sub>Fabricio Cintra</sub>](https://github.com/Anfacibry)
