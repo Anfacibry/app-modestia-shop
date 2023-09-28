@@ -1,17 +1,10 @@
-# app_fashion_shop
+<h1 align = "center">Modéstia moda<h1>
 
-A new Flutter project.
+## Aplicativo de moda feminina
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+***
+**Modéstia shop** é uma loja virtual voltado para o público feminino onde o mesmo irá apresentar vário modelos de roupas modestas para uso em diversas ocasiões.
+***
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# app-fashion-shop
