@@ -1,11 +1,9 @@
 
-<center>
-<img src="assets\image\logo.png" height="200" width="200" >
-<h1>Modéstia shop <h1>
-</center>
+<img src="assets\image\logo.png" height="200" width="200">
 
 
 
+# Modéstia shop
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 ## Descrição do projeto
