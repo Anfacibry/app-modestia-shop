@@ -32,8 +32,7 @@ Nas telas de login o usuário poderá fazer login ou se cadastrar preenchendo os
 >> Tela de cadastro atravez das redes sociais :white_check_mark:
 
 ## Tecnologias utilizadas
-<img src="dart.png" height="50" width="50">
-<img src="flutter_logo.png" height="50" width="50">
+<img src="dart.png" height="50" width="50"><img src="flutter_logo.png" height="50" width="50">
 ## Desenvolvedor do projeto
 | [<img src="https://avatars.githubusercontent.com/u/49923143?v=4" width=115><br><sub>Fabricio Cintra</sub>](https://github.com/Anfacibry)
 | --- |
