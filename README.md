@@ -31,6 +31,16 @@ Nas telas de login o usuário poderá fazer login ou se cadastrar preenchendo os
 >> Tela de cadastro :white_check_mark:
 >> Tela de cadastro atravez das redes sociais :white_check_mark:
 
+## Package utilizado
+* flutter_launcher_icons: ^0.13.1
+
+* provider: ^6.0.5
+* mobx: ^2.2.0
+* flutter_mobx: ^2.1.0
+
+* build_runner: ^2.4.6
+* mobx_codegen: ^2.4.0
+
 ## Tecnologias utilizadas
 <img src="dart.png" height="50" width="50"><img src="flutter_logo.png" height="50" width="50"><img src="figma.png" height="50" width="50">
 
