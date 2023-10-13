@@ -13,6 +13,7 @@
 * [Índice](#índice)
 * [Descrição do Projeto](#descrição-do-projeto)
 * [Status do Projeto](#status-do-Projeto)
+* [Package utilizado](#package-utilizado)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Desenvolvedor do projeto](#desenvolvedor-do-projeto)
 ## Descrição do Projeto
