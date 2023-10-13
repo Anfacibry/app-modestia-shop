@@ -1,4 +1,7 @@
+import 'package:app_fashion_shop/store/store_login.dart';
+import 'package:app_fashion_shop/style/estilo_do_app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'botao_redes_sociais_login.dart';
 
@@ -6,14 +9,10 @@ class ListaBotoesRedes extends StatelessWidget {
   final void Function() funFacebook;
   final void Function() funGoogle;
   final void Function() funX;
-  final bool isFace;
-  final bool isGoogle;
-  final bool isX;
+  final StoreLogin contas;
   final double largura;
   const ListaBotoesRedes({
-    this.isGoogle = false,
-    this.isX = false,
-    this.isFace = false,
+    required this.contas,
     required this.funFacebook,
     required this.funGoogle,
     required this.funX,
@@ -23,31 +22,33 @@ class ListaBotoesRedes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        isFace
-            ? caixaTamanhoFixo(largura: largura)
-            : BotaoRedesSociaisLogin(
-                fun: funFacebook,
-                largura: largura,
-                imagem: "assets/image/facebook.png",
-              ),
-        isGoogle
-            ? caixaTamanhoFixo(largura: largura)
-            : BotaoRedesSociaisLogin(
-                fun: funGoogle,
-                largura: largura,
-                imagem: "assets/image/google.png",
-              ),
-        isX
-            ? caixaTamanhoFixo(largura: largura)
-            : BotaoRedesSociaisLogin(
-                fun: funX,
-                largura: largura,
-                imagem: "assets/image/x.png",
-              ),
-      ],
+    return Observer(
+      builder: (_) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          contas.contaAcessada == Contas.facebook
+              ? caixaTamanhoFixo(largura: largura)
+              : BotaoRedesSociaisLogin(
+                  fun: funFacebook,
+                  largura: largura,
+                  imagem: EstyloApp.imagemFacebook,
+                ),
+          contas.contaAcessada == Contas.google
+              ? caixaTamanhoFixo(largura: largura)
+              : BotaoRedesSociaisLogin(
+                  fun: funGoogle,
+                  largura: largura,
+                  imagem: EstyloApp.imagemGoogle,
+                ),
+          contas.contaAcessada == Contas.x
+              ? caixaTamanhoFixo(largura: largura)
+              : BotaoRedesSociaisLogin(
+                  fun: funX,
+                  largura: largura,
+                  imagem: EstyloApp.imagemX,
+                ),
+        ],
+      ),
     );
   }
 }

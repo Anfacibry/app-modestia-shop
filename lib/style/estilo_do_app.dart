@@ -37,4 +37,11 @@ class EstyloApp {
         fontSize: tamanho,
         fontWeight: FontWeight.bold,
       );
+
+  ///Seção de imagens
+  static const String imagemLogo = "assets/image/logo.png";
+  static const String imagemPerfil = "assets/image/perfil.png";
+  static const String imagemFacebook = "assets/image/facebook.png";
+  static const String imagemGoogle = "assets/image/google.png";
+  static const String imagemX = "assets/image/x.png";
 }

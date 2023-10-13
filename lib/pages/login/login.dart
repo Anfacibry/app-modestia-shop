@@ -1,27 +1,29 @@
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
-import 'package:app_fashion_shop/pages/login/components/imagem_logo.dart';
-import 'package:app_fashion_shop/pages/login/components/lista_botoes_redes.dart';
-import 'package:app_fashion_shop/pages/login/routes/cadastro.dart';
+import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
+import 'package:app_fashion_shop/components/login/components/lista_botoes_redes.dart';
+import 'package:app_fashion_shop/store/store_login.dart';
+// import 'package:app_fashion_shop/pages/login/routes/cadastro_redes_sociais.dart';
 import 'package:app_fashion_shop/style/estilo_do_app.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../style/theme/cores.dart';
+import 'routes/cadastro_caixa_texto.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class TelaInicial extends StatefulWidget {
+import 'routes/cadastro_redes_sociais.dart';
+
+class TelaInicial extends StatelessWidget {
   const TelaInicial({super.key});
 
   @override
-  State<TelaInicial> createState() => _TelaInicialState();
-}
-
-class _TelaInicialState extends State<TelaInicial> {
-  bool verificar = false;
-  @override
   Widget build(BuildContext context) {
+    final storeLogin = Provider.of<StoreLogin>(context, listen: false);
+
     final (altura, largura) = EstyloApp.tamanhoTelaApp(context);
-    debugPrint("Altura tela login: $altura");
+
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
@@ -55,15 +57,15 @@ class _TelaInicialState extends State<TelaInicial> {
                     ),
                     Row(
                       children: [
-                        Switch(
-                          activeColor: CorApp.corOnPrimariaContainer,
-                          activeTrackColor: CorApp.corPrimariaContainer,
-                          value: verificar,
-                          onChanged: (valor) {
-                            setState(() {
-                              verificar = valor;
-                            });
-                          },
+                        Observer(
+                          builder: (_) => Switch(
+                            activeColor: CorApp.corOnPrimariaContainer,
+                            activeTrackColor: CorApp.corPrimariaContainer,
+                            value: storeLogin.lembrarSenha,
+                            onChanged: (valor) {
+                              storeLogin.isLembrarSenha(valor);
+                            },
+                          ),
                         ),
                         const Text("Lembrar senha"),
                         const Spacer(),
@@ -106,10 +108,37 @@ class _TelaInicialState extends State<TelaInicial> {
                     ),
                     const Padding(padding: EdgeInsets.only(top: 30)),
                     ListaBotoesRedes(
-                      isFace: false,
-                      funFacebook: () {},
-                      funGoogle: () {},
-                      funX: () {},
+                      contas: storeLogin,
+                      funFacebook: () {
+                        storeLogin.tipoDeContaAcessada(Contas.facebook);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CadastroRedesSociais(
+                                contextCadastro: context,
+                              ),
+                            ));
+                      },
+                      funGoogle: () {
+                        storeLogin.tipoDeContaAcessada(Contas.google);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CadastroRedesSociais(
+                                contextCadastro: context,
+                              ),
+                            ));
+                      },
+                      funX: () {
+                        storeLogin.tipoDeContaAcessada(Contas.x);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CadastroRedesSociais(
+                                contextCadastro: context,
+                              ),
+                            ));
+                      },
                       largura: largura,
                     ),
                     const Padding(padding: EdgeInsets.only(top: 20)),
@@ -125,8 +154,10 @@ class _TelaInicialState extends State<TelaInicial> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const TelaDeCadastro(
-                                    imagemPerfil: "assets/image/perfil.png",
+                                  builder: (contextPage) =>
+                                      // const CadastroRedesSociais()
+                                      TelaDeCadastroCaixaTexto(
+                                    contexteLogin: context,
                                   ),
                                 ),
                               );

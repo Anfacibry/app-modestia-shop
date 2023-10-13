@@ -1,3 +1,4 @@
+import 'package:app_fashion_shop/style/estilo_do_app.dart';
 import 'package:flutter/material.dart';
 
 class ImagemLogo extends StatelessWidget {
@@ -7,7 +8,7 @@ class ImagemLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        "assets/image/logo.png",
+        EstyloApp.imagemLogo,
         height: tamanhaoImagem,
       ),
     );
