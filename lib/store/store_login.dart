@@ -1,4 +1,5 @@
 import 'package:app_fashion_shop/style/estilo_do_app.dart';
+
 import 'package:mobx/mobx.dart';
 
 part 'store_login.g.dart';
@@ -41,10 +42,5 @@ abstract class _StoreLogin with Store {
       imagemRede = EstyloApp.imagemX;
       conta = "X";
     }
-  }
-
-  @action
-  void contaVazia() async {
-    contaAcessada = Contas.vazio;
   }
 }

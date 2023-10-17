@@ -20,7 +20,7 @@ class CadastroRedesSociais extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        storeLogin.contaVazia();
+        storeLogin.tipoDeContaAcessada(Contas.vazio);
         return true;
       },
       child: Scaffold(

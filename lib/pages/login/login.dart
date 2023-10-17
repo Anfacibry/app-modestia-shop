@@ -1,6 +1,7 @@
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
 import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
 import 'package:app_fashion_shop/components/login/components/lista_botoes_redes.dart';
+import 'package:app_fashion_shop/pages/home/home.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
 // import 'package:app_fashion_shop/pages/login/routes/cadastro_redes_sociais.dart';
 import 'package:app_fashion_shop/style/estilo_do_app.dart';
@@ -90,7 +91,13 @@ class TelaInicial extends StatelessWidget {
                           ),
                           elevation: 5,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const Home(),
+                              ));
+                        },
                         child: const Text(
                           "Login",
                           style: TextStyle(
