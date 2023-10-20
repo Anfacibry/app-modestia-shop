@@ -1,3 +1,4 @@
+import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
 import 'package:app_fashion_shop/style/theme/cores.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,15 @@ class AppFashionShop extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: Provider(
-        create: (cont) => StoreLogin(),
+      home: MultiProvider(
+        providers: [
+          Provider(
+            create: (cont) => StoreLogin(),
+          ),
+          Provider(
+            create: (cont) => StoreHome(),
+          )
+        ],
         child: const TelaInicial(),
       ),
     );
