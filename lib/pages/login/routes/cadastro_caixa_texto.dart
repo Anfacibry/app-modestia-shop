@@ -1,5 +1,5 @@
-import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
-import 'package:app_fashion_shop/components/login/components/lista_botoes_redes.dart';
+import 'package:app_fashion_shop/components/components_login/components/imagem_logo.dart';
+import 'package:app_fashion_shop/components/components_login/components/lista_botoes_redes.dart';
 import 'package:app_fashion_shop/pages/login/routes/cadastro_redes_sociais.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
 // import 'package:app_fashion_shop/components/login/components/lista_login_rede_escolhida.dart';
@@ -62,28 +62,32 @@ class TelaDeCadastroCaixaTexto extends StatelessWidget {
                         "Preencha com seus dados",
                         style: EstyloApp.textoPrincipalh1(tamanho: 20),
                       ),
-                      const CaixaDeTextoLogin(
+                      const CaixaDeTexto(
                         texto: "Nome e sobrenome",
                         isSenha: false,
                         exTexto: "Ex: Bruno Dias",
+                        corBorda: Color(0xFF696969),
                       ),
-                      EstyloApp.espacoMinimo,
-                      const CaixaDeTextoLogin(
+                      EstyloApp.espacoMinimo(),
+                      const CaixaDeTexto(
                         texto: "E-mail",
                         isSenha: false,
                         exTexto: "Ex: joao@gmail.com",
+                        corBorda: Color(0xFF696969),
                       ),
-                      EstyloApp.espacoMinimo,
-                      const CaixaDeTextoLogin(
+                      EstyloApp.espacoMinimo(),
+                      const CaixaDeTexto(
                         texto: "Senha",
                         isSenha: true,
                         exTexto: "Ex: Bob@076",
+                        corBorda: Color(0xFF696969),
                       ),
-                      EstyloApp.espacoMinimo,
-                      const CaixaDeTextoLogin(
+                      EstyloApp.espacoMinimo(),
+                      const CaixaDeTexto(
                         texto: " Repetir senha",
                         isSenha: true,
                         exTexto: "",
+                        corBorda: Color(0xFF696969),
                       ),
                     ],
                   ),

@@ -6,7 +6,16 @@ import 'package:flutter/material.dart';
 import 'pages/login/login.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(const AppFashionShop());
+import 'store/data/store_dados.dart';
+
+void main() => runApp(MultiProvider(
+      providers: [
+        Provider<StoreLogin>(create: (cont) => StoreLogin()),
+        Provider<Dados>(create: (cont) => Dados()),
+        Provider<StoreHome>(create: (cont) => StoreHome())
+      ],
+      child: const AppFashionShop(),
+    ));
 
 class AppFashionShop extends StatelessWidget {
   const AppFashionShop({super.key});
@@ -21,17 +30,7 @@ class AppFashionShop extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: MultiProvider(
-        providers: [
-          Provider(
-            create: (cont) => StoreLogin(),
-          ),
-          Provider(
-            create: (cont) => StoreHome(),
-          )
-        ],
-        child: const TelaInicial(),
-      ),
+      home: const TelaInicial(),
     );
   }
 }

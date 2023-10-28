@@ -7,9 +7,11 @@ class StoreHome = _StoreHome with _$StoreHome;
 
 enum Selecao { vestidos, blusas, saias, bolsas }
 
+enum IconeSelecionado { home, favorito, carrinho, perfil }
+
 abstract class _StoreHome with Store {
   @observable
-  bool selecaoVestidos = false;
+  bool selecaoVestidos = true;
   @observable
   bool selecaoBlusa = false;
   @observable
@@ -39,6 +41,48 @@ abstract class _StoreHome with Store {
       selecaoBlusa = false;
       selecaoSaias = false;
       selecaoBolsas = true;
+    }
+  }
+
+  @observable
+  int indice = 0;
+
+  @action
+  void indicePego(int valor) {
+    indice = valor;
+  }
+
+  @observable
+  bool home = true;
+  @observable
+  bool favorito = false;
+  @observable
+  bool carrinho = false;
+  @observable
+  bool perfil = false;
+
+  @action
+  void selecionandoIcone(IconeSelecionado iconePego) {
+    if (IconeSelecionado.home == iconePego) {
+      home = true;
+      favorito = false;
+      carrinho = false;
+      perfil = false;
+    } else if (IconeSelecionado.favorito == iconePego) {
+      home = false;
+      favorito = true;
+      carrinho = false;
+      perfil = false;
+    } else if (IconeSelecionado.carrinho == iconePego) {
+      home = false;
+      favorito = false;
+      carrinho = true;
+      perfil = false;
+    } else if (IconeSelecionado.perfil == iconePego) {
+      home = false;
+      favorito = false;
+      carrinho = false;
+      perfil = true;
     }
   }
 }

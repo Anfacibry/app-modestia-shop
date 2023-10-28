@@ -1,6 +1,6 @@
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
-import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
-import 'package:app_fashion_shop/components/login/components/lista_botoes_redes.dart';
+import 'package:app_fashion_shop/components/components_login/components/imagem_logo.dart';
+import 'package:app_fashion_shop/components/components_login/components/lista_botoes_redes.dart';
 import 'package:app_fashion_shop/pages/home/home.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
 // import 'package:app_fashion_shop/pages/login/routes/cadastro_redes_sociais.dart';
@@ -45,16 +45,18 @@ class TelaInicial extends StatelessWidget {
                       "Faça o login com a sua conta",
                       style: EstyloApp.textoPrincipalh1(tamanho: 20),
                     ),
-                    const CaixaDeTextoLogin(
+                    const CaixaDeTexto(
                       texto: "E-mail",
                       isSenha: false,
                       exTexto: "Ex: joao@gmail.com",
+                      corBorda: Color(0xFF696969),
                     ),
-                    EstyloApp.espacoMinimo,
-                    const CaixaDeTextoLogin(
+                    EstyloApp.espacoMinimo(),
+                    const CaixaDeTexto(
                       texto: "Senha",
                       isSenha: true,
                       exTexto: "Ex: Bob@076",
+                      corBorda: Color(0xFF696969),
                     ),
                     Row(
                       children: [

@@ -37,8 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
   provider: ^6.0.5
-  mobx: ^2.2.0
-  flutter_mobx: ^2.1.0
+  mobx: ^2.2.1
+  flutter_mobx: ^2.1.0+1
+  flutter_animate: ^4.2.0+1
+  uuid: ^4.1.0
 
 flutter_launcher_icons:
   android: true
@@ -85,6 +87,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/image/
+    - assets/image/vestidos/
+    - assets/image/bolsas/
+    - assets/image/blusas/
+    - assets/image/saias/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

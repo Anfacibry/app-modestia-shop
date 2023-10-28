@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 
 import '../style/estilo_do_app.dart';
 
-class CaixaDeTextoLogin extends StatefulWidget {
+class CaixaDeTexto extends StatefulWidget {
   final String texto;
   final String exTexto;
   final bool isSenha;
+  final Color corBorda;
 
-  const CaixaDeTextoLogin(
-      {required this.isSenha,
+  const CaixaDeTexto(
+      {required this.corBorda,
+      required this.isSenha,
       required this.texto,
       required this.exTexto,
       super.key});
   @override
-  State<CaixaDeTextoLogin> createState() => _CaixaDeTextoLoginState();
+  State<CaixaDeTexto> createState() => _CaixaDeTextoState();
 }
 
-class _CaixaDeTextoLoginState extends State<CaixaDeTextoLogin> {
+class _CaixaDeTextoState extends State<CaixaDeTexto> {
   bool verSenha = false;
   @override
   Widget build(BuildContext context) {
@@ -49,16 +51,16 @@ class _CaixaDeTextoLoginState extends State<CaixaDeTextoLogin> {
           labelText: widget.texto,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           hintText: widget.exTexto,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(
-              color: Color(0xFF696969),
+              color: widget.corBorda,
             ),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(
-              color: Color(0xFF696969),
+              color: widget.corBorda,
             ),
           ),
         ),

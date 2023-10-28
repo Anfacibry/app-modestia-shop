@@ -9,7 +9,8 @@ class EstyloApp {
     return (alturaPega, larguraPega);
   }
 
-  static const Widget espacoMinimo = Padding(padding: EdgeInsets.only(top: 10));
+  static Widget espacoMinimo({double top = 10}) =>
+      Padding(padding: EdgeInsets.only(top: top, right: 10));
 
   ///Estilos de textos que serão usados no app
   static TextStyle textoPrincipalh1({double tamanho = 20}) => TextStyle(
@@ -44,4 +45,11 @@ class EstyloApp {
   static const String imagemFacebook = "assets/image/facebook.png";
   static const String imagemGoogle = "assets/image/google.png";
   static const String imagemX = "assets/image/x.png";
+  static const String imagemPropaganda001 = "assets/image/propaganda001.png";
+  static const String imagemPropaganda002 = "assets/image/propaganda002.png";
+  static const String imagemPropaganda003 = "assets/image/propaganda003.png";
+
+  ///Seção de icones
+  static const String iconeDrawer = "assets/icons/drawer.png";
+  static const String iconeLupa = "assets/icons/lupa.png";
 }

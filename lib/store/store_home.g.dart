@@ -73,6 +73,83 @@ mixin _$StoreHome on _StoreHome, Store {
     });
   }
 
+  late final _$indiceAtom = Atom(name: '_StoreHome.indice', context: context);
+
+  @override
+  int get indice {
+    _$indiceAtom.reportRead();
+    return super.indice;
+  }
+
+  @override
+  set indice(int value) {
+    _$indiceAtom.reportWrite(value, super.indice, () {
+      super.indice = value;
+    });
+  }
+
+  late final _$homeAtom = Atom(name: '_StoreHome.home', context: context);
+
+  @override
+  bool get home {
+    _$homeAtom.reportRead();
+    return super.home;
+  }
+
+  @override
+  set home(bool value) {
+    _$homeAtom.reportWrite(value, super.home, () {
+      super.home = value;
+    });
+  }
+
+  late final _$favoritoAtom =
+      Atom(name: '_StoreHome.favorito', context: context);
+
+  @override
+  bool get favorito {
+    _$favoritoAtom.reportRead();
+    return super.favorito;
+  }
+
+  @override
+  set favorito(bool value) {
+    _$favoritoAtom.reportWrite(value, super.favorito, () {
+      super.favorito = value;
+    });
+  }
+
+  late final _$carrinhoAtom =
+      Atom(name: '_StoreHome.carrinho', context: context);
+
+  @override
+  bool get carrinho {
+    _$carrinhoAtom.reportRead();
+    return super.carrinho;
+  }
+
+  @override
+  set carrinho(bool value) {
+    _$carrinhoAtom.reportWrite(value, super.carrinho, () {
+      super.carrinho = value;
+    });
+  }
+
+  late final _$perfilAtom = Atom(name: '_StoreHome.perfil', context: context);
+
+  @override
+  bool get perfil {
+    _$perfilAtom.reportRead();
+    return super.perfil;
+  }
+
+  @override
+  set perfil(bool value) {
+    _$perfilAtom.reportWrite(value, super.perfil, () {
+      super.perfil = value;
+    });
+  }
+
   late final _$_StoreHomeActionController =
       ActionController(name: '_StoreHome', context: context);
 
@@ -88,12 +165,39 @@ mixin _$StoreHome on _StoreHome, Store {
   }
 
   @override
+  void indicePego(int valor) {
+    final _$actionInfo =
+        _$_StoreHomeActionController.startAction(name: '_StoreHome.indicePego');
+    try {
+      return super.indicePego(valor);
+    } finally {
+      _$_StoreHomeActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void selecionandoIcone(IconeSelecionado iconePego) {
+    final _$actionInfo = _$_StoreHomeActionController.startAction(
+        name: '_StoreHome.selecionandoIcone');
+    try {
+      return super.selecionandoIcone(iconePego);
+    } finally {
+      _$_StoreHomeActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 selecaoVestidos: ${selecaoVestidos},
 selecaoBlusa: ${selecaoBlusa},
 selecaoSaias: ${selecaoSaias},
-selecaoBolsas: ${selecaoBolsas}
+selecaoBolsas: ${selecaoBolsas},
+indice: ${indice},
+home: ${home},
+favorito: ${favorito},
+carrinho: ${carrinho},
+perfil: ${perfil}
     ''';
   }
 }
