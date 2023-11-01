@@ -1,4 +1,3 @@
-import 'package:app_fashion_shop/components/components_home/icone_de_menu_flutuante.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -58,6 +57,37 @@ class ListaIconeBotaoFlutuante extends StatelessWidget {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class IconeDeMenuFlutuante extends StatelessWidget {
+  final void Function() fun;
+  final String imagem;
+  final Color corImagem;
+  final Color cor;
+  final double radius;
+  const IconeDeMenuFlutuante({
+    required this.corImagem,
+    required this.imagem,
+    required this.cor,
+    required this.radius,
+    required this.fun,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundColor: cor,
+      radius: radius,
+      child: IconButton(
+        onPressed: fun,
+        icon: Image.asset(
+          imagem,
+          color: corImagem,
+        ),
       ),
     );
   }
