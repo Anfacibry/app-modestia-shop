@@ -7,12 +7,14 @@ class CaixaDeTexto extends StatefulWidget {
   final String exTexto;
   final bool isSenha;
   final Color corBorda;
+  final void Function()? fun;
 
   const CaixaDeTexto(
       {required this.corBorda,
       required this.isSenha,
       required this.texto,
       required this.exTexto,
+      this.fun,
       super.key});
   @override
   State<CaixaDeTexto> createState() => _CaixaDeTextoState();
@@ -27,6 +29,7 @@ class _CaixaDeTextoState extends State<CaixaDeTexto> {
       height: largura * .13,
       width: largura,
       child: TextFormField(
+        onTap: widget.fun,
         cursorColor: const Color(0xFF696969),
         obscureText: widget.isSenha & !verSenha,
         decoration: InputDecoration(

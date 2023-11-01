@@ -9,6 +9,19 @@ class EstyloApp {
     return (alturaPega, larguraPega);
   }
 
+  static BoxShadow sombra({
+    required Color corFundo,
+    required ({double dx, double dy}) offset,
+    required double blurRadius,
+  }) {
+    return BoxShadow(
+      color: corFundo,
+      offset: Offset(offset.dx, offset.dy),
+      blurRadius: blurRadius,
+      blurStyle: BlurStyle.normal,
+    );
+  }
+
   static Widget espacoMinimo({double top = 10}) =>
       Padding(padding: EdgeInsets.only(top: top, right: 10));
 

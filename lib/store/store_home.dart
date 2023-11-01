@@ -85,4 +85,12 @@ abstract class _StoreHome with Store {
       perfil = true;
     }
   }
+
+  @observable
+  bool caixaDeTextoAtivada = false;
+
+  @action
+  void ativandoCaixaDeTexto() {
+    caixaDeTextoAtivada = !caixaDeTextoAtivada;
+  }
 }
