@@ -1,23 +1,19 @@
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
 import 'package:app_fashion_shop/components/components_login/components/imagem_logo.dart';
 import 'package:app_fashion_shop/components/components_login/components/lista_botoes_redes.dart';
-import 'package:app_fashion_shop/pages/home/home.dart';
+import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
-// import 'package:app_fashion_shop/pages/login/routes/cadastro_redes_sociais.dart';
-import 'package:app_fashion_shop/style/estilo_do_app.dart';
+import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../style/theme/cores.dart';
-import 'routes/cadastro_caixa_texto.dart';
+import '../config/theme/cores.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'routes/cadastro_redes_sociais.dart';
-
-class TelaInicial extends StatelessWidget {
-  const TelaInicial({super.key});
+class Login extends StatelessWidget {
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,11 +90,8 @@ class TelaInicial extends StatelessWidget {
                           elevation: 5,
                         ),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const Home(),
-                              ));
+                          Navigator.pushNamed(
+                              context, RotasNomeadas.rotaPrincipal);
                         },
                         child: const Text(
                           "Login",
@@ -120,33 +113,18 @@ class TelaInicial extends StatelessWidget {
                       contas: storeLogin,
                       funFacebook: () {
                         storeLogin.tipoDeContaAcessada(Contas.facebook);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => CadastroRedesSociais(
-                                contextCadastro: context,
-                              ),
-                            ));
+                        Navigator.pushNamed(
+                            context, RotasNomeadas.rotaLoginCadastroRedes);
                       },
                       funGoogle: () {
                         storeLogin.tipoDeContaAcessada(Contas.google);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => CadastroRedesSociais(
-                                contextCadastro: context,
-                              ),
-                            ));
+                        Navigator.pushNamed(
+                            context, RotasNomeadas.rotaLoginCadastroRedes);
                       },
                       funX: () {
                         storeLogin.tipoDeContaAcessada(Contas.x);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => CadastroRedesSociais(
-                                contextCadastro: context,
-                              ),
-                            ));
+                        Navigator.pushNamed(
+                            context, RotasNomeadas.rotaLoginCadastroRedes);
                       },
                       largura: largura,
                     ),
@@ -160,16 +138,8 @@ class TelaInicial extends StatelessWidget {
                         TextSpan(
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (contextPage) =>
-                                      // const CadastroRedesSociais()
-                                      TelaDeCadastroCaixaTexto(
-                                    contexteLogin: context,
-                                  ),
-                                ),
-                              );
+                              Navigator.pushNamed(
+                                  context, RotasNomeadas.rotaLoginCadastro);
                             },
                           text: "criar conta",
                           style: EstyloApp.textoCorPrimaria(tamanho: 16),

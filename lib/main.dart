@@ -1,9 +1,13 @@
+import 'package:app_fashion_shop/pages/home.dart';
+import 'package:app_fashion_shop/pages/cadastro_de_login.dart';
+import 'package:app_fashion_shop/pages/cadastro_redes_sociais.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
-import 'package:app_fashion_shop/style/theme/cores.dart';
+import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
+import 'package:app_fashion_shop/config/theme/cores.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/login/login.dart';
+import 'pages/login.dart';
 import 'package:provider/provider.dart';
 
 import 'store/data/store_dados.dart';
@@ -22,6 +26,7 @@ class AppFashionShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StoreLogin login = Provider.of<StoreLogin>(context, listen: false);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -30,7 +35,16 @@ class AppFashionShop extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const TelaInicial(),
+      initialRoute: login.loginEfetuado
+          ? RotasNomeadas.rotaPrincipal
+          : RotasNomeadas.rotaLogin,
+      routes: {
+        RotasNomeadas.rotaPrincipal: (ctx) => const Home(),
+        RotasNomeadas.rotaLogin: (ctx) => const Login(),
+        RotasNomeadas.rotaLoginCadastro: (ctx) => const CadastroDeLogin(),
+        RotasNomeadas.rotaLoginCadastroRedes: (ctx) =>
+            const CadastroRedesSociais(),
+      },
     );
   }
 }

@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../store/store_home.dart';
-import '../../style/estilo_do_app.dart';
-import '../../style/theme/cores.dart';
+import '../../config/style/estilo_do_app.dart';
+import '../../config/theme/cores.dart';
 
 class ContainerPropaganda extends StatelessWidget {
   final String imagem;

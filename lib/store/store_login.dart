@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/style/estilo_do_app.dart';
+import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
 
 import 'package:mobx/mobx.dart';
 
@@ -10,6 +10,9 @@ class StoreLogin = _StoreLogin with _$StoreLogin;
 enum Contas { facebook, google, x, vazio }
 
 abstract class _StoreLogin with Store {
+  @observable
+  bool loginEfetuado = true;
+
   @observable
   String conta = "";
 

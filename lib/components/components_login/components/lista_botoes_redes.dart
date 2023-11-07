@@ -1,5 +1,5 @@
 import 'package:app_fashion_shop/store/store_login.dart';
-import 'package:app_fashion_shop/style/estilo_do_app.dart';
+import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../style/theme/cores.dart';
+import '../../config/theme/cores.dart';
 
 class ListaIconeBotaoFlutuante extends StatelessWidget {
   final BuildContext contextLogin;

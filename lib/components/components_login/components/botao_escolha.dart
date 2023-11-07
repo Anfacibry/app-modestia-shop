@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../style/estilo_do_app.dart';
-import '../../../style/theme/cores.dart';
+import '../../../config/style/estilo_do_app.dart';
+import '../../../config/theme/cores.dart';
 
 class BotaoEscolha extends StatelessWidget {
   final void Function() fun;

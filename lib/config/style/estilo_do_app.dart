@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/style/theme/cores.dart';
+import 'package:app_fashion_shop/config/theme/cores.dart';
 import 'package:flutter/material.dart';
 
 class EstyloApp {

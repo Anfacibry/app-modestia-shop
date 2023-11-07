@@ -4,9 +4,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../store/data/store_dados.dart';
-import '../../style/estilo_do_app.dart';
+import '../../config/style/estilo_do_app.dart';
 
-import 'package:app_fashion_shop/style/theme/cores.dart';
+import 'package:app_fashion_shop/config/theme/cores.dart';
 
 class BotaoSelecao extends StatelessWidget {
   final bool selecionado;

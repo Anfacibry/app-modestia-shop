@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../style/estilo_do_app.dart';
+import '../config/style/estilo_do_app.dart';
 
 class CaixaDeTexto extends StatefulWidget {
   final String texto;

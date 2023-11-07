@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/style/estilo_do_app.dart';
+import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
 import 'package:flutter/material.dart';
 
 class ImagemLogo extends StatelessWidget {

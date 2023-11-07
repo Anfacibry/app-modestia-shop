@@ -1,10 +1,11 @@
 import 'package:app_fashion_shop/store/data/store_dados.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'lista_icone_botao_flutuante.dart';
-import '../../style/estilo_do_app.dart';
-import '../../style/theme/cores.dart';
+import '../../config/style/estilo_do_app.dart';
+import '../../config/theme/cores.dart';
 
 class GridDeProdutos extends StatelessWidget {
   final Dados dados;
@@ -17,132 +18,122 @@ class GridDeProdutos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        width: largura,
-        child: LayoutBuilder(
-          builder: (contextBuilder1, constraints) => SizedBox(
-            height: constraints.maxHeight,
-            width: constraints.maxWidth,
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10,
+    return SizedBox(
+      width: largura,
+      child: LayoutBuilder(
+        builder: (contextBuilder1, constraints) => SizedBox(
+          height: constraints.maxHeight,
+          width: constraints.maxWidth,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 10,
+            ),
+            child: Observer(
+              builder: (_) => GridView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.only(
+                  bottom: constraints.maxHeight * .15,
+                ),
+                itemCount: dados.tamanhoLista,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 4,
+                  mainAxisSpacing: 4,
+                  childAspectRatio: 1.5,
+                ),
+                itemBuilder: (contextGrid, indice) => Card(
+                  clipBehavior: Clip.antiAlias,
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Observer(
-                    builder: (_) => GridView.builder(
-                      padding:
-                          EdgeInsets.only(bottom: constraints.maxHeight * .15),
-                      itemCount: dados.tamanhoLista,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisSpacing: 4,
-                              mainAxisSpacing: 4,
-                              childAspectRatio: 0.75,
-                              crossAxisCount: 2),
-                      itemBuilder: (contextGrid, indice) => Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: LayoutBuilder(
-                          builder: (contextBuildCard, constraints) => Observer(
-                            builder: (_) => Column(
-                              children: [
-                                SizedBox(
-                                  height: constraints.maxHeight * .7,
-                                  width: constraints.maxWidth,
-                                  child: Image.asset(
-                                    dados.listaDeProdutos[indice].imagem[0],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    padding: const EdgeInsets.only(
-                                        left: 5, right: 5),
-                                    decoration: const BoxDecoration(
-                                      color: CorApp.corSuperficie,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                  child: LayoutBuilder(
+                    builder: (contextBuildCard, constraints) => Observer(
+                      builder: (_) => Column(
+                        children: [
+                          SizedBox(
+                            height: constraints.maxHeight * .7,
+                            width: constraints.maxWidth,
+                            child: Image.asset(
+                              dados.listaDeProdutos[indice].imagem[0],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 5, right: 5),
+                              decoration: const BoxDecoration(
+                                color: CorApp.corSuperficie,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: constraints.maxWidth * .6,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              dados
-                                                  .listaDeProdutos[indice].nome,
-                                              style: EstyloApp.textoPrincipalh1(
-                                                  tamanho: 16),
-                                            ),
-                                            Text(
-                                              dados
-                                                  .listaDeProdutos[indice].preco
-                                                  .toString(),
-                                              style:
-                                                  EstyloApp.textoSecundarioh2(
-                                                      tamanho: 16),
-                                            ),
-                                            Text(
-                                              "No pix\n Ou x de ${(dados.listaDeProdutos[indice].preco / 3).toStringAsFixed(2)}",
-                                              style:
-                                                  EstyloApp.textoCaixaDeTexto(
-                                                      tamanho: 10),
-                                            ),
-                                          ],
+                                        SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Text(
+                                            dados.listaDeProdutos[indice].nome,
+                                            style: EstyloApp.textoPrincipalh1(
+                                                tamanho: constraints.maxHeight *
+                                                    0.06),
+                                          ).animate(
+                                              autoPlay: true,
+                                              delay:
+                                                  const Duration(seconds: 2)),
                                         ),
-                                        Observer(
-                                          builder: (_) => IconeDeMenuFlutuante(
-                                            corImagem: dados
-                                                    .listaDeProdutos[indice]
-                                                    .isFavorito
-                                                ? CorApp.corSuperficie
-                                                : CorApp.corPrimaria,
-                                            imagem: "assets/icons/vavorito.png",
-                                            cor: dados.listaDeProdutos[indice]
-                                                    .isFavorito
-                                                ? CorApp.corPrimaria
-                                                : CorApp.corSuperficie,
-                                            radius: 20,
-                                            fun: () {
-                                              dados.adicionandoFavorito(dados
-                                                  .listaDeProdutos[indice]);
-                                            },
-                                          ),
+                                        Text(
+                                          dados.listaDeProdutos[indice].preco
+                                              .toString(),
+                                          style: EstyloApp.textoSecundarioh2(
+                                              tamanho:
+                                                  constraints.maxHeight * 0.06),
+                                        ),
+                                        Text(
+                                          "No pix\n Ou x de ${(dados.listaDeProdutos[indice].preco / 3).toStringAsFixed(2)}",
+                                          style: EstyloApp.textoCaixaDeTexto(
+                                              tamanho:
+                                                  constraints.maxHeight * 0.04),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  SizedBox(
+                                    width: constraints.maxWidth * .3,
+                                    child: Observer(
+                                      builder: (_) => IconeDeMenuFlutuante(
+                                        corImagem: dados.listaDeProdutos[indice]
+                                                .isFavorito
+                                            ? CorApp.corSuperficie
+                                            : CorApp.corPrimaria,
+                                        imagem: "assets/icons/vavorito.png",
+                                        cor: dados.listaDeProdutos[indice]
+                                                .isFavorito
+                                            ? CorApp.corPrimaria
+                                            : CorApp.corSuperficie,
+                                        radius: constraints.maxHeight * 0.07,
+                                        fun: () {
+                                          dados.adicionandoFavorito(
+                                              dados.listaDeProdutos[indice]);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  height: 10,
-                  width: largura,
-                  decoration: const BoxDecoration(
-                    color: CorApp.corSuperficie,
-                    boxShadow: [
-                      BoxShadow(
-                        color: CorApp.corSuperficie,
-                        offset: Offset(0, 5),
-                        blurRadius: 4,
-                        blurStyle: BlurStyle.normal,
-                      )
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
