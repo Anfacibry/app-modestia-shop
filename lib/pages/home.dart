@@ -1,9 +1,10 @@
+import 'package:app_fashion_shop/components/app_bar.dart';
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
 
-import 'package:app_fashion_shop/components/components_home/lista_icone_botao_flutuante.dart';
+import 'package:app_fashion_shop/components/home/lista_icone_botao_flutuante.dart';
 
-import 'package:app_fashion_shop/components/components_home/row_botoes_selecao.dart';
-import 'package:app_fashion_shop/components/components_home/grid_de_produtos.dart';
+import 'package:app_fashion_shop/components/home/row_botoes_selecao.dart';
+import 'package:app_fashion_shop/components/home/grid_de_produtos.dart';
 import 'package:app_fashion_shop/components/container_com_sombra.dart';
 
 import 'package:app_fashion_shop/store/store_home.dart';
@@ -16,7 +17,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../components/components_home/propaganda.dart';
+import '../components/home/propaganda.dart';
 import '../store/data/store_dados.dart';
 
 class Home extends StatelessWidget {
@@ -31,32 +32,7 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       drawer: const Drawer(),
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) => InkWell(
-            onTap: () {
-              Scaffold.of(context).openDrawer();
-            },
-            child: Image.asset(
-              EstyloApp.iconeDrawer,
-            ),
-          ),
-        ),
-        centerTitle: true,
-        title: Text(
-          "Nome do Usuário",
-          style: EstyloApp.textoPrincipalh1(),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: largura * .05),
-            child: Image.asset(
-              EstyloApp.imagemPerfil,
-              height: 45,
-            ),
-          ),
-        ],
-      ),
+      appBar: appBar(largura),
       body: SizedBox(
         height: altura,
         width: largura,
@@ -125,7 +101,8 @@ class Home extends StatelessWidget {
                 SizedBox(
                   height: altura * .8,
                   width: largura,
-                  child: GridDeProdutos(dados: dados, largura: largura),
+                  child: GridDeProdutos(
+                      isFab: true, dados: dados, largura: largura),
                 ),
               ],
             ),

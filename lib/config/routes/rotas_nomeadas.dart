@@ -5,4 +5,5 @@ class RotasNomeadas {
   static const String rotaLoginCadastro = "/loginCadastro";
   static const String rotaLoginCadastroRedes = "/loginCadastroRedes";
   static const String favorito = "/favorito";
+  static const String detalheProduto = "/detalheProduto";
 }

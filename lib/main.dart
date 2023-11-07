@@ -1,3 +1,4 @@
+import 'package:app_fashion_shop/pages/detalhe_produto.dart';
 import 'package:app_fashion_shop/pages/home.dart';
 import 'package:app_fashion_shop/pages/cadastro_de_login.dart';
 import 'package:app_fashion_shop/pages/cadastro_redes_sociais.dart';
@@ -44,6 +45,7 @@ class AppFashionShop extends StatelessWidget {
         RotasNomeadas.rotaLoginCadastro: (ctx) => const CadastroDeLogin(),
         RotasNomeadas.rotaLoginCadastroRedes: (ctx) =>
             const CadastroRedesSociais(),
+        RotasNomeadas.detalheProduto: (ctx) => const DetalheProduto(),
       },
     );
   }
