@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:app_fashion_shop/store/models/cor_e_imagem.dart';
 import 'package:mobx/mobx.dart';
 
 part 'store_produtos.g.dart';
@@ -14,13 +14,10 @@ abstract class _Produtos with Store {
   String nome;
 
   @observable
-  ObservableList<String> imagem;
-
-  @observable
   double preco;
 
   @observable
-  ObservableList<Color> cores;
+  ObservableList<CorEImagem> corEImagem;
 
   @observable
   ObservableList<String> tamanho;
@@ -33,9 +30,8 @@ abstract class _Produtos with Store {
   _Produtos({
     required this.id,
     required this.nome,
-    required this.imagem,
     required this.preco,
-    required this.cores,
+    required this.corEImagem,
     required this.tamanho,
     required this.avaliacao,
     required this.isFavorito,

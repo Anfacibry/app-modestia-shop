@@ -46,12 +46,11 @@ class BotaoSelecao extends StatelessWidget {
 }
 
 class RowBotoesSelecao extends StatelessWidget {
-  final BuildContext contextHome;
-  const RowBotoesSelecao({required this.contextHome, super.key});
+  const RowBotoesSelecao({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final StoreHome storeHome = Provider.of(contextHome, listen: false);
+    final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
     final Dados dados = Provider.of<Dados>(context, listen: false);
     return Observer(
       builder: (_) => Row(

@@ -39,21 +39,6 @@ mixin _$Produtos on _Produtos, Store {
     });
   }
 
-  late final _$imagemAtom = Atom(name: '_Produtos.imagem', context: context);
-
-  @override
-  ObservableList<String> get imagem {
-    _$imagemAtom.reportRead();
-    return super.imagem;
-  }
-
-  @override
-  set imagem(ObservableList<String> value) {
-    _$imagemAtom.reportWrite(value, super.imagem, () {
-      super.imagem = value;
-    });
-  }
-
   late final _$precoAtom = Atom(name: '_Produtos.preco', context: context);
 
   @override
@@ -69,18 +54,19 @@ mixin _$Produtos on _Produtos, Store {
     });
   }
 
-  late final _$coresAtom = Atom(name: '_Produtos.cores', context: context);
+  late final _$corEImagemAtom =
+      Atom(name: '_Produtos.corEImagem', context: context);
 
   @override
-  ObservableList<Color> get cores {
-    _$coresAtom.reportRead();
-    return super.cores;
+  ObservableList<CorEImagem> get corEImagem {
+    _$corEImagemAtom.reportRead();
+    return super.corEImagem;
   }
 
   @override
-  set cores(ObservableList<Color> value) {
-    _$coresAtom.reportWrite(value, super.cores, () {
-      super.cores = value;
+  set corEImagem(ObservableList<CorEImagem> value) {
+    _$corEImagemAtom.reportWrite(value, super.corEImagem, () {
+      super.corEImagem = value;
     });
   }
 
@@ -136,9 +122,8 @@ mixin _$Produtos on _Produtos, Store {
     return '''
 id: ${id},
 nome: ${nome},
-imagem: ${imagem},
 preco: ${preco},
-cores: ${cores},
+corEImagem: ${corEImagem},
 tamanho: ${tamanho},
 avaliacao: ${avaliacao},
 isFavorito: ${isFavorito}

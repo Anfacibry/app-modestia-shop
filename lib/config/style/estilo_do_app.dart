@@ -61,6 +61,7 @@ class EstyloApp {
   static const String imagemPropaganda001 = "assets/image/propaganda001.png";
   static const String imagemPropaganda002 = "assets/image/propaganda002.png";
   static const String imagemPropaganda003 = "assets/image/propaganda003.png";
+  static const String imagemPropaganda004 = "assets/image/propaganda004.png";
 
   ///Seção de icones
   static const String iconeDrawer = "assets/icons/drawer.png";

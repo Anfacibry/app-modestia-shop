@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
 
+import '../config/style/estilo_do_app.dart';
+
 part 'store_home.g.dart';
 
 // ignore: library_private_types_in_public_api
@@ -45,7 +47,25 @@ abstract class _StoreHome with Store {
   }
 
   @observable
+  ObservableList<String> listaImagem = ObservableList.of([
+    EstyloApp.imagemPropaganda001,
+    EstyloApp.imagemPropaganda002,
+    EstyloApp.imagemPropaganda003,
+    EstyloApp.imagemPropaganda004,
+  ]);
+
+  @observable
   int indice = 0;
+  @computed
+  String get imagemPropaganda => listaImagem[indice];
+
+  @observable
+  bool reverso = false;
+
+  @action
+  void alterandoReverso() {
+    reverso = !reverso;
+  }
 
   @action
   void indicePego(int valor) {

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../components/components_login/components/imagem_logo.dart';
-import '../components/components_login/components/lista_botoes_redes.dart';
-import '../components/components_login/components/lista_login_rede_escolhida.dart';
+import '../components/login/components/imagem_logo.dart';
+import '../components/login/components/lista_botoes_redes.dart';
+import '../components/login/components/lista_login_rede_escolhida.dart';
 import '../store/store_login.dart';
 import '../config/style/estilo_do_app.dart';
 import '../config/theme/cores.dart';
@@ -18,10 +18,9 @@ class CadastroRedesSociais extends StatelessWidget {
         Provider.of<StoreLogin>(context, listen: false);
     final (altura, largura) = EstyloApp.tamanhoTelaApp(context);
 
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      onPopInvoked: (bool ver) {
         storeLogin.tipoDeContaAcessada(Contas.vazio);
-        return true;
       },
       child: Scaffold(
         body: SafeArea(

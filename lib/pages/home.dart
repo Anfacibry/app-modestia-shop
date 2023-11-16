@@ -41,7 +41,6 @@ class Home extends StatelessWidget {
             padding: const EdgeInsets.only(right: 10, left: 10),
             child: Column(
               children: [
-                EstyloApp.espacoMinimo(top: 10),
                 SizedBox(
                   height: largura * .2,
                   width: largura,
@@ -90,19 +89,22 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                EstyloApp.espacoMinimo(top: 20),
                 PropagandaHome(
                     storeHome: storeHome, altura: altura, largura: largura),
                 EstyloApp.espacoMinimo(top: 10),
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: RowBotoesSelecao(contextHome: context),
+                  clipBehavior: Clip.none,
+                  child: RowBotoesSelecao(),
                 ),
                 SizedBox(
                   height: altura * .8,
                   width: largura,
                   child: GridDeProdutos(
-                      isFab: true, dados: dados, largura: largura),
+                      isTelaHome: true,
+                      isFab: true,
+                      dados: dados,
+                      largura: largura),
                 ),
               ],
             ),

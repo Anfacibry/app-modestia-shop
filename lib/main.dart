@@ -40,8 +40,8 @@ class AppFashionShop extends StatelessWidget {
           ? RotasNomeadas.rotaPrincipal
           : RotasNomeadas.rotaLogin,
       routes: {
-        RotasNomeadas.rotaPrincipal: (ctx) => const Home(),
         RotasNomeadas.rotaLogin: (ctx) => const Login(),
+        RotasNomeadas.rotaPrincipal: (ctx) => const Home(),
         RotasNomeadas.rotaLoginCadastro: (ctx) => const CadastroDeLogin(),
         RotasNomeadas.rotaLoginCadastroRedes: (ctx) =>
             const CadastroRedesSociais(),

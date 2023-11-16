@@ -11,7 +11,7 @@ enum Contas { facebook, google, x, vazio }
 
 abstract class _StoreLogin with Store {
   @observable
-  bool loginEfetuado = true;
+  bool loginEfetuado = false;
 
   @observable
   String conta = "";

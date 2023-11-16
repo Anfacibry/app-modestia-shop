@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -22,24 +23,30 @@ class ContainerPropaganda extends StatelessWidget {
           ),
           fit: BoxFit.fill,
         ),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0, 8),
+            blurRadius: 5,
+            blurStyle: BlurStyle.normal,
+          )
+        ],
       ),
     );
   }
 }
 
 class IndicePropaganda extends StatelessWidget {
-  final BuildContext contextLogin;
   final int indiceComparacao;
 
   const IndicePropaganda({
     required this.indiceComparacao,
-    required this.contextLogin,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final StoreHome storeHome = Provider.of(contextLogin, listen: false);
+    final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
     return Observer(
       builder: (_) => Padding(
         padding: const EdgeInsets.only(right: 10),
@@ -77,12 +84,6 @@ class PropagandaHome extends StatelessWidget {
     super.key,
   });
 
-  final List<String> listaImagem = const [
-    EstyloApp.imagemPropaganda001,
-    EstyloApp.imagemPropaganda002,
-    EstyloApp.imagemPropaganda003,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,45 +93,34 @@ class PropagandaHome extends StatelessWidget {
           width: largura,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                offset: Offset(0, 8),
-                blurRadius: 5,
-                blurStyle: BlurStyle.normal,
-              )
-            ],
           ),
-          child: PageView(
-            controller: PageController(
-              initialPage: storeHome.indice,
-            ),
-            children: [
-              ContainerPropaganda(imagem: listaImagem[0]),
-              ContainerPropaganda(imagem: listaImagem[1]),
-              ContainerPropaganda(imagem: listaImagem[2]),
-            ],
-            onPageChanged: (indice) {
-              storeHome.indicePego(indice);
+          child: CarouselSlider.builder(
+            itemCount: storeHome.listaImagem.length,
+            itemBuilder: (ctx, index, realIdx) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child:
+                    ContainerPropaganda(imagem: storeHome.listaImagem[index]),
+              );
             },
+            options: CarouselOptions(
+              autoPlayInterval: const Duration(seconds: 5),
+              autoPlay: true,
+              onPageChanged: (index, reason) {
+                storeHome.indicePego(index);
+              },
+              clipBehavior: Clip.none,
+            ),
           ),
         ),
         EstyloApp.espacoMinimo(top: 15),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IndicePropaganda(
-              contextLogin: context,
-              indiceComparacao: 0,
-            ),
-            IndicePropaganda(
-              contextLogin: context,
-              indiceComparacao: 1,
-            ),
-            IndicePropaganda(
-              contextLogin: context,
-              indiceComparacao: 2,
-            ),
+            IndicePropaganda(indiceComparacao: 0),
+            IndicePropaganda(indiceComparacao: 1),
+            IndicePropaganda(indiceComparacao: 2),
+            IndicePropaganda(indiceComparacao: 3),
           ],
         ),
       ],

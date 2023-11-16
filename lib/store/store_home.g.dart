@@ -9,6 +9,14 @@ part of 'store_home.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StoreHome on _StoreHome, Store {
+  Computed<String>? _$imagemPropagandaComputed;
+
+  @override
+  String get imagemPropaganda => (_$imagemPropagandaComputed ??=
+          Computed<String>(() => super.imagemPropaganda,
+              name: '_StoreHome.imagemPropaganda'))
+      .value;
+
   late final _$selecaoVestidosAtom =
       Atom(name: '_StoreHome.selecaoVestidos', context: context);
 
@@ -70,6 +78,22 @@ mixin _$StoreHome on _StoreHome, Store {
   set selecaoBolsas(bool value) {
     _$selecaoBolsasAtom.reportWrite(value, super.selecaoBolsas, () {
       super.selecaoBolsas = value;
+    });
+  }
+
+  late final _$listaImagemAtom =
+      Atom(name: '_StoreHome.listaImagem', context: context);
+
+  @override
+  ObservableList<String> get listaImagem {
+    _$listaImagemAtom.reportRead();
+    return super.listaImagem;
+  }
+
+  @override
+  set listaImagem(ObservableList<String> value) {
+    _$listaImagemAtom.reportWrite(value, super.listaImagem, () {
+      super.listaImagem = value;
     });
   }
 
@@ -150,6 +174,22 @@ mixin _$StoreHome on _StoreHome, Store {
     });
   }
 
+  late final _$caixaDeTextoAtivadaAtom =
+      Atom(name: '_StoreHome.caixaDeTextoAtivada', context: context);
+
+  @override
+  bool get caixaDeTextoAtivada {
+    _$caixaDeTextoAtivadaAtom.reportRead();
+    return super.caixaDeTextoAtivada;
+  }
+
+  @override
+  set caixaDeTextoAtivada(bool value) {
+    _$caixaDeTextoAtivadaAtom.reportWrite(value, super.caixaDeTextoAtivada, () {
+      super.caixaDeTextoAtivada = value;
+    });
+  }
+
   late final _$_StoreHomeActionController =
       ActionController(name: '_StoreHome', context: context);
 
@@ -187,17 +227,31 @@ mixin _$StoreHome on _StoreHome, Store {
   }
 
   @override
+  void ativandoCaixaDeTexto() {
+    final _$actionInfo = _$_StoreHomeActionController.startAction(
+        name: '_StoreHome.ativandoCaixaDeTexto');
+    try {
+      return super.ativandoCaixaDeTexto();
+    } finally {
+      _$_StoreHomeActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 selecaoVestidos: ${selecaoVestidos},
 selecaoBlusa: ${selecaoBlusa},
 selecaoSaias: ${selecaoSaias},
 selecaoBolsas: ${selecaoBolsas},
+listaImagem: ${listaImagem},
 indice: ${indice},
 home: ${home},
 favorito: ${favorito},
 carrinho: ${carrinho},
-perfil: ${perfil}
+perfil: ${perfil},
+caixaDeTextoAtivada: ${caixaDeTextoAtivada},
+imagemPropaganda: ${imagemPropaganda}
     ''';
   }
 }

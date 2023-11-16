@@ -1,7 +1,6 @@
 import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
 import 'package:app_fashion_shop/store/data/store_dados.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'lista_icone_botao_flutuante.dart';
@@ -10,9 +9,11 @@ import '../../config/theme/cores.dart';
 
 class GridDeProdutos extends StatelessWidget {
   final bool isFab;
+  final bool isTelaHome;
   final Dados dados;
   final double largura;
   const GridDeProdutos({
+    required this.isTelaHome,
     required this.isFab,
     required this.dados,
     required this.largura,
@@ -44,11 +45,18 @@ class GridDeProdutos extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 4,
                   mainAxisSpacing: 4,
-                  childAspectRatio: 1.5,
+                  childAspectRatio: 1.8,
                 ),
                 itemBuilder: (contextGrid, indice) => InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, RotasNomeadas.detalheProduto);
+                    dados.pegandoProduto(
+                        produtosPego: dados.listaDeProdutos[indice]);
+                    dados.alterandoIndiceImagemProduto(0);
+
+                    isTelaHome
+                        ? Navigator.pushNamed(
+                            context, RotasNomeadas.detalheProduto)
+                        : null;
                   },
                   child: Card(
                     clipBehavior: Clip.antiAlias,
@@ -64,7 +72,8 @@ class GridDeProdutos extends StatelessWidget {
                               height: constraints.maxHeight * .7,
                               width: constraints.maxWidth,
                               child: Image.asset(
-                                dados.listaDeProdutos[indice].imagem[0],
+                                dados.listaDeProdutos[indice].corEImagem[0]
+                                    .imagem,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -86,19 +95,16 @@ class GridDeProdutos extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Text(
-                                              dados
-                                                  .listaDeProdutos[indice].nome,
-                                              style: EstyloApp.textoPrincipalh1(
-                                                  tamanho:
-                                                      constraints.maxHeight *
-                                                          0.06),
-                                            ).animate(
-                                                autoPlay: true,
-                                                delay:
-                                                    const Duration(seconds: 2)),
-                                          ),
+                                              scrollDirection: Axis.horizontal,
+                                              child: Text(
+                                                dados.listaDeProdutos[indice]
+                                                    .nome,
+                                                style:
+                                                    EstyloApp.textoPrincipalh1(
+                                                        tamanho: constraints
+                                                                .maxHeight *
+                                                            0.05),
+                                              )),
                                           Text(
                                             dados.listaDeProdutos[indice].preco
                                                 .toString(),
@@ -108,7 +114,7 @@ class GridDeProdutos extends StatelessWidget {
                                           ),
                                           Text(
                                             "No pix\n Ou x de ${(dados.listaDeProdutos[indice].preco / 3).toStringAsFixed(2)}",
-                                            style: EstyloApp.textoCaixaDeTexto(
+                                            style: EstyloApp.textoPrincipalh1(
                                                 tamanho: constraints.maxHeight *
                                                     0.04),
                                           ),

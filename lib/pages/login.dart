@@ -1,6 +1,6 @@
 import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
-import 'package:app_fashion_shop/components/components_login/components/imagem_logo.dart';
-import 'package:app_fashion_shop/components/components_login/components/lista_botoes_redes.dart';
+import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
+import 'package:app_fashion_shop/components/login/components/lista_botoes_redes.dart';
 import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
 import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
