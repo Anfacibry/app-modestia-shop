@@ -1,32 +1,33 @@
-import 'package:app_fashion_shop/components/detalhe_pedido/detalhe_container.dart';
+import 'package:app_fashion_shop/components/detail_product/information_product.dart';
 
-import 'package:app_fashion_shop/components/home/lista_icone_botao_flutuante.dart';
+import 'package:app_fashion_shop/components/home/navigator_pages.dart';
 
-import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
-import 'package:app_fashion_shop/store/data/store_dados.dart';
+import 'package:app_fashion_shop/config/style/app_style.dart';
+import 'package:app_fashion_shop/store/data/storage_product.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import '../components/home/grid_de_produtos.dart';
-import '../config/theme/cores.dart';
+import '../components/home/grid_product.dart';
+import '../config/theme/app_color.dart';
 
-class DetalheProduto extends StatelessWidget {
-  const DetalheProduto({super.key});
+class DetailProduct extends StatelessWidget {
+  const DetailProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Dados dados = Provider.of<Dados>(context, listen: false);
+    final StorageProduct dados =
+        Provider.of<StorageProduct>(context, listen: false);
 
-    final (double altura, double largura) = EstyloApp.tamanhoTelaApp(context);
+    final (double height, double width) = AppStyle.screenSize(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Observer(
           builder: (ctx) => Text(
-            dados.produtos!.nome,
-            style: EstyloApp.textoCorPrimaria(tamanho: largura * .06),
+            dados.product!.name,
+            style: AppStyle.textTitleSecondary(tamanho: width * .06),
           ),
         ),
         leading: IconButton(
@@ -39,23 +40,32 @@ class DetalheProduto extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Image.asset("assets/icons/vavorito.png"),
+            icon: Image.asset("assets/icons/favorito.png"),
           ),
           IconButton(
             onPressed: () {},
-            icon: Image.asset("assets/icons/carrinho.png"),
+            icon: Observer(
+              builder: (ctx) => Badge(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                alignment: Alignment.lerp(
+                    const Alignment(0, 5), const Alignment(1, 1.5), 2),
+                isLabelVisible: dados.isEmptyCart,
+                label: Text("${dados.cartProduct.length}"),
+                child: Image.asset("assets/icons/carrinho.png"),
+              ),
+            ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: largura * .02),
-            child: PopupMenuButton<Selecao>(
-              onSelected: (valor) {
-                dados.selecionandoListaDeProdutos(valor);
+            padding: EdgeInsets.only(right: width * .02),
+            child: PopupMenuButton<Selection>(
+              onSelected: (value) {
+                dados.selectingListProduct(value);
               },
               elevation: 5,
-              color: CorApp.corPrimaria,
-              itemBuilder: (contx) => <PopupMenuEntry<Selecao>>[
+              color: AppColor.primaryColor,
+              itemBuilder: (contx) => <PopupMenuEntry<Selection>>[
                 const PopupMenuItem(
-                  value: Selecao.vestidos,
+                  value: Selection.vestidos,
                   child: Text(
                     "Vestidos",
                     style: TextStyle(
@@ -65,7 +75,7 @@ class DetalheProduto extends StatelessWidget {
                   ),
                 ),
                 const PopupMenuItem(
-                  value: Selecao.blusas,
+                  value: Selection.blusas,
                   child: Text(
                     "Blusas",
                     style: TextStyle(
@@ -75,7 +85,7 @@ class DetalheProduto extends StatelessWidget {
                   ),
                 ),
                 const PopupMenuItem(
-                  value: Selecao.saias,
+                  value: Selection.saias,
                   child: Text(
                     "Saias",
                     style: TextStyle(
@@ -85,7 +95,7 @@ class DetalheProduto extends StatelessWidget {
                   ),
                 ),
                 const PopupMenuItem(
-                  value: Selecao.bolsas,
+                  value: Selection.bolsas,
                   child: Text(
                     "Bolsas",
                     style: TextStyle(
@@ -105,14 +115,14 @@ class DetalheProduto extends StatelessWidget {
           children: [
             Observer(
               builder: (_) => SizedBox(
-                height: altura * .6,
-                width: largura,
+                height: height * .6,
+                width: width,
                 child: Stack(children: [
                   PageView(
                     onPageChanged: (indice) {
-                      dados.alterandoIndiceImagemProduto(indice);
+                      dados.changingProductImageIndex(indice);
                     },
-                    children: dados.produtos!.corEImagem
+                    children: dados.product!.imageColor
                         .map(
                           (elemento) => InkWell(
                             onTap: () {
@@ -125,15 +135,15 @@ class DetalheProduto extends StatelessWidget {
                                                 BorderRadius.circular(20)),
                                         contentPadding: const EdgeInsets.all(0),
                                         content: Image.asset(
-                                          elemento.imagem,
+                                          elemento.image,
                                           fit: BoxFit.cover,
                                         ),
                                       ));
                             },
                             child: Image.asset(
-                              elemento.imagem,
-                              height: altura * .5,
-                              width: largura,
+                              elemento.image,
+                              height: height * .5,
+                              width: width,
                               fit: BoxFit.cover,
                               alignment: Alignment.topCenter,
                             ),
@@ -142,20 +152,21 @@ class DetalheProduto extends StatelessWidget {
                         .toList(),
                   ),
                   Positioned(
-                    top: largura * .03,
-                    right: largura * .03,
+                    top: width * .03,
+                    right: width * .03,
                     child: Observer(
-                      builder: (ctx) => IconeDeMenuFlutuante(
-                        corImagem: dados.produtos!.isFavorito
-                            ? CorApp.corSuperficie
-                            : CorApp.corPrimaria,
-                        imagem: "assets/icons/vavorito.png",
-                        cor: dados.produtos!.isFavorito
-                            ? CorApp.corPrimaria
-                            : CorApp.corSuperficie,
+                      builder: (ctx) => IconMenuFloating(
+                        corImagem: dados.product!.isFavorite
+                            ? AppColor.surfaceColor
+                            : AppColor.primaryColor,
+                        imagem: "assets/icons/favorito.png",
+                        cor: dados.product!.isFavorite
+                            ? AppColor.primaryColor
+                            : AppColor.surfaceColor,
                         radius: 25,
+                        isBadge: false,
                         fun: () {
-                          dados.adicionandoFavorito(dados.produtos!);
+                          dados.addFavorite(dados.product!);
                         },
                       ),
                     ),
@@ -164,30 +175,29 @@ class DetalheProduto extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: altura * .2,
+              height: height * .2,
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                    top: -altura * .05,
-                    child: const InformacaoDoProduto(),
+                    top: -height * .05,
+                    child: const InformationProduct(),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding:
-                  EdgeInsets.only(left: largura * .03, right: largura * .03),
+              padding: EdgeInsets.only(left: width * .03, right: width * .03),
               child: Column(
                 children: [
                   SizedBox(
-                    height: altura * .7,
-                    width: largura,
-                    child: GridDeProdutos(
-                        isTelaHome: false,
-                        isFab: false,
-                        dados: dados,
-                        largura: largura),
+                    height: height * .7,
+                    width: width,
+                    child: GridProduct(
+                      isScreenHome: false,
+                      storageProduct: dados,
+                      width: width,
+                    ),
                   ),
                 ],
               ),

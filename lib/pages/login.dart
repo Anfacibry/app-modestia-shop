@@ -1,15 +1,15 @@
-import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
+import 'package:app_fashion_shop/components/box_text_form_field.dart';
 import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
-import 'package:app_fashion_shop/components/login/components/lista_botoes_redes.dart';
-import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
+import 'package:app_fashion_shop/components/login/components/list_network_button.dart';
+import 'package:app_fashion_shop/config/routes/named_routes.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
-import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
+import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../config/theme/cores.dart';
+import '../config/theme/app_color.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class Login extends StatelessWidget {
@@ -19,50 +19,50 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     final storeLogin = Provider.of<StoreLogin>(context, listen: false);
 
-    final (altura, largura) = EstyloApp.tamanhoTelaApp(context);
+    final (height, width) = AppStyle.screenSize(context);
 
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
-          height: altura,
-          width: largura,
+          height: height,
+          width: width,
           child: Padding(
             padding: EdgeInsets.only(
-              right: largura * .1,
-              left: largura * .1,
+              right: width * .1,
+              left: width * .1,
             ),
             child: SingleChildScrollView(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ImagemLogo(tamanhaoImagem: largura * .8),
+                    ImagemLogo(tamanhaoImagem: width * .8),
                     const Padding(padding: EdgeInsets.only(top: 20)),
                     Text(
                       "Faça o login com a sua conta",
-                      style: EstyloApp.textoPrincipalh1(tamanho: 20),
+                      style: AppStyle.textBody(tamanho: 20),
                     ),
-                    const CaixaDeTexto(
-                      texto: "E-mail",
+                    const BoxTextFormeField(
+                      text: "E-mail",
                       isSenha: false,
-                      exTexto: "Ex: joao@gmail.com",
-                      corBorda: Color(0xFF696969),
+                      hintText: "Ex: joao@gmail.com",
+                      borderColor: Color(0xFF696969),
                     ),
-                    EstyloApp.espacoMinimo(),
-                    const CaixaDeTexto(
-                      texto: "Senha",
+                    AppStyle.space(),
+                    const BoxTextFormeField(
+                      text: "Senha",
                       isSenha: true,
-                      exTexto: "Ex: Bob@076",
-                      corBorda: Color(0xFF696969),
+                      hintText: "Ex: Bob@076",
+                      borderColor: Color(0xFF696969),
                     ),
                     Row(
                       children: [
                         Observer(
                           builder: (_) => Switch(
-                            activeColor: CorApp.corOnPrimariaContainer,
-                            activeTrackColor: CorApp.corPrimariaContainer,
-                            value: storeLogin.lembrarSenha,
-                            onChanged: (valor) {
-                              storeLogin.isLembrarSenha(valor);
+                            activeColor: AppColor.onPrimaryContainerColor,
+                            activeTrackColor: AppColor.primaryContainerColor,
+                            value: storeLogin.rememberPassword,
+                            onChanged: (value) {
+                              storeLogin.isRememberPassword(value);
                             },
                           ),
                         ),
@@ -72,7 +72,7 @@ class Login extends StatelessWidget {
                           onPressed: () {},
                           child: Text(
                             "Esqueci minha senha",
-                            style: EstyloApp.textoCorPrimaria(tamanho: 14),
+                            style: AppStyle.textBody(tamanho: 14),
                           ),
                         ),
                       ],
@@ -81,17 +81,16 @@ class Login extends StatelessWidget {
                     Center(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: CorApp.corPrimaria,
-                          foregroundColor: CorApp.corOnPrimaria,
+                          backgroundColor: AppColor.primaryColor,
+                          foregroundColor: AppColor.onPrimaryColor,
                           fixedSize: Size(
-                            largura * .5,
-                            largura * .10,
+                            width * .5,
+                            width * .10,
                           ),
                           elevation: 5,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, RotasNomeadas.rotaPrincipal);
+                          Navigator.pushNamed(context, NamedRoutes.routeHome);
                         },
                         child: const Text(
                           "Login",
@@ -105,28 +104,28 @@ class Login extends StatelessWidget {
                     Center(
                       child: Text(
                         "- Ou entre com -",
-                        style: EstyloApp.textoPrincipalh1(tamanho: 16),
+                        style: AppStyle.textBody(tamanho: 16),
                       ),
                     ),
                     const Padding(padding: EdgeInsets.only(top: 30)),
-                    ListaBotoesRedes(
-                      contas: storeLogin,
+                    ListNetworkButton(
+                      account: storeLogin,
                       funFacebook: () {
-                        storeLogin.tipoDeContaAcessada(Contas.facebook);
-                        Navigator.pushNamed(
-                            context, RotasNomeadas.rotaLoginCadastroRedes);
+                        storeLogin.typeAccountAccessed(Account.facebook);
+                        Navigator.pushNamed(context,
+                            NamedRoutes.routeSocialNetworkRegistration);
                       },
                       funGoogle: () {
-                        storeLogin.tipoDeContaAcessada(Contas.google);
-                        Navigator.pushNamed(
-                            context, RotasNomeadas.rotaLoginCadastroRedes);
+                        storeLogin.typeAccountAccessed(Account.google);
+                        Navigator.pushNamed(context,
+                            NamedRoutes.routeSocialNetworkRegistration);
                       },
                       funX: () {
-                        storeLogin.tipoDeContaAcessada(Contas.x);
-                        Navigator.pushNamed(
-                            context, RotasNomeadas.rotaLoginCadastroRedes);
+                        storeLogin.typeAccountAccessed(Account.x);
+                        Navigator.pushNamed(context,
+                            NamedRoutes.routeSocialNetworkRegistration);
                       },
-                      largura: largura,
+                      width: width,
                     ),
                     const Padding(padding: EdgeInsets.only(top: 20)),
                     Center(
@@ -134,15 +133,15 @@ class Login extends StatelessWidget {
                           text: TextSpan(children: [
                         TextSpan(
                             text: "Se não tem conta, ",
-                            style: EstyloApp.textoPrincipalh1(tamanho: 16)),
+                            style: AppStyle.textBody(tamanho: 16)),
                         TextSpan(
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushNamed(
-                                  context, RotasNomeadas.rotaLoginCadastro);
+                                  context, NamedRoutes.routeLoginRegistration);
                             },
                           text: "criar conta",
-                          style: EstyloApp.textoCorPrimaria(tamanho: 16),
+                          style: AppStyle.textTitleSecondary(tamanho: 16),
                         ),
                       ])),
                     ),

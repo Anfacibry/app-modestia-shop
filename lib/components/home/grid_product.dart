@@ -1,29 +1,27 @@
-import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
-import 'package:app_fashion_shop/store/data/store_dados.dart';
+import 'package:app_fashion_shop/config/routes/named_routes.dart';
+import 'package:app_fashion_shop/store/data/storage_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'lista_icone_botao_flutuante.dart';
-import '../../config/style/estilo_do_app.dart';
-import '../../config/theme/cores.dart';
+import 'navigator_pages.dart';
+import '../../config/style/app_style.dart';
+import '../../config/theme/app_color.dart';
 
-class GridDeProdutos extends StatelessWidget {
-  final bool isFab;
-  final bool isTelaHome;
-  final Dados dados;
-  final double largura;
-  const GridDeProdutos({
-    required this.isTelaHome,
-    required this.isFab,
-    required this.dados,
-    required this.largura,
+class GridProduct extends StatelessWidget {
+  final bool isScreenHome;
+  final StorageProduct storageProduct;
+  final double width;
+  const GridProduct({
+    required this.isScreenHome,
+    required this.storageProduct,
+    required this.width,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: largura,
+      width: width,
       child: LayoutBuilder(
         builder: (contextBuilder1, constraints) => SizedBox(
           height: constraints.maxHeight,
@@ -35,12 +33,7 @@ class GridDeProdutos extends StatelessWidget {
             child: Observer(
               builder: (_) => GridView.builder(
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(
-                  bottom: isFab
-                      ? constraints.maxHeight * .15
-                      : constraints.maxHeight * .05,
-                ),
-                itemCount: dados.tamanhoLista,
+                itemCount: storageProduct.sizeList,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 4,
@@ -49,13 +42,13 @@ class GridDeProdutos extends StatelessWidget {
                 ),
                 itemBuilder: (contextGrid, indice) => InkWell(
                   onTap: () {
-                    dados.pegandoProduto(
-                        produtosPego: dados.listaDeProdutos[indice]);
-                    dados.alterandoIndiceImagemProduto(0);
-
-                    isTelaHome
+                    storageProduct.getProduct(
+                        product: storageProduct.listProduct[indice]);
+                    storageProduct.changingProductImageIndex(0);
+                    debugPrint(storageProduct.listProduct[indice].id);
+                    isScreenHome
                         ? Navigator.pushNamed(
-                            context, RotasNomeadas.detalheProduto)
+                            context, NamedRoutes.routeProductDetail)
                         : null;
                   },
                   child: Card(
@@ -72,8 +65,8 @@ class GridDeProdutos extends StatelessWidget {
                               height: constraints.maxHeight * .7,
                               width: constraints.maxWidth,
                               child: Image.asset(
-                                dados.listaDeProdutos[indice].corEImagem[0]
-                                    .imagem,
+                                storageProduct
+                                    .listProduct[indice].imageColor[0].image,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -82,7 +75,7 @@ class GridDeProdutos extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.only(left: 5, right: 5),
                                 decoration: const BoxDecoration(
-                                  color: CorApp.corSuperficie,
+                                  color: AppColor.surfaceColor,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
@@ -97,24 +90,25 @@ class GridDeProdutos extends StatelessWidget {
                                           SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
                                               child: Text(
-                                                dados.listaDeProdutos[indice]
-                                                    .nome,
+                                                storageProduct
+                                                    .listProduct[indice].name,
                                                 style:
-                                                    EstyloApp.textoPrincipalh1(
+                                                    AppStyle.textTitlePrimary(
                                                         tamanho: constraints
                                                                 .maxHeight *
                                                             0.05),
                                               )),
                                           Text(
-                                            dados.listaDeProdutos[indice].preco
+                                            storageProduct
+                                                .listProduct[indice].price
                                                 .toString(),
-                                            style: EstyloApp.textoSecundarioh2(
+                                            style: AppStyle.textTitleSecondary(
                                                 tamanho: constraints.maxHeight *
                                                     0.06),
                                           ),
                                           Text(
-                                            "No pix\n Ou x de ${(dados.listaDeProdutos[indice].preco / 3).toStringAsFixed(2)}",
-                                            style: EstyloApp.textoPrincipalh1(
+                                            "No pix\n Ou x de ${(storageProduct.listProduct[indice].price / 3).toStringAsFixed(2)}",
+                                            style: AppStyle.textBody(
                                                 tamanho: constraints.maxHeight *
                                                     0.04),
                                           ),
@@ -124,21 +118,24 @@ class GridDeProdutos extends StatelessWidget {
                                     SizedBox(
                                       width: constraints.maxWidth * .3,
                                       child: Observer(
-                                        builder: (_) => IconeDeMenuFlutuante(
-                                          corImagem: dados
-                                                  .listaDeProdutos[indice]
-                                                  .isFavorito
-                                              ? CorApp.corSuperficie
-                                              : CorApp.corPrimaria,
-                                          imagem: "assets/icons/vavorito.png",
-                                          cor: dados.listaDeProdutos[indice]
-                                                  .isFavorito
-                                              ? CorApp.corPrimaria
-                                              : CorApp.corSuperficie,
+                                        builder: (_) => IconMenuFloating(
+                                          corImagem: storageProduct
+                                                  .listProduct[indice]
+                                                  .isFavorite
+                                              ? AppColor.surfaceColor
+                                              : AppColor.primaryColor,
+                                          imagem: "assets/icons/favorito.png",
+                                          cor: storageProduct
+                                                  .listProduct[indice]
+                                                  .isFavorite
+                                              ? AppColor.primaryColor
+                                              : AppColor.surfaceColor,
                                           radius: constraints.maxHeight * 0.07,
+                                          isBadge: false,
                                           fun: () {
-                                            dados.adicionandoFavorito(
-                                                dados.listaDeProdutos[indice]);
+                                            storageProduct.addFavorite(
+                                                storageProduct
+                                                    .listProduct[indice]);
                                           },
                                         ),
                                       ),

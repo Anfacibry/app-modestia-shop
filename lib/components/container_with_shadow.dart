@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ContainerComSombra extends StatelessWidget {
-  final ({double? altura, double? largura}) tamanho;
+class ContainerWithShadow extends StatelessWidget {
+  final ({double? heigth, double? width}) size;
   final double radiusCircular;
-  final Color corContainer;
-  final BoxShadow sombra;
+  final Color containerColor;
+  final BoxShadow shadow;
   final Widget child;
 
-  const ContainerComSombra({
-    required this.tamanho,
-    required this.corContainer,
+  const ContainerWithShadow({
+    required this.size,
+    required this.containerColor,
     required this.radiusCircular,
-    required this.sombra,
+    required this.shadow,
     required this.child,
     super.key,
   });
@@ -19,12 +19,12 @@ class ContainerComSombra extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: tamanho.altura,
-      width: tamanho.largura,
+      height: size.heigth,
+      width: size.width,
       decoration: BoxDecoration(
-        color: corContainer,
+        color: containerColor,
         borderRadius: BorderRadius.all(Radius.circular(radiusCircular)),
-        boxShadow: [sombra],
+        boxShadow: [shadow],
       ),
       child: child,
     );

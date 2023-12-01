@@ -1,28 +1,29 @@
-import 'package:app_fashion_shop/store/data/store_dados.dart';
+import 'package:app_fashion_shop/store/data/storage_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../config/style/estilo_do_app.dart';
-import '../../config/theme/cores.dart';
+import '../../config/style/app_style.dart';
+import '../../config/theme/app_color.dart';
 
-class InformacaoDoProduto extends StatelessWidget {
-  const InformacaoDoProduto({super.key});
+class InformationProduct extends StatelessWidget {
+  const InformationProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Dados dados = Provider.of<Dados>(context, listen: false);
-    final (double _, double largura) = EstyloApp.tamanhoTelaApp(context);
+    final StorageProduct storageProduct =
+        Provider.of<StorageProduct>(context, listen: false);
+    final (double _, double width) = AppStyle.screenSize(context);
     return Container(
       padding: EdgeInsets.only(
-          top: 20, left: largura * .03, right: largura * .03, bottom: 20),
-      width: largura,
+          top: 20, left: width * .03, right: width * .03, bottom: 20),
+      width: width,
       decoration: BoxDecoration(
-        color: CorApp.corSuperficie,
+        color: AppColor.surfaceColor,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(largura * .1),
-          topRight: Radius.circular(largura * .1),
+          topLeft: Radius.circular(width * .1),
+          topRight: Radius.circular(width * .1),
         ),
       ),
       child: LayoutBuilder(
@@ -33,18 +34,18 @@ class InformacaoDoProduto extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    dados.produtos!.nome,
-                    style: EstyloApp.textoSecundarioh3(
+                    storageProduct.product!.name,
+                    style: AppStyle.textTitlePrimary(
                         tamanho: constraints.maxWidth * .065),
                   ),
                   Text(
-                    "R\$ ${dados.produtos!.preco}",
-                    style: EstyloApp.textoSecundarioh2(
+                    "R\$ ${storageProduct.product!.price}",
+                    style: AppStyle.textTitleSecondary(
                         tamanho: constraints.maxWidth * .07),
                   ),
                 ],
               ),
-              EstyloApp.espacoMinimo(),
+              AppStyle.space(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,8 +58,8 @@ class InformacaoDoProduto extends StatelessWidget {
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Text(
-                            "Cor: ${dados.produtos!.corEImagem[dados.indiceImagemProduto].nome}",
-                            style: EstyloApp.textoSecundarioh3(
+                            "Cor: ${storageProduct.product!.imageColor[storageProduct.indexProduct].name}",
+                            style: AppStyle.textBody(
                               tamanho: constraints.maxWidth * .045,
                             ),
                           ),
@@ -66,28 +67,28 @@ class InformacaoDoProduto extends StatelessWidget {
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: dados.produtos!.corEImagem
+                            children: storageProduct.product!.imageColor
                                 .map((cores) => Container(
                                       margin: const EdgeInsets.only(right: 5),
                                       height: constraints.maxWidth * .1,
                                       width: constraints.maxWidth * .1,
                                       decoration: BoxDecoration(
-                                        color: cores.cor,
+                                        color: cores.color,
                                         borderRadius: BorderRadius.circular(35),
-                                        border: dados
-                                                    .produtos!
-                                                    .corEImagem[dados
-                                                        .indiceImagemProduto]
-                                                    .cor ==
-                                                cores.cor
+                                        border: storageProduct
+                                                    .product!
+                                                    .imageColor[storageProduct
+                                                        .indexProduct]
+                                                    .color ==
+                                                cores.color
                                             ? Border.all(
-                                                color: CorApp.corSecundaria,
+                                                color: AppColor.secundaryColor,
                                                 width: 3,
                                               )
                                             : null,
                                         boxShadow: [
-                                          EstyloApp.sombra(
-                                              corFundo: Colors.black38,
+                                          AppStyle.shadow(
+                                              backgroundColor: Colors.black38,
                                               offset: (dx: 0, dy: 2),
                                               blurRadius: 2)
                                         ],
@@ -99,20 +100,20 @@ class InformacaoDoProduto extends StatelessWidget {
                       ],
                     ),
                   ),
-                  EstyloApp.espacoMinimo(),
+                  AppStyle.space(),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Tamanho",
-                          style: EstyloApp.textoSecundarioh3(
+                          style: AppStyle.textBody(
                               tamanho: constraints.maxWidth * .045),
                         ),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: dados.produtos!.tamanho
+                            children: storageProduct.product!.size
                                 .map(
                                   (tamanho) => Padding(
                                     padding: const EdgeInsets.only(right: 5),
@@ -133,18 +134,20 @@ class InformacaoDoProduto extends StatelessWidget {
                   ),
                 ],
               ),
-              EstyloApp.espacoMinimo(),
+              AppStyle.space(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: CorApp.corPrimaria,
-                        foregroundColor: CorApp.corOnPrimaria,
+                        backgroundColor: AppColor.primaryColor,
+                        foregroundColor: AppColor.onPrimaryColor,
                         elevation: 5,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: () {},
+                    onPressed: () {
+                      storageProduct.addProductCart(storageProduct.product!);
+                    },
                     child: const Text("Add carrinho"),
                   ),
                   Column(
@@ -158,15 +161,15 @@ class InformacaoDoProduto extends StatelessWidget {
                             size: constraints.maxWidth * .09,
                           ),
                           Text(
-                            "${dados.produtos!.avaliacao}",
-                            style: EstyloApp.textoPrincipalh1(
+                            "${storageProduct.product!.valuation}",
+                            style: AppStyle.textBody(
                                 tamanho: constraints.maxWidth * .06),
                           )
                         ],
                       ),
                       Text(
                         "Avaliações",
-                        style: EstyloApp.textoPrincipalh1(
+                        style: AppStyle.textBody(
                             tamanho: constraints.maxWidth * .04),
                       ),
                     ],

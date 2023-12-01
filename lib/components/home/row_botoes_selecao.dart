@@ -3,41 +3,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../store/data/store_dados.dart';
-import '../../config/style/estilo_do_app.dart';
+import '../../store/data/storage_product.dart';
+import '../../config/style/app_style.dart';
 
-import 'package:app_fashion_shop/config/theme/cores.dart';
+import 'package:app_fashion_shop/config/theme/app_color.dart';
 
-class BotaoSelecao extends StatelessWidget {
-  final bool selecionado;
-  final String tituloBotao;
+class SelectionButton extends StatelessWidget {
+  final bool selection;
+  final String titleButton;
   final void Function() fun;
 
-  const BotaoSelecao({
-    required this.selecionado,
-    required this.tituloBotao,
+  const SelectionButton({
+    required this.selection,
+    required this.titleButton,
     required this.fun,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final (double _, double largura) = EstyloApp.tamanhoTelaApp(context);
+    final (double _, double width) = AppStyle.screenSize(context);
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            selecionado ? CorApp.corPrimaria : CorApp.corSuperficie,
+        backgroundColor: selection
+            ? AppColor.primaryColor
+            : Theme.of(context).colorScheme.onInverseSurface,
+        surfaceTintColor: Theme.of(context).colorScheme.onInverseSurface,
         elevation: 5,
-        fixedSize: Size(largura * .3, 0),
+        fixedSize: Size(width * .3, 0),
         padding: const EdgeInsets.all(0),
       ),
       onPressed: fun,
       child: Text(
-        tituloBotao,
+        titleButton,
         style: TextStyle(
           fontSize: 20,
-          color:
-              selecionado ? CorApp.corOnPrimaria : CorApp.corTextoPrincipalh1,
+          color: selection
+              ? AppColor.onPrimaryColor
+              : Theme.of(context).colorScheme.secondary,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -45,49 +48,50 @@ class BotaoSelecao extends StatelessWidget {
   }
 }
 
-class RowBotoesSelecao extends StatelessWidget {
-  const RowBotoesSelecao({super.key});
+class RowSelectionButton extends StatelessWidget {
+  const RowSelectionButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
-    final Dados dados = Provider.of<Dados>(context, listen: false);
+    final StorageProduct storageProduct =
+        Provider.of<StorageProduct>(context, listen: false);
     return Observer(
       builder: (_) => Row(
         children: [
-          BotaoSelecao(
-            selecionado: storeHome.selecaoVestidos,
-            tituloBotao: "Vestidos",
+          SelectionButton(
+            selection: storeHome.selectionVestidos,
+            titleButton: "Vestidos",
             fun: () {
-              storeHome.selecionandoAba(Selecao.vestidos);
-              dados.selecionandoListaDeProdutos(Selecao.vestidos);
+              storeHome.selecionandoAba(Selection.vestidos);
+              storageProduct.selectingListProduct(Selection.vestidos);
             },
           ),
-          EstyloApp.espacoMinimo(top: 20),
-          BotaoSelecao(
-            selecionado: storeHome.selecaoBlusa,
-            tituloBotao: "Blusas",
+          AppStyle.space(top: 20),
+          SelectionButton(
+            selection: storeHome.selectionBlusa,
+            titleButton: "Blusas",
             fun: () {
-              storeHome.selecionandoAba(Selecao.blusas);
-              dados.selecionandoListaDeProdutos(Selecao.blusas);
+              storeHome.selecionandoAba(Selection.blusas);
+              storageProduct.selectingListProduct(Selection.blusas);
             },
           ),
-          EstyloApp.espacoMinimo(top: 20),
-          BotaoSelecao(
-            selecionado: storeHome.selecaoSaias,
-            tituloBotao: "Saias",
+          AppStyle.space(top: 20),
+          SelectionButton(
+            selection: storeHome.selectionSaias,
+            titleButton: "Saias",
             fun: () {
-              storeHome.selecionandoAba(Selecao.saias);
-              dados.selecionandoListaDeProdutos(Selecao.saias);
+              storeHome.selecionandoAba(Selection.saias);
+              storageProduct.selectingListProduct(Selection.saias);
             },
           ),
-          EstyloApp.espacoMinimo(top: 20),
-          BotaoSelecao(
-            selecionado: storeHome.selecaoBolsas,
-            tituloBotao: "Bolsas",
+          AppStyle.space(top: 20),
+          SelectionButton(
+            selection: storeHome.selectionBolsas,
+            titleButton: "Bolsas",
             fun: () {
-              storeHome.selecionandoAba(Selecao.bolsas);
-              dados.selecionandoListaDeProdutos(Selecao.bolsas);
+              storeHome.selecionandoAba(Selection.bolsas);
+              storageProduct.selectingListProduct(Selection.bolsas);
             },
           ),
         ],

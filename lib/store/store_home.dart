@@ -1,116 +1,100 @@
 import 'package:mobx/mobx.dart';
 
-import '../config/style/estilo_do_app.dart';
+import '../config/style/app_style.dart';
 
 part 'store_home.g.dart';
 
 // ignore: library_private_types_in_public_api
 class StoreHome = _StoreHome with _$StoreHome;
 
-enum Selecao { vestidos, blusas, saias, bolsas }
+enum Selection { vestidos, blusas, saias, bolsas }
 
-enum IconeSelecionado { home, favorito, carrinho, perfil }
+enum IconSelection { home, favorito, carrinho, perfil }
 
 abstract class _StoreHome with Store {
   @observable
-  bool selecaoVestidos = true;
+  bool selectionVestidos = true;
   @observable
-  bool selecaoBlusa = false;
+  bool selectionBlusa = false;
   @observable
-  bool selecaoSaias = false;
+  bool selectionSaias = false;
   @observable
-  bool selecaoBolsas = false;
+  bool selectionBolsas = false;
 
   @action
-  void selecionandoAba(Selecao selecaoPega) {
-    if (Selecao.vestidos == selecaoPega) {
-      selecaoVestidos = true;
-      selecaoBlusa = false;
-      selecaoSaias = false;
-      selecaoBolsas = false;
-    } else if (Selecao.blusas == selecaoPega) {
-      selecaoVestidos = false;
-      selecaoBlusa = true;
-      selecaoSaias = false;
-      selecaoBolsas = false;
-    } else if (Selecao.saias == selecaoPega) {
-      selecaoVestidos = false;
-      selecaoBlusa = false;
-      selecaoSaias = true;
-      selecaoBolsas = false;
-    } else if (Selecao.bolsas == selecaoPega) {
-      selecaoVestidos = false;
-      selecaoBlusa = false;
-      selecaoSaias = false;
-      selecaoBolsas = true;
+  void selecionandoAba(Selection selectionPega) {
+    if (Selection.vestidos == selectionPega) {
+      selectionVestidos = true;
+      selectionBlusa = false;
+      selectionSaias = false;
+      selectionBolsas = false;
+    } else if (Selection.blusas == selectionPega) {
+      selectionVestidos = false;
+      selectionBlusa = true;
+      selectionSaias = false;
+      selectionBolsas = false;
+    } else if (Selection.saias == selectionPega) {
+      selectionVestidos = false;
+      selectionBlusa = false;
+      selectionSaias = true;
+      selectionBolsas = false;
+    } else if (Selection.bolsas == selectionPega) {
+      selectionVestidos = false;
+      selectionBlusa = false;
+      selectionSaias = false;
+      selectionBolsas = true;
     }
   }
 
   @observable
-  ObservableList<String> listaImagem = ObservableList.of([
-    EstyloApp.imagemPropaganda001,
-    EstyloApp.imagemPropaganda002,
-    EstyloApp.imagemPropaganda003,
-    EstyloApp.imagemPropaganda004,
+  ObservableList<String> listImage = ObservableList.of([
+    AppStyle.imageAnnouncement001,
+    AppStyle.imageAnnouncement002,
+    AppStyle.imageAnnouncement003,
+    AppStyle.imageAnnouncement004,
   ]);
 
   @observable
-  int indice = 0;
+  int index = 0;
   @computed
-  String get imagemPropaganda => listaImagem[indice];
-
-  @observable
-  bool reverso = false;
+  String get imageAnnouncement => listImage[index];
 
   @action
-  void alterandoReverso() {
-    reverso = !reverso;
-  }
-
-  @action
-  void indicePego(int valor) {
-    indice = valor;
+  void getIndex(int value) {
+    index = value;
   }
 
   @observable
   bool home = true;
   @observable
-  bool favorito = false;
+  bool favorite = false;
   @observable
-  bool carrinho = false;
+  bool cart = false;
   @observable
-  bool perfil = false;
+  bool profile = false;
 
   @action
-  void selecionandoIcone(IconeSelecionado iconePego) {
-    if (IconeSelecionado.home == iconePego) {
+  void selectingIcon(IconSelection getIcon) {
+    if (IconSelection.home == getIcon) {
       home = true;
-      favorito = false;
-      carrinho = false;
-      perfil = false;
-    } else if (IconeSelecionado.favorito == iconePego) {
+      favorite = false;
+      cart = false;
+      profile = false;
+    } else if (IconSelection.favorito == getIcon) {
       home = false;
-      favorito = true;
-      carrinho = false;
-      perfil = false;
-    } else if (IconeSelecionado.carrinho == iconePego) {
+      favorite = true;
+      cart = false;
+      profile = false;
+    } else if (IconSelection.carrinho == getIcon) {
       home = false;
-      favorito = false;
-      carrinho = true;
-      perfil = false;
-    } else if (IconeSelecionado.perfil == iconePego) {
+      favorite = false;
+      cart = true;
+      profile = false;
+    } else if (IconSelection.perfil == getIcon) {
       home = false;
-      favorito = false;
-      carrinho = false;
-      perfil = true;
+      favorite = false;
+      cart = false;
+      profile = true;
     }
-  }
-
-  @observable
-  bool caixaDeTextoAtivada = false;
-
-  @action
-  void ativandoCaixaDeTexto() {
-    caixaDeTextoAtivada = !caixaDeTextoAtivada;
   }
 }

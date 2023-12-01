@@ -1,41 +1,41 @@
+import 'package:app_fashion_shop/config/style/app_style.dart';
+import 'package:app_fashion_shop/config/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../components/login/components/imagem_logo.dart';
-import '../components/login/components/lista_botoes_redes.dart';
+import '../components/login/components/list_network_button.dart';
 import '../components/login/components/lista_login_rede_escolhida.dart';
 import '../store/store_login.dart';
-import '../config/style/estilo_do_app.dart';
-import '../config/theme/cores.dart';
 
-class CadastroRedesSociais extends StatelessWidget {
-  const CadastroRedesSociais({super.key});
+class RegistrationUserNetwork extends StatelessWidget {
+  const RegistrationUserNetwork({super.key});
 
   @override
   Widget build(BuildContext context) {
     final StoreLogin storeLogin =
         Provider.of<StoreLogin>(context, listen: false);
-    final (altura, largura) = EstyloApp.tamanhoTelaApp(context);
+    final (height, width) = AppStyle.screenSize(context);
 
     return PopScope(
       onPopInvoked: (bool ver) {
-        storeLogin.tipoDeContaAcessada(Contas.vazio);
+        storeLogin.typeAccountAccessed(Account.vazio);
       },
       child: Scaffold(
         body: SafeArea(
           child: SizedBox(
-            height: altura,
-            width: largura,
+            height: height,
+            width: width,
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.only(
-                  right: largura * .1,
-                  left: largura * .1,
+                  right: width * .1,
+                  left: width * .1,
                 ),
                 child: Column(
                   children: [
-                    ImagemLogo(tamanhaoImagem: largura * .8),
+                    ImagemLogo(tamanhaoImagem: width * .8),
 
                     ///Deve editar aqui
 
@@ -43,13 +43,13 @@ class CadastroRedesSociais extends StatelessWidget {
                       children: [
                         Text(
                           "Escreva-se",
-                          style: EstyloApp.textoPrincipalh1(tamanho: 32),
+                          style: AppStyle.textBody(tamanho: 32),
                         ),
                         const Text(
                           "É mais fácil se inscrever agora",
                           style: TextStyle(
                             fontSize: 18,
-                            color: CorApp.corTextoPrincipalh1,
+                            color: AppColor.textHeadline4Color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -64,8 +64,8 @@ class CadastroRedesSociais extends StatelessWidget {
                       builder: (_) => ListaLoginRedeEscolhida(
                         funCadastro: () {},
                         funConta: () {},
-                        image: storeLogin.imagemRede,
-                        conta: storeLogin.conta,
+                        image: storeLogin.imageNetwork,
+                        conta: storeLogin.account,
                       ),
                     ),
 
@@ -74,11 +74,11 @@ class CadastroRedesSociais extends StatelessWidget {
                     Center(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: CorApp.corPrimaria,
-                          foregroundColor: CorApp.corOnPrimaria,
+                          backgroundColor: AppColor.primaryColor,
+                          foregroundColor: AppColor.onPrimaryColor,
                           fixedSize: Size(
-                            largura * .5,
-                            largura * .11,
+                            width * .5,
+                            width * .11,
                           ),
                           elevation: 5,
                         ),
@@ -95,22 +95,22 @@ class CadastroRedesSociais extends StatelessWidget {
                     Center(
                       child: Text(
                         "- Ou entre com -",
-                        style: EstyloApp.textoPrincipalh1(tamanho: 16),
+                        style: AppStyle.textBody(tamanho: 16),
                       ),
                     ),
                     const Padding(padding: EdgeInsets.only(top: 40)),
-                    ListaBotoesRedes(
-                      contas: storeLogin,
+                    ListNetworkButton(
+                      account: storeLogin,
                       funFacebook: () {
-                        storeLogin.tipoDeContaAcessada(Contas.facebook);
+                        storeLogin.typeAccountAccessed(Account.facebook);
                       },
                       funGoogle: () {
-                        storeLogin.tipoDeContaAcessada(Contas.google);
+                        storeLogin.typeAccountAccessed(Account.google);
                       },
                       funX: () {
-                        storeLogin.tipoDeContaAcessada(Contas.x);
+                        storeLogin.typeAccountAccessed(Account.x);
                       },
-                      largura: largura,
+                      width: width,
                     ),
                   ],
                 ),

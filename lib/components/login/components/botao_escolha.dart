@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/style/estilo_do_app.dart';
-import '../../../config/theme/cores.dart';
+import '../../../config/style/app_style.dart';
+import '../../../config/theme/app_color.dart';
 
 class BotaoEscolha extends StatelessWidget {
   final void Function() fun;
@@ -18,14 +18,14 @@ class BotaoEscolha extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final (_, largura) = EstyloApp.tamanhoTelaApp(context);
+    final (_, width) = AppStyle.screenSize(context);
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: CorApp.corOnPrimaria,
+        backgroundColor: AppColor.onPrimaryColor,
         elevation: 5,
         fixedSize: Size(
-          largura,
-          largura * .13,
+          width,
+          width * .13,
         ),
       ),
       onPressed: fun,
@@ -42,11 +42,11 @@ class BotaoEscolha extends StatelessWidget {
             isImage
                 ? Text(
                     "Continuar com o $conta",
-                    style: EstyloApp.textoPrincipalh1(tamanho: 18),
+                    style: AppStyle.textBody(tamanho: 18),
                   )
                 : Text(
                     "Ou acessar com Email ou iphone",
-                    style: EstyloApp.textoPrincipalh1(tamanho: 18),
+                    style: AppStyle.textBody(tamanho: 18),
                   ),
             const Spacer(),
           ],

@@ -4,22 +4,22 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../store/store_home.dart';
-import '../../config/style/estilo_do_app.dart';
-import '../../config/theme/cores.dart';
+import '../../config/style/app_style.dart';
+import '../../config/theme/app_color.dart';
 
-class ContainerPropaganda extends StatelessWidget {
-  final String imagem;
-  const ContainerPropaganda({required this.imagem, super.key});
+class AnnouncementContainer extends StatelessWidget {
+  final String image;
+  const AnnouncementContainer({required this.image, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: CorApp.corPrimaria,
+        color: AppColor.primaryColor,
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         image: DecorationImage(
           image: AssetImage(
-            imagem,
+            image,
           ),
           fit: BoxFit.fill,
         ),
@@ -36,11 +36,11 @@ class ContainerPropaganda extends StatelessWidget {
   }
 }
 
-class IndicePropaganda extends StatelessWidget {
-  final int indiceComparacao;
+class AnnouncementIndex extends StatelessWidget {
+  final int comparisonIndex;
 
-  const IndicePropaganda({
-    required this.indiceComparacao,
+  const AnnouncementIndex({
+    required this.comparisonIndex,
     super.key,
   });
 
@@ -52,18 +52,18 @@ class IndicePropaganda extends StatelessWidget {
         padding: const EdgeInsets.only(right: 10),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 400),
-          height: 10,
-          width: storeHome.indice == indiceComparacao ? 30 : 20,
+          height: 5,
+          width: storeHome.index == comparisonIndex ? 20 : 10,
           decoration: BoxDecoration(
-              color: storeHome.indice == indiceComparacao
-                  ? CorApp.corPrimaria
-                  : CorApp.corOnSecundaria,
+              color: storeHome.index == comparisonIndex
+                  ? AppColor.primaryColor
+                  : AppColor.onSecundaryColor,
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
               boxShadow: [
-                EstyloApp.sombra(
-                  corFundo: Colors.black26,
+                AppStyle.shadow(
+                  backgroundColor: Colors.black26,
                   offset: (dx: 0, dy: 2),
                   blurRadius: 3,
                 ),
@@ -74,13 +74,13 @@ class IndicePropaganda extends StatelessWidget {
   }
 }
 
-class PropagandaHome extends StatelessWidget {
+class AnnouncementHome extends StatelessWidget {
   final StoreHome storeHome;
-  final double altura, largura;
-  const PropagandaHome({
+  final double height, width;
+  const AnnouncementHome({
     required this.storeHome,
-    required this.altura,
-    required this.largura,
+    required this.height,
+    required this.width,
     super.key,
   });
 
@@ -89,38 +89,37 @@ class PropagandaHome extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: largura * .3,
-          width: largura,
+          height: width * .3,
+          width: width,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           child: CarouselSlider.builder(
-            itemCount: storeHome.listaImagem.length,
+            itemCount: storeHome.listImage.length,
             itemBuilder: (ctx, index, realIdx) {
               return Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
-                child:
-                    ContainerPropaganda(imagem: storeHome.listaImagem[index]),
+                child: AnnouncementContainer(image: storeHome.listImage[index]),
               );
             },
             options: CarouselOptions(
               autoPlayInterval: const Duration(seconds: 5),
               autoPlay: true,
               onPageChanged: (index, reason) {
-                storeHome.indicePego(index);
+                storeHome.getIndex(index);
               },
               clipBehavior: Clip.none,
             ),
           ),
         ),
-        EstyloApp.espacoMinimo(top: 15),
+        AppStyle.space(top: 15),
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IndicePropaganda(indiceComparacao: 0),
-            IndicePropaganda(indiceComparacao: 1),
-            IndicePropaganda(indiceComparacao: 2),
-            IndicePropaganda(indiceComparacao: 3),
+            AnnouncementIndex(comparisonIndex: 0),
+            AnnouncementIndex(comparisonIndex: 1),
+            AnnouncementIndex(comparisonIndex: 2),
+            AnnouncementIndex(comparisonIndex: 3),
           ],
         ),
       ],

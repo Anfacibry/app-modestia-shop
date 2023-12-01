@@ -1,22 +1,24 @@
-import 'package:app_fashion_shop/pages/detalhe_produto.dart';
+import 'package:app_fashion_shop/config/style/app_style.dart';
+import 'package:app_fashion_shop/pages/detail_product.dart';
 import 'package:app_fashion_shop/pages/home.dart';
-import 'package:app_fashion_shop/pages/cadastro_de_login.dart';
-import 'package:app_fashion_shop/pages/cadastro_redes_sociais.dart';
+import 'package:app_fashion_shop/pages/registration_user.dart';
+import 'package:app_fashion_shop/pages/registration_user_network.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
-import 'package:app_fashion_shop/config/routes/rotas_nomeadas.dart';
-import 'package:app_fashion_shop/config/theme/cores.dart';
+import 'package:app_fashion_shop/config/routes/named_routes.dart';
+import 'package:app_fashion_shop/config/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'pages/login.dart';
 import 'package:provider/provider.dart';
 
-import 'store/data/store_dados.dart';
+import 'store/data/storage_product.dart';
 
 void main() => runApp(MultiProvider(
       providers: [
         Provider<StoreLogin>(create: (cont) => StoreLogin()),
-        Provider<Dados>(create: (cont) => Dados()),
+        Provider<StorageProduct>(create: (cont) => StorageProduct()),
         Provider<StoreHome>(create: (cont) => StoreHome())
       ],
       child: const AppFashionShop(),
@@ -28,25 +30,26 @@ class AppFashionShop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     StoreLogin login = Provider.of<StoreLogin>(context, listen: false);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: CorApp.corPrimaria,
+    return Observer(
+      builder: (ctx) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColor.primaryColor,
+          ),
+          textTheme: AppStyle.textTheme(),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+        initialRoute: login.isLogin ? null : NamedRoutes.routeLogin,
+        routes: {
+          NamedRoutes.routeHome: (ctx) => const Home(),
+          NamedRoutes.routeLogin: (ctx) => const Login(),
+          NamedRoutes.routeLoginRegistration: (ctx) => const RegistrationUser(),
+          NamedRoutes.routeSocialNetworkRegistration: (ctx) =>
+              const RegistrationUserNetwork(),
+          NamedRoutes.routeProductDetail: (ctx) => const DetailProduct(),
+        },
       ),
-      initialRoute: login.loginEfetuado
-          ? RotasNomeadas.rotaPrincipal
-          : RotasNomeadas.rotaLogin,
-      routes: {
-        RotasNomeadas.rotaLogin: (ctx) => const Login(),
-        RotasNomeadas.rotaPrincipal: (ctx) => const Home(),
-        RotasNomeadas.rotaLoginCadastro: (ctx) => const CadastroDeLogin(),
-        RotasNomeadas.rotaLoginCadastroRedes: (ctx) =>
-            const CadastroRedesSociais(),
-        RotasNomeadas.detalheProduto: (ctx) => const DetalheProduto(),
-      },
     );
   }
 }

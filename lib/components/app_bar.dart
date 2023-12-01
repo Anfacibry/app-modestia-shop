@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/style/estilo_do_app.dart';
+import '../config/style/app_style.dart';
 
 AppBar appBar(double largura) {
   return AppBar(
@@ -10,20 +10,20 @@ AppBar appBar(double largura) {
           Scaffold.of(context).openDrawer();
         },
         child: Image.asset(
-          EstyloApp.iconeDrawer,
+          AppStyle.iconDrawer,
         ),
       ),
     ),
     centerTitle: true,
     title: Text(
       "Nome do Usuário",
-      style: EstyloApp.textoPrincipalh1(),
+      style: AppStyle.textFormFild(),
     ),
     actions: [
       Padding(
         padding: EdgeInsets.only(right: largura * .05),
         child: Image.asset(
-          EstyloApp.imagemPerfil,
+          AppStyle.imageProfile,
           height: 45,
         ),
       ),

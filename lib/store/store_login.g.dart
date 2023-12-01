@@ -9,82 +9,83 @@ part of 'store_login.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StoreLogin on _StoreLogin, Store {
-  late final _$loginEfetuadoAtom =
-      Atom(name: '_StoreLogin.loginEfetuado', context: context);
+  late final _$isLoginAtom =
+      Atom(name: '_StoreLogin.isLogin', context: context);
 
   @override
-  bool get loginEfetuado {
-    _$loginEfetuadoAtom.reportRead();
-    return super.loginEfetuado;
+  bool get isLogin {
+    _$isLoginAtom.reportRead();
+    return super.isLogin;
   }
 
   @override
-  set loginEfetuado(bool value) {
-    _$loginEfetuadoAtom.reportWrite(value, super.loginEfetuado, () {
-      super.loginEfetuado = value;
+  set isLogin(bool value) {
+    _$isLoginAtom.reportWrite(value, super.isLogin, () {
+      super.isLogin = value;
     });
   }
 
-  late final _$contaAtom = Atom(name: '_StoreLogin.conta', context: context);
+  late final _$accountAtom =
+      Atom(name: '_StoreLogin.account', context: context);
 
   @override
-  String get conta {
-    _$contaAtom.reportRead();
-    return super.conta;
+  String get account {
+    _$accountAtom.reportRead();
+    return super.account;
   }
 
   @override
-  set conta(String value) {
-    _$contaAtom.reportWrite(value, super.conta, () {
-      super.conta = value;
+  set account(String value) {
+    _$accountAtom.reportWrite(value, super.account, () {
+      super.account = value;
     });
   }
 
-  late final _$lembrarSenhaAtom =
-      Atom(name: '_StoreLogin.lembrarSenha', context: context);
+  late final _$rememberPasswordAtom =
+      Atom(name: '_StoreLogin.rememberPassword', context: context);
 
   @override
-  bool get lembrarSenha {
-    _$lembrarSenhaAtom.reportRead();
-    return super.lembrarSenha;
+  bool get rememberPassword {
+    _$rememberPasswordAtom.reportRead();
+    return super.rememberPassword;
   }
 
   @override
-  set lembrarSenha(bool value) {
-    _$lembrarSenhaAtom.reportWrite(value, super.lembrarSenha, () {
-      super.lembrarSenha = value;
+  set rememberPassword(bool value) {
+    _$rememberPasswordAtom.reportWrite(value, super.rememberPassword, () {
+      super.rememberPassword = value;
     });
   }
 
-  late final _$contaAcessadaAtom =
-      Atom(name: '_StoreLogin.contaAcessada', context: context);
+  late final _$accountAccessedAtom =
+      Atom(name: '_StoreLogin.accountAccessed', context: context);
 
   @override
-  Contas get contaAcessada {
-    _$contaAcessadaAtom.reportRead();
-    return super.contaAcessada;
+  Account get accountAccessed {
+    _$accountAccessedAtom.reportRead();
+    return super.accountAccessed;
   }
 
   @override
-  set contaAcessada(Contas value) {
-    _$contaAcessadaAtom.reportWrite(value, super.contaAcessada, () {
-      super.contaAcessada = value;
+  set accountAccessed(Account value) {
+    _$accountAccessedAtom.reportWrite(value, super.accountAccessed, () {
+      super.accountAccessed = value;
     });
   }
 
-  late final _$imagemRedeAtom =
-      Atom(name: '_StoreLogin.imagemRede', context: context);
+  late final _$imageNetworkAtom =
+      Atom(name: '_StoreLogin.imageNetwork', context: context);
 
   @override
-  String get imagemRede {
-    _$imagemRedeAtom.reportRead();
-    return super.imagemRede;
+  String get imageNetwork {
+    _$imageNetworkAtom.reportRead();
+    return super.imageNetwork;
   }
 
   @override
-  set imagemRede(String value) {
-    _$imagemRedeAtom.reportWrite(value, super.imagemRede, () {
-      super.imagemRede = value;
+  set imageNetwork(String value) {
+    _$imageNetworkAtom.reportWrite(value, super.imageNetwork, () {
+      super.imageNetwork = value;
     });
   }
 
@@ -92,22 +93,33 @@ mixin _$StoreLogin on _StoreLogin, Store {
       ActionController(name: '_StoreLogin', context: context);
 
   @override
-  void isLembrarSenha(bool valor) {
-    final _$actionInfo = _$_StoreLoginActionController.startAction(
-        name: '_StoreLogin.isLembrarSenha');
+  String login() {
+    final _$actionInfo =
+        _$_StoreLoginActionController.startAction(name: '_StoreLogin.login');
     try {
-      return super.isLembrarSenha(valor);
+      return super.login();
     } finally {
       _$_StoreLoginActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void tipoDeContaAcessada(Contas contas) {
+  void isRememberPassword(bool value) {
     final _$actionInfo = _$_StoreLoginActionController.startAction(
-        name: '_StoreLogin.tipoDeContaAcessada');
+        name: '_StoreLogin.isRememberPassword');
     try {
-      return super.tipoDeContaAcessada(contas);
+      return super.isRememberPassword(value);
+    } finally {
+      _$_StoreLoginActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void typeAccountAccessed(Account getAccount) {
+    final _$actionInfo = _$_StoreLoginActionController.startAction(
+        name: '_StoreLogin.typeAccountAccessed');
+    try {
+      return super.typeAccountAccessed(getAccount);
     } finally {
       _$_StoreLoginActionController.endAction(_$actionInfo);
     }
@@ -116,11 +128,11 @@ mixin _$StoreLogin on _StoreLogin, Store {
   @override
   String toString() {
     return '''
-loginEfetuado: ${loginEfetuado},
-conta: ${conta},
-lembrarSenha: ${lembrarSenha},
-contaAcessada: ${contaAcessada},
-imagemRede: ${imagemRede}
+isLogin: ${isLogin},
+account: ${account},
+rememberPassword: ${rememberPassword},
+accountAccessed: ${accountAccessed},
+imageNetwork: ${imageNetwork}
     ''';
   }
 }

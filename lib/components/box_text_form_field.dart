@@ -1,46 +1,43 @@
 import 'package:flutter/material.dart';
 
-import '../config/style/estilo_do_app.dart';
+import '../config/style/app_style.dart';
 
-class CaixaDeTexto extends StatefulWidget {
-  final String texto;
-  final String exTexto;
+class BoxTextFormeField extends StatefulWidget {
+  final String text;
+  final String hintText;
   final bool isSenha;
-  final Color corBorda;
-  final void Function()? fun;
+  final Color borderColor;
 
-  const CaixaDeTexto(
-      {required this.corBorda,
+  const BoxTextFormeField(
+      {required this.borderColor,
       required this.isSenha,
-      required this.texto,
-      required this.exTexto,
-      this.fun,
+      required this.text,
+      required this.hintText,
       super.key});
   @override
-  State<CaixaDeTexto> createState() => _CaixaDeTextoState();
+  State<BoxTextFormeField> createState() => _BoxTextFormeField();
 }
 
-class _CaixaDeTextoState extends State<CaixaDeTexto> {
-  bool verSenha = false;
+class _BoxTextFormeField extends State<BoxTextFormeField> {
+  bool seePassword = false;
   @override
   Widget build(BuildContext context) {
-    final (_, largura) = EstyloApp.tamanhoTelaApp(context);
+    final (_, width) = AppStyle.screenSize(context);
     return SizedBox(
-      height: largura * .13,
-      width: largura,
+      height: width * .13,
+      width: width,
       child: TextFormField(
-        onTap: widget.fun,
         cursorColor: const Color(0xFF696969),
-        obscureText: widget.isSenha & !verSenha,
+        obscureText: widget.isSenha & !seePassword,
         decoration: InputDecoration(
           suffixIcon: widget.isSenha
               ? InkWell(
                   onTap: () {
                     setState(() {
-                      verSenha = !verSenha;
+                      seePassword = !seePassword;
                     });
                   },
-                  child: verSenha
+                  child: seePassword
                       ? const Icon(
                           Icons.remove_red_eye_rounded,
                           color: Color(0xFF696969),
@@ -51,19 +48,19 @@ class _CaixaDeTextoState extends State<CaixaDeTexto> {
                         ),
                 )
               : null,
-          labelText: widget.texto,
+          labelText: widget.text,
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          hintText: widget.exTexto,
+          hintText: widget.hintText,
           enabledBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(
-              color: widget.corBorda,
+              color: widget.borderColor,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(
-              color: widget.corBorda,
+              color: widget.borderColor,
             ),
           ),
         ),

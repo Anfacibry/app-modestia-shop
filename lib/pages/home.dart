@@ -1,24 +1,24 @@
 import 'package:app_fashion_shop/components/app_bar.dart';
-import 'package:app_fashion_shop/components/caixa_de_texto_login.dart';
+import 'package:app_fashion_shop/components/box_text_form_field.dart';
 
-import 'package:app_fashion_shop/components/home/lista_icone_botao_flutuante.dart';
+import 'package:app_fashion_shop/components/home/navigator_pages.dart';
 
 import 'package:app_fashion_shop/components/home/row_botoes_selecao.dart';
-import 'package:app_fashion_shop/components/home/grid_de_produtos.dart';
-import 'package:app_fashion_shop/components/container_com_sombra.dart';
+import 'package:app_fashion_shop/components/home/grid_product.dart';
+import 'package:app_fashion_shop/components/container_with_shadow.dart';
 
 import 'package:app_fashion_shop/store/store_home.dart';
 
-import 'package:app_fashion_shop/config/style/estilo_do_app.dart';
+import 'package:app_fashion_shop/config/style/app_style.dart';
 
-import 'package:app_fashion_shop/config/theme/cores.dart';
+import 'package:app_fashion_shop/config/theme/app_color.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../components/home/propaganda.dart';
-import '../store/data/store_dados.dart';
+import '../components/home/announcement.dart';
+import '../store/data/storage_product.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -26,53 +26,50 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
-    final Dados dados = Provider.of<Dados>(context, listen: false);
-    final isAtivo = MediaQuery.of(context).viewInsets.bottom;
-    final (double altura, double largura) = EstyloApp.tamanhoTelaApp(context);
+    final StorageProduct dados =
+        Provider.of<StorageProduct>(context, listen: false);
+    final (double height, double width) = AppStyle.screenSize(context);
 
     return Scaffold(
       drawer: const Drawer(),
-      appBar: appBar(largura),
+      appBar: appBar(width),
       body: SizedBox(
-        height: altura,
-        width: largura,
+        height: height,
+        width: width,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(right: 10, left: 10),
             child: Column(
               children: [
                 SizedBox(
-                  height: largura * .2,
-                  width: largura,
+                  height: width * .2,
+                  width: width,
                   child: LayoutBuilder(
                     builder: (context, constraints) => Row(
                       children: [
                         Expanded(
-                          child: ContainerComSombra(
-                            tamanho: (altura: null, largura: null),
-                            corContainer: CorApp.corOnPrimaria,
-                            sombra: EstyloApp.sombra(
-                              corFundo: Colors.black26,
+                          child: ContainerWithShadow(
+                            size: (heigth: null, width: null),
+                            containerColor: AppColor.onPrimaryColor,
+                            shadow: AppStyle.shadow(
+                              backgroundColor: Colors.black26,
                               offset: (dx: 0, dy: 5),
                               blurRadius: 2,
                             ),
                             radiusCircular: 20,
-                            child: CaixaDeTexto(
+                            child: const BoxTextFormeField(
                               isSenha: false,
-                              texto: "Pesquisar",
-                              exTexto: "Ex: Vestido longo",
-                              corBorda: CorApp.corSecundariaContainer,
-                              fun: () {
-                                storeHome.ativandoCaixaDeTexto();
-                              },
+                              text: "Pesquisar",
+                              hintText: "Ex: Vestido longo",
+                              borderColor: AppColor.secundaryContainerColor,
                             ),
                           ),
                         ),
-                        EstyloApp.espacoMinimo(top: 20),
+                        AppStyle.space(top: 20),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: CorApp.corPrimaria,
+                            backgroundColor: AppColor.primaryColor,
                             elevation: 5,
                             fixedSize: Size(constraints.maxHeight * .7,
                                 constraints.maxHeight * .7),
@@ -82,51 +79,33 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(0),
                           ),
                           child: Image.asset(
-                            EstyloApp.iconeLupa,
+                            AppStyle.iconSearch,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                PropagandaHome(
-                    storeHome: storeHome, altura: altura, largura: largura),
-                EstyloApp.espacoMinimo(top: 10),
+                AnnouncementHome(
+                    storeHome: storeHome, height: height, width: width),
+                AppStyle.space(top: 10),
                 const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   clipBehavior: Clip.none,
-                  child: RowBotoesSelecao(),
+                  child: RowSelectionButton(),
                 ),
                 SizedBox(
-                  height: altura * .8,
-                  width: largura,
-                  child: GridDeProdutos(
-                      isTelaHome: true,
-                      isFab: true,
-                      dados: dados,
-                      largura: largura),
+                  height: height * .7,
+                  width: width,
+                  child: GridProduct(
+                      isScreenHome: true, storageProduct: dados, width: width),
                 ),
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: isAtivo != 0
-          ? null
-          : ContainerComSombra(
-              tamanho: (altura: largura * .15, largura: largura * .93),
-              corContainer: CorApp.corSuperficie,
-              radiusCircular: 30,
-              sombra: EstyloApp.sombra(
-                corFundo: Colors.black26,
-                offset: (dx: 0, dy: 5),
-                blurRadius: 2,
-              ),
-              child: ListaIconeBotaoFlutuante(
-                contextLogin: context,
-              ),
-            ),
-      persistentFooterAlignment: AlignmentDirectional.center,
+      bottomNavigationBar: const NavigatorPages(),
     );
   }
 }

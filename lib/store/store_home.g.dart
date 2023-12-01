@@ -9,106 +9,106 @@ part of 'store_home.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StoreHome on _StoreHome, Store {
-  Computed<String>? _$imagemPropagandaComputed;
+  Computed<String>? _$imageAnnouncementComputed;
 
   @override
-  String get imagemPropaganda => (_$imagemPropagandaComputed ??=
-          Computed<String>(() => super.imagemPropaganda,
-              name: '_StoreHome.imagemPropaganda'))
+  String get imageAnnouncement => (_$imageAnnouncementComputed ??=
+          Computed<String>(() => super.imageAnnouncement,
+              name: '_StoreHome.imageAnnouncement'))
       .value;
 
-  late final _$selecaoVestidosAtom =
-      Atom(name: '_StoreHome.selecaoVestidos', context: context);
+  late final _$selectionVestidosAtom =
+      Atom(name: '_StoreHome.selectionVestidos', context: context);
 
   @override
-  bool get selecaoVestidos {
-    _$selecaoVestidosAtom.reportRead();
-    return super.selecaoVestidos;
+  bool get selectionVestidos {
+    _$selectionVestidosAtom.reportRead();
+    return super.selectionVestidos;
   }
 
   @override
-  set selecaoVestidos(bool value) {
-    _$selecaoVestidosAtom.reportWrite(value, super.selecaoVestidos, () {
-      super.selecaoVestidos = value;
+  set selectionVestidos(bool value) {
+    _$selectionVestidosAtom.reportWrite(value, super.selectionVestidos, () {
+      super.selectionVestidos = value;
     });
   }
 
-  late final _$selecaoBlusaAtom =
-      Atom(name: '_StoreHome.selecaoBlusa', context: context);
+  late final _$selectionBlusaAtom =
+      Atom(name: '_StoreHome.selectionBlusa', context: context);
 
   @override
-  bool get selecaoBlusa {
-    _$selecaoBlusaAtom.reportRead();
-    return super.selecaoBlusa;
+  bool get selectionBlusa {
+    _$selectionBlusaAtom.reportRead();
+    return super.selectionBlusa;
   }
 
   @override
-  set selecaoBlusa(bool value) {
-    _$selecaoBlusaAtom.reportWrite(value, super.selecaoBlusa, () {
-      super.selecaoBlusa = value;
+  set selectionBlusa(bool value) {
+    _$selectionBlusaAtom.reportWrite(value, super.selectionBlusa, () {
+      super.selectionBlusa = value;
     });
   }
 
-  late final _$selecaoSaiasAtom =
-      Atom(name: '_StoreHome.selecaoSaias', context: context);
+  late final _$selectionSaiasAtom =
+      Atom(name: '_StoreHome.selectionSaias', context: context);
 
   @override
-  bool get selecaoSaias {
-    _$selecaoSaiasAtom.reportRead();
-    return super.selecaoSaias;
+  bool get selectionSaias {
+    _$selectionSaiasAtom.reportRead();
+    return super.selectionSaias;
   }
 
   @override
-  set selecaoSaias(bool value) {
-    _$selecaoSaiasAtom.reportWrite(value, super.selecaoSaias, () {
-      super.selecaoSaias = value;
+  set selectionSaias(bool value) {
+    _$selectionSaiasAtom.reportWrite(value, super.selectionSaias, () {
+      super.selectionSaias = value;
     });
   }
 
-  late final _$selecaoBolsasAtom =
-      Atom(name: '_StoreHome.selecaoBolsas', context: context);
+  late final _$selectionBolsasAtom =
+      Atom(name: '_StoreHome.selectionBolsas', context: context);
 
   @override
-  bool get selecaoBolsas {
-    _$selecaoBolsasAtom.reportRead();
-    return super.selecaoBolsas;
+  bool get selectionBolsas {
+    _$selectionBolsasAtom.reportRead();
+    return super.selectionBolsas;
   }
 
   @override
-  set selecaoBolsas(bool value) {
-    _$selecaoBolsasAtom.reportWrite(value, super.selecaoBolsas, () {
-      super.selecaoBolsas = value;
+  set selectionBolsas(bool value) {
+    _$selectionBolsasAtom.reportWrite(value, super.selectionBolsas, () {
+      super.selectionBolsas = value;
     });
   }
 
-  late final _$listaImagemAtom =
-      Atom(name: '_StoreHome.listaImagem', context: context);
+  late final _$listImageAtom =
+      Atom(name: '_StoreHome.listImage', context: context);
 
   @override
-  ObservableList<String> get listaImagem {
-    _$listaImagemAtom.reportRead();
-    return super.listaImagem;
+  ObservableList<String> get listImage {
+    _$listImageAtom.reportRead();
+    return super.listImage;
   }
 
   @override
-  set listaImagem(ObservableList<String> value) {
-    _$listaImagemAtom.reportWrite(value, super.listaImagem, () {
-      super.listaImagem = value;
+  set listImage(ObservableList<String> value) {
+    _$listImageAtom.reportWrite(value, super.listImage, () {
+      super.listImage = value;
     });
   }
 
-  late final _$indiceAtom = Atom(name: '_StoreHome.indice', context: context);
+  late final _$indexAtom = Atom(name: '_StoreHome.index', context: context);
 
   @override
-  int get indice {
-    _$indiceAtom.reportRead();
-    return super.indice;
+  int get index {
+    _$indexAtom.reportRead();
+    return super.index;
   }
 
   @override
-  set indice(int value) {
-    _$indiceAtom.reportWrite(value, super.indice, () {
-      super.indice = value;
+  set index(int value) {
+    _$indexAtom.reportWrite(value, super.index, () {
+      super.index = value;
     });
   }
 
@@ -127,66 +127,49 @@ mixin _$StoreHome on _StoreHome, Store {
     });
   }
 
-  late final _$favoritoAtom =
-      Atom(name: '_StoreHome.favorito', context: context);
+  late final _$favoriteAtom =
+      Atom(name: '_StoreHome.favorite', context: context);
 
   @override
-  bool get favorito {
-    _$favoritoAtom.reportRead();
-    return super.favorito;
+  bool get favorite {
+    _$favoriteAtom.reportRead();
+    return super.favorite;
   }
 
   @override
-  set favorito(bool value) {
-    _$favoritoAtom.reportWrite(value, super.favorito, () {
-      super.favorito = value;
+  set favorite(bool value) {
+    _$favoriteAtom.reportWrite(value, super.favorite, () {
+      super.favorite = value;
     });
   }
 
-  late final _$carrinhoAtom =
-      Atom(name: '_StoreHome.carrinho', context: context);
+  late final _$cartAtom = Atom(name: '_StoreHome.cart', context: context);
 
   @override
-  bool get carrinho {
-    _$carrinhoAtom.reportRead();
-    return super.carrinho;
+  bool get cart {
+    _$cartAtom.reportRead();
+    return super.cart;
   }
 
   @override
-  set carrinho(bool value) {
-    _$carrinhoAtom.reportWrite(value, super.carrinho, () {
-      super.carrinho = value;
+  set cart(bool value) {
+    _$cartAtom.reportWrite(value, super.cart, () {
+      super.cart = value;
     });
   }
 
-  late final _$perfilAtom = Atom(name: '_StoreHome.perfil', context: context);
+  late final _$profileAtom = Atom(name: '_StoreHome.profile', context: context);
 
   @override
-  bool get perfil {
-    _$perfilAtom.reportRead();
-    return super.perfil;
+  bool get profile {
+    _$profileAtom.reportRead();
+    return super.profile;
   }
 
   @override
-  set perfil(bool value) {
-    _$perfilAtom.reportWrite(value, super.perfil, () {
-      super.perfil = value;
-    });
-  }
-
-  late final _$caixaDeTextoAtivadaAtom =
-      Atom(name: '_StoreHome.caixaDeTextoAtivada', context: context);
-
-  @override
-  bool get caixaDeTextoAtivada {
-    _$caixaDeTextoAtivadaAtom.reportRead();
-    return super.caixaDeTextoAtivada;
-  }
-
-  @override
-  set caixaDeTextoAtivada(bool value) {
-    _$caixaDeTextoAtivadaAtom.reportWrite(value, super.caixaDeTextoAtivada, () {
-      super.caixaDeTextoAtivada = value;
+  set profile(bool value) {
+    _$profileAtom.reportWrite(value, super.profile, () {
+      super.profile = value;
     });
   }
 
@@ -194,44 +177,33 @@ mixin _$StoreHome on _StoreHome, Store {
       ActionController(name: '_StoreHome', context: context);
 
   @override
-  void selecionandoAba(Selecao selecaoPega) {
+  void selecionandoAba(Selection selectionPega) {
     final _$actionInfo = _$_StoreHomeActionController.startAction(
         name: '_StoreHome.selecionandoAba');
     try {
-      return super.selecionandoAba(selecaoPega);
+      return super.selecionandoAba(selectionPega);
     } finally {
       _$_StoreHomeActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void indicePego(int valor) {
+  void getIndex(int value) {
     final _$actionInfo =
-        _$_StoreHomeActionController.startAction(name: '_StoreHome.indicePego');
+        _$_StoreHomeActionController.startAction(name: '_StoreHome.getIndex');
     try {
-      return super.indicePego(valor);
+      return super.getIndex(value);
     } finally {
       _$_StoreHomeActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void selecionandoIcone(IconeSelecionado iconePego) {
+  void selectingIcon(IconSelection getIcon) {
     final _$actionInfo = _$_StoreHomeActionController.startAction(
-        name: '_StoreHome.selecionandoIcone');
+        name: '_StoreHome.selectingIcon');
     try {
-      return super.selecionandoIcone(iconePego);
-    } finally {
-      _$_StoreHomeActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void ativandoCaixaDeTexto() {
-    final _$actionInfo = _$_StoreHomeActionController.startAction(
-        name: '_StoreHome.ativandoCaixaDeTexto');
-    try {
-      return super.ativandoCaixaDeTexto();
+      return super.selectingIcon(getIcon);
     } finally {
       _$_StoreHomeActionController.endAction(_$actionInfo);
     }
@@ -240,18 +212,17 @@ mixin _$StoreHome on _StoreHome, Store {
   @override
   String toString() {
     return '''
-selecaoVestidos: ${selecaoVestidos},
-selecaoBlusa: ${selecaoBlusa},
-selecaoSaias: ${selecaoSaias},
-selecaoBolsas: ${selecaoBolsas},
-listaImagem: ${listaImagem},
-indice: ${indice},
+selectionVestidos: ${selectionVestidos},
+selectionBlusa: ${selectionBlusa},
+selectionSaias: ${selectionSaias},
+selectionBolsas: ${selectionBolsas},
+listImage: ${listImage},
+index: ${index},
 home: ${home},
-favorito: ${favorito},
-carrinho: ${carrinho},
-perfil: ${perfil},
-caixaDeTextoAtivada: ${caixaDeTextoAtivada},
-imagemPropaganda: ${imagemPropaganda}
+favorite: ${favorite},
+cart: ${cart},
+profile: ${profile},
+imageAnnouncement: ${imageAnnouncement}
     ''';
   }
 }
