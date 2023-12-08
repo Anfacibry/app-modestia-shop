@@ -1,3 +1,4 @@
+import 'package:app_fashion_shop/components/detail_product/selection_size_and_color_product.dart';
 import 'package:app_fashion_shop/store/data/storage_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -36,12 +37,12 @@ class InformationProduct extends StatelessWidget {
                   Text(
                     storageProduct.product!.name,
                     style: AppStyle.textTitlePrimary(
-                        tamanho: constraints.maxWidth * .065),
+                        size: constraints.maxWidth * .065),
                   ),
                   Text(
                     "R\$ ${storageProduct.product!.price}",
                     style: AppStyle.textTitleSecondary(
-                        tamanho: constraints.maxWidth * .07),
+                        size: constraints.maxWidth * .07),
                   ),
                 ],
               ),
@@ -52,86 +53,23 @@ class InformationProduct extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: constraints.maxWidth * .4,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Text(
-                            "Cor: ${storageProduct.product!.imageColor[storageProduct.indexProduct].name}",
-                            style: AppStyle.textBody(
-                              tamanho: constraints.maxWidth * .045,
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: storageProduct.product!.imageColor
-                                .map((cores) => Container(
-                                      margin: const EdgeInsets.only(right: 5),
-                                      height: constraints.maxWidth * .1,
-                                      width: constraints.maxWidth * .1,
-                                      decoration: BoxDecoration(
-                                        color: cores.color,
-                                        borderRadius: BorderRadius.circular(35),
-                                        border: storageProduct
-                                                    .product!
-                                                    .imageColor[storageProduct
-                                                        .indexProduct]
-                                                    .color ==
-                                                cores.color
-                                            ? Border.all(
-                                                color: AppColor.secundaryColor,
-                                                width: 3,
-                                              )
-                                            : null,
-                                        boxShadow: [
-                                          AppStyle.shadow(
-                                              backgroundColor: Colors.black38,
-                                              offset: (dx: 0, dy: 2),
-                                              blurRadius: 2)
-                                        ],
-                                      ),
-                                    ))
-                                .toList(),
-                          ),
-                        ),
-                      ],
+                    child: SelectionColorProduct(
+                      fontSize: constraints.maxWidth * .045,
+                      product: storageProduct.product!,
+                      sizeCircular: constraints.maxWidth * .1,
+                      widthBorder: 3,
                     ),
                   ),
                   AppStyle.space(),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Tamanho",
-                          style: AppStyle.textBody(
-                              tamanho: constraints.maxWidth * .045),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: storageProduct.product!.size
-                                .map(
-                                  (tamanho) => Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        elevation: 5,
-                                      ),
-                                      onPressed: () {},
-                                      child: Text(tamanho),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                      child: SelectionSizeProduct(
+                    heightButton: constraints.maxWidth * .08,
+                    widthButton: constraints.maxWidth * .08,
+                    fontSize: constraints.maxWidth * .045,
+                    radiusSize: constraints.maxWidth * .02,
+                    sizePadding: constraints.maxWidth * .02,
+                    product: storageProduct.product!,
+                  )),
                 ],
               ),
               AppStyle.space(),
@@ -163,14 +101,14 @@ class InformationProduct extends StatelessWidget {
                           Text(
                             "${storageProduct.product!.valuation}",
                             style: AppStyle.textBody(
-                                tamanho: constraints.maxWidth * .06),
+                                size: constraints.maxWidth * .06),
                           )
                         ],
                       ),
                       Text(
                         "Avaliações",
-                        style: AppStyle.textBody(
-                            tamanho: constraints.maxWidth * .04),
+                        style:
+                            AppStyle.textBody(size: constraints.maxWidth * .04),
                       ),
                     ],
                   ),

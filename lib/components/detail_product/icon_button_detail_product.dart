@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/components/home/navigator_pages.dart';
+import 'package:app_fashion_shop/components/home/navigator_screens.dart';
 import 'package:app_fashion_shop/store/data/storage_product.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +34,7 @@ class IconButtonDetailProduct extends StatelessWidget {
           radius: 25,
           isBadge: false,
           fun: () {
-            storageProduct.addFavorite(storageProduct.product!);
+            storageProduct.addFavorite(storageProduct.product!.id);
           },
         ),
       ],
