@@ -23,6 +23,9 @@ abstract class _Product with Store {
   ObservableList<String> size;
 
   @observable
+  String tackSize;
+
+  @observable
   double valuation;
 
   @observable
@@ -33,6 +36,7 @@ abstract class _Product with Store {
     required this.price,
     required this.imageColor,
     required this.size,
+    required this.tackSize,
     required this.valuation,
     required this.isFavorite,
   });

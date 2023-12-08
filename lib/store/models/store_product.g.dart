@@ -85,6 +85,21 @@ mixin _$Product on _Product, Store {
     });
   }
 
+  late final _$tackSizeAtom = Atom(name: '_Product.tackSize', context: context);
+
+  @override
+  String get tackSize {
+    _$tackSizeAtom.reportRead();
+    return super.tackSize;
+  }
+
+  @override
+  set tackSize(String value) {
+    _$tackSizeAtom.reportWrite(value, super.tackSize, () {
+      super.tackSize = value;
+    });
+  }
+
   late final _$valuationAtom =
       Atom(name: '_Product.valuation', context: context);
 
@@ -125,6 +140,7 @@ name: ${name},
 price: ${price},
 imageColor: ${imageColor},
 size: ${size},
+tackSize: ${tackSize},
 valuation: ${valuation},
 isFavorite: ${isFavorite}
     ''';
