@@ -42,11 +42,11 @@ class BotaoEscolha extends StatelessWidget {
             isImage
                 ? Text(
                     "Continuar com o $conta",
-                    style: AppStyle.textBody(tamanho: 18),
+                    style: AppStyle.textBody(size: 18),
                   )
                 : Text(
                     "Ou acessar com Email ou iphone",
-                    style: AppStyle.textBody(tamanho: 18),
+                    style: AppStyle.textBody(size: 18),
                   ),
             const Spacer(),
           ],
