@@ -1,19 +1,23 @@
+import 'package:app_fashion_shop/config/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 import '../config/style/app_style.dart';
 
 class BoxTextFormeField extends StatefulWidget {
+  final double height;
   final String text;
   final String hintText;
   final bool isSenha;
   final Color borderColor;
 
-  const BoxTextFormeField(
-      {required this.borderColor,
-      required this.isSenha,
-      required this.text,
-      required this.hintText,
-      super.key});
+  const BoxTextFormeField({
+    required this.height,
+    this.borderColor = AppColor.textFormFildColor,
+    required this.isSenha,
+    required this.text,
+    required this.hintText,
+    super.key,
+  });
   @override
   State<BoxTextFormeField> createState() => _BoxTextFormeField();
 }
@@ -24,7 +28,7 @@ class _BoxTextFormeField extends State<BoxTextFormeField> {
   Widget build(BuildContext context) {
     final (_, width) = AppStyle.screenSize(context);
     return SizedBox(
-      height: width * .13,
+      height: widget.height,
       width: width,
       child: TextFormField(
         cursorColor: const Color(0xFF696969),
