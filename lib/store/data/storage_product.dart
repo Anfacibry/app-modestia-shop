@@ -28,9 +28,10 @@ abstract class _StorageProduct with Store {
                 color: const Color.fromARGB(255, 7, 54, 92),
                 image: "assets/image/vestidos/bluende.jpg")
           ]),
-          size: ObservableList.of(["P", "PM", "M", "G", "GG"]),
+          size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.5,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -45,6 +46,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.8,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -59,6 +61,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.2,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -77,6 +80,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -91,6 +95,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -105,6 +110,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -119,6 +125,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -133,6 +140,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 5,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -147,6 +155,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 5,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -161,6 +170,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 5,
           isFavorite: false,
+          tackSize: "",
         ),
       ],
       Selection.blusas: [
@@ -177,6 +187,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.5,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -191,6 +202,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.8,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -205,6 +217,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.2,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -219,6 +232,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -233,6 +247,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -247,6 +262,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
       ],
       Selection.saias: [
@@ -263,6 +279,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.5,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -277,6 +294,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.8,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -291,6 +309,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.2,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -305,6 +324,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -319,6 +339,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -333,6 +354,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -347,6 +369,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
       ],
       Selection.bolsas: [
@@ -363,6 +386,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.5,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -377,6 +401,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.8,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -391,6 +416,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.2,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -409,6 +435,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -423,6 +450,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4.7,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -445,6 +473,7 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
         Product(
           id: uuid.v6(),
@@ -459,10 +488,25 @@ abstract class _StorageProduct with Store {
           size: ObservableList.of(["P", "M", "G"]),
           valuation: 4,
           isFavorite: false,
+          tackSize: "",
         ),
       ],
     },
   );
+
+  final controller = ScrollController();
+
+  @observable
+  double initScrool = 0.0;
+
+  @action
+  void setInitScrool() {
+    controller.animateTo(
+      initScrool,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeIn,
+    );
+  }
 
   @computed
   bool get isEmptyCart => cartProduct.isNotEmpty;
@@ -470,9 +514,33 @@ abstract class _StorageProduct with Store {
   @observable
   ObservableList<Product> cartProduct = ObservableList();
 
+  @observable
+  Color? productColorTack;
+
+  @action
+  void tackProductColor(Color productColor) {
+    productColorTack = productColor;
+  }
+
   @action
   void addProductCart(Product product) {
-    cartProduct.add(product);
+    Product updateProduct = Product(
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      imageColor: ObservableList.of([
+        ImageColor(
+          name: product.imageColor[indexProduct].name,
+          color: productColorTack ?? product.imageColor[indexProduct].color,
+          image: product.imageColor[indexProduct].image,
+        )
+      ]),
+      size: ObservableList.of([""]),
+      tackSize: "",
+      valuation: product.valuation,
+      isFavorite: product.isFavorite,
+    );
+    cartProduct.add(updateProduct);
   }
 
   @observable
@@ -484,14 +552,23 @@ abstract class _StorageProduct with Store {
   @computed
   List<Product> get listProduct => mapListProduct[selectionTake]!;
 
-  @action
-  void selectingListProduct(Selection selection) {
-    selectionTake = selection;
+  @computed
+  ObservableList<Product> get listProductFavorite {
+    return ObservableList.of(mapListProduct.values
+        .reduce((value, element) => value + element)
+        .where((element) => element.isFavorite));
+  }
+
+  void tackSizeProduct({
+    required String size,
+    required Product product,
+  }) {
+    product.tackSize = size;
   }
 
   @action
-  void addFavorite(Product product) {
-    product.isFavorite = !product.isFavorite;
+  void selectingListProduct(Selection selection) {
+    selectionTake = selection;
   }
 
   @observable
@@ -503,6 +580,13 @@ abstract class _StorageProduct with Store {
   @action
   void getProduct({required Product product}) {
     this.product = product;
+  }
+
+  @action
+  void addFavorite(String id) {
+    if (id == product!.id) {
+      product!.isFavorite = !product!.isFavorite;
+    }
   }
 
   @action
