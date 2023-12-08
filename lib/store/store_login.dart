@@ -1,4 +1,3 @@
-import 'package:app_fashion_shop/config/routes/named_routes.dart';
 import 'package:app_fashion_shop/config/style/app_style.dart';
 
 import 'package:mobx/mobx.dart';
@@ -12,15 +11,11 @@ enum Account { facebook, google, x, vazio }
 
 abstract class _StoreLogin with Store {
   @observable
-  bool isLogin = false;
+  bool isLogin = true;
 
   @action
-  String login() {
-    if (isLogin) {
-      return NamedRoutes.routeHome;
-    } else {
-      return NamedRoutes.routeLogin;
-    }
+  void login() {
+    isLogin = true;
   }
 
   @observable
