@@ -1,8 +1,9 @@
 import 'package:app_fashion_shop/config/style/app_style.dart';
-import 'package:app_fashion_shop/pages/detail_product.dart';
-import 'package:app_fashion_shop/pages/home.dart';
-import 'package:app_fashion_shop/pages/registration_user.dart';
-import 'package:app_fashion_shop/pages/registration_user_network.dart';
+import 'package:app_fashion_shop/screens/detail_product.dart';
+import 'package:app_fashion_shop/screens/favorite.dart';
+import 'package:app_fashion_shop/screens/home.dart';
+import 'package:app_fashion_shop/screens/registration_user.dart';
+import 'package:app_fashion_shop/screens/registration_user_network.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:app_fashion_shop/store/store_login.dart';
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
@@ -10,7 +11,7 @@ import 'package:app_fashion_shop/config/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'pages/login.dart';
+import 'screens/login.dart';
 import 'package:provider/provider.dart';
 
 import 'store/data/storage_product.dart';
@@ -40,7 +41,8 @@ class AppFashionShop extends StatelessWidget {
           textTheme: AppStyle.textTheme(),
           useMaterial3: true,
         ),
-        initialRoute: login.isLogin ? null : NamedRoutes.routeLogin,
+        initialRoute:
+            login.isLogin ? NamedRoutes.routeHome : NamedRoutes.routeLogin,
         routes: {
           NamedRoutes.routeHome: (ctx) => const Home(),
           NamedRoutes.routeLogin: (ctx) => const Login(),
@@ -48,6 +50,7 @@ class AppFashionShop extends StatelessWidget {
           NamedRoutes.routeSocialNetworkRegistration: (ctx) =>
               const RegistrationUserNetwork(),
           NamedRoutes.routeProductDetail: (ctx) => const DetailProduct(),
+          NamedRoutes.routeFavorite: (ctx) => const FavoriteProduct(),
         },
       ),
     );
