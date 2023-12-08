@@ -3,7 +3,7 @@ import 'package:app_fashion_shop/store/data/storage_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'navigator_pages.dart';
+import 'navigator_screens.dart';
 import '../../config/style/app_style.dart';
 import '../../config/theme/app_color.dart';
 
@@ -45,7 +45,8 @@ class GridProduct extends StatelessWidget {
                     storageProduct.getProduct(
                         product: storageProduct.listProduct[indice]);
                     storageProduct.changingProductImageIndex(0);
-                    debugPrint(storageProduct.listProduct[indice].id);
+                    isScreenHome ? null : storageProduct.setInitScrool();
+
                     isScreenHome
                         ? Navigator.pushNamed(
                             context, NamedRoutes.routeProductDetail)
@@ -94,7 +95,7 @@ class GridProduct extends StatelessWidget {
                                                     .listProduct[indice].name,
                                                 style:
                                                     AppStyle.textTitlePrimary(
-                                                        tamanho: constraints
+                                                        size: constraints
                                                                 .maxHeight *
                                                             0.05),
                                               )),
@@ -103,13 +104,13 @@ class GridProduct extends StatelessWidget {
                                                 .listProduct[indice].price
                                                 .toString(),
                                             style: AppStyle.textTitleSecondary(
-                                                tamanho: constraints.maxHeight *
+                                                size: constraints.maxHeight *
                                                     0.06),
                                           ),
                                           Text(
                                             "No pix\n Ou x de ${(storageProduct.listProduct[indice].price / 3).toStringAsFixed(2)}",
                                             style: AppStyle.textBody(
-                                                tamanho: constraints.maxHeight *
+                                                size: constraints.maxHeight *
                                                     0.04),
                                           ),
                                         ],
@@ -133,9 +134,14 @@ class GridProduct extends StatelessWidget {
                                           radius: constraints.maxHeight * 0.07,
                                           isBadge: false,
                                           fun: () {
+                                            storageProduct.getProduct(
+                                                product: storageProduct
+                                                    .listProduct[indice]);
+                                            storageProduct
+                                                .changingProductImageIndex(0);
                                             storageProduct.addFavorite(
                                                 storageProduct
-                                                    .listProduct[indice]);
+                                                    .listProduct[indice].id);
                                           },
                                         ),
                                       ),
