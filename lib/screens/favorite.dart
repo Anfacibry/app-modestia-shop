@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/components/detail_product/selection_size_and_color_product.dart';
+import 'package:app_fashion_shop/components/selection_size_and_color_product.dart';
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
 
 import 'package:app_fashion_shop/config/style/app_style.dart';

@@ -29,6 +29,7 @@ class DetailProduct extends StatelessWidget {
         width: width,
       ),
       body: SingleChildScrollView(
+        controller: storageProduct.controller,
         child: Column(
           children: [
             Observer(
@@ -84,7 +85,8 @@ class DetailProduct extends StatelessWidget {
                         radius: 25,
                         isBadge: false,
                         fun: () {
-                          storageProduct.addFavorite(storageProduct.product!);
+                          storageProduct
+                              .addFavorite(storageProduct.product!.id);
                         },
                       ),
                     ),
