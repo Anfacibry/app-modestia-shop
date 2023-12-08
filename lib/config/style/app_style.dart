@@ -37,24 +37,24 @@ class AppStyle {
       Padding(padding: EdgeInsets.only(top: top, right: 10));
 
   ///Estilos de textos que serão usados no app
-  static TextStyle textBody({double tamanho = 20}) => TextStyle(
+  static TextStyle textBody({double size = 20}) => TextStyle(
         color: AppColor.textHeadline4Color,
-        fontSize: tamanho,
+        fontSize: size,
         fontWeight: FontWeight.bold,
       );
-  static TextStyle textTitlePrimary({double tamanho = 20}) => TextStyle(
+  static TextStyle textTitlePrimary({double size = 20}) => TextStyle(
         color: AppColor.textHeadline5Color,
-        fontSize: tamanho,
+        fontSize: size,
         fontWeight: FontWeight.bold,
       );
-  static TextStyle textTitleSecondary({double tamanho = 20}) => TextStyle(
+  static TextStyle textTitleSecondary({double size = 20}) => TextStyle(
         color: AppColor.onPrimaryContainerColor,
-        fontSize: tamanho,
+        fontSize: size,
         fontWeight: FontWeight.bold,
       );
-  static TextStyle textFormFild({double tamanho = 20}) => TextStyle(
+  static TextStyle textFormFild({double size = 20}) => TextStyle(
         color: AppColor.textFormFildColor,
-        fontSize: tamanho,
+        fontSize: size,
         fontWeight: FontWeight.w400,
       );
 
