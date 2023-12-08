@@ -93,7 +93,7 @@ mixin _$StoreLogin on _StoreLogin, Store {
       ActionController(name: '_StoreLogin', context: context);
 
   @override
-  String login() {
+  void login() {
     final _$actionInfo =
         _$_StoreLoginActionController.startAction(name: '_StoreLogin.login');
     try {
