@@ -21,7 +21,7 @@ class AnnouncementContainer extends StatelessWidget {
           image: AssetImage(
             image,
           ),
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
         boxShadow: const [
           BoxShadow(
@@ -98,7 +98,7 @@ class AnnouncementHome extends StatelessWidget {
             itemCount: storeHome.listImage.length,
             itemBuilder: (ctx, index, realIdx) {
               return Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 5, right: 5),
                 child: AnnouncementContainer(image: storeHome.listImage[index]),
               );
             },

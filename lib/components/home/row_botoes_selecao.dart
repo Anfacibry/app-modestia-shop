@@ -1,9 +1,9 @@
+import 'package:app_fashion_shop/store/config_data.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../store/data/storage_product.dart';
 import '../../config/style/app_style.dart';
 
 import 'package:app_fashion_shop/config/theme/app_color.dart';
@@ -54,8 +54,8 @@ class RowSelectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
-    final StorageProduct storageProduct =
-        Provider.of<StorageProduct>(context, listen: false);
+    final ConfigData dataProduct =
+        Provider.of<ConfigData>(context, listen: false);
     return Observer(
       builder: (_) => Row(
         children: [
@@ -64,7 +64,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Vestidos",
             fun: () {
               storeHome.selecionandoAba(Selection.vestidos);
-              storageProduct.selectingListProduct(Selection.vestidos);
+              dataProduct.selectingListProduct(Selection.vestidos);
             },
           ),
           AppStyle.space(top: 20),
@@ -73,7 +73,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Blusas",
             fun: () {
               storeHome.selecionandoAba(Selection.blusas);
-              storageProduct.selectingListProduct(Selection.blusas);
+              dataProduct.selectingListProduct(Selection.blusas);
             },
           ),
           AppStyle.space(top: 20),
@@ -82,7 +82,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Saias",
             fun: () {
               storeHome.selecionandoAba(Selection.saias);
-              storageProduct.selectingListProduct(Selection.saias);
+              dataProduct.selectingListProduct(Selection.saias);
             },
           ),
           AppStyle.space(top: 20),
@@ -91,7 +91,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Bolsas",
             fun: () {
               storeHome.selecionandoAba(Selection.bolsas);
-              storageProduct.selectingListProduct(Selection.bolsas);
+              dataProduct.selectingListProduct(Selection.bolsas);
             },
           ),
         ],

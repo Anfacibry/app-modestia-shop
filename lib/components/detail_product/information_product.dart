@@ -1,5 +1,6 @@
-import 'package:app_fashion_shop/components/detail_product/selection_size_and_color_product.dart';
-import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/components/selection_size_and_color_product.dart';
+import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -13,8 +14,8 @@ class InformationProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StorageProduct storageProduct =
-        Provider.of<StorageProduct>(context, listen: false);
+    final ConfigData dataProduct =
+        Provider.of<ConfigData>(context, listen: false);
     final (double _, double width) = AppStyle.screenSize(context);
     return Container(
       padding: EdgeInsets.only(
@@ -35,12 +36,12 @@ class InformationProduct extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    storageProduct.product!.name,
+                    dataProduct.product!.name,
                     style: AppStyle.textTitlePrimary(
                         size: constraints.maxWidth * .065),
                   ),
                   Text(
-                    "R\$ ${storageProduct.product!.price}",
+                    "R\$ ${dataProduct.product!.price}",
                     style: AppStyle.textTitleSecondary(
                         size: constraints.maxWidth * .07),
                   ),
@@ -55,20 +56,20 @@ class InformationProduct extends StatelessWidget {
                     width: constraints.maxWidth * .4,
                     child: SelectionColorProduct(
                       fontSize: constraints.maxWidth * .045,
-                      product: storageProduct.product!,
+                      product: dataProduct.product!,
                       sizeCircular: constraints.maxWidth * .1,
                       widthBorder: 3,
                     ),
                   ),
                   AppStyle.space(),
                   Expanded(
-                      child: SelectionSizeProduct(
+                      child: SelectionProductSize(
                     heightButton: constraints.maxWidth * .08,
                     widthButton: constraints.maxWidth * .08,
                     fontSize: constraints.maxWidth * .045,
                     radiusSize: constraints.maxWidth * .02,
                     sizePadding: constraints.maxWidth * .02,
-                    product: storageProduct.product!,
+                    product: dataProduct.product!,
                   )),
                 ],
               ),
@@ -84,7 +85,7 @@ class InformationProduct extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
-                      storageProduct.addProductCart(storageProduct.product!);
+                      dataProduct.addProductCart(dataProduct.product!);
                     },
                     child: const Text("Add carrinho"),
                   ),
@@ -99,7 +100,7 @@ class InformationProduct extends StatelessWidget {
                             size: constraints.maxWidth * .09,
                           ),
                           Text(
-                            "${storageProduct.product!.valuation}",
+                            "${dataProduct.product!.valuation}",
                             style: AppStyle.textBody(
                                 size: constraints.maxWidth * .06),
                           )

@@ -1,5 +1,6 @@
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
-import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -13,8 +14,8 @@ class NavigatorScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StorageProduct storageProduct =
-        Provider.of<StorageProduct>(context, listen: false);
+    final ConfigData dataProduct =
+        Provider.of<ConfigData>(context, listen: false);
     final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
     return Observer(
       builder: (ctx) => NavigationBar(
@@ -62,7 +63,7 @@ class NavigatorScreens extends StatelessWidget {
                 ? Theme.of(context).colorScheme.onInverseSurface
                 : AppColor.primaryColor,
             radius: 25,
-            isBadge: storageProduct.isEmptyCart,
+            isBadge: dataProduct.isEmptyCart,
             fun: () {
               storeHome.selectingIcon(IconSelection.carrinho);
             },
@@ -106,8 +107,7 @@ class IconMenuFloating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StorageProduct dados =
-        Provider.of<StorageProduct>(context, listen: false);
+    final ConfigData dados = Provider.of<ConfigData>(context, listen: false);
     return CircleAvatar(
       backgroundColor: cor,
       radius: radius,

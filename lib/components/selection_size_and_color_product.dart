@@ -1,11 +1,12 @@
-import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:app_fashion_shop/store/models/store_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../config/style/app_style.dart';
-import '../../config/theme/app_color.dart';
+import '../config/style/app_style.dart';
+import '../config/theme/app_color.dart';
 
 class SelectionColorProduct extends StatelessWidget {
   final Product product;
@@ -72,7 +73,7 @@ class SelectionColorProduct extends StatelessWidget {
   }
 }
 
-class SelectionSizeProduct extends StatelessWidget {
+class SelectionProductSize extends StatelessWidget {
   final double heightButton;
   final double widthButton;
   final double fontSize;
@@ -80,7 +81,7 @@ class SelectionSizeProduct extends StatelessWidget {
   final double sizePadding;
   final Product product;
 
-  const SelectionSizeProduct({
+  const SelectionProductSize({
     required this.heightButton,
     required this.widthButton,
     required this.radiusSize,
@@ -92,7 +93,7 @@ class SelectionSizeProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    StorageProduct storageProduct = Provider.of(context, listen: false);
+    ConfigData dataProduct = Provider.of<ConfigData>(context, listen: false);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -111,7 +112,7 @@ class SelectionSizeProduct extends StatelessWidget {
                       padding: EdgeInsets.only(right: sizePadding),
                       child: InkWell(
                         onTap: () {
-                          storageProduct.tackSizeProduct(
+                          dataProduct.tackSizeProduct(
                               size: size, product: product);
                         },
                         child: Observer(

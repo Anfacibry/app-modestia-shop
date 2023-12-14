@@ -1,5 +1,5 @@
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
-import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/store/config_data.dart';
 import 'package:app_fashion_shop/store/models/store_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -24,7 +24,8 @@ class GridProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StorageProduct storageProduct = Provider.of(context, listen: false);
+    final ConfigData dataProduct =
+        Provider.of<ConfigData>(context, listen: false);
     return SizedBox(
       width: width,
       child: LayoutBuilder(
@@ -46,9 +47,9 @@ class GridProduct extends StatelessWidget {
               ),
               itemBuilder: (contextGrid, indice) => InkWell(
                 onTap: () {
-                  storageProduct.getProduct(product: listProduct[indice]);
-                  storageProduct.changingProductImageIndex(0);
-                  isScreenHome ? null : storageProduct.setInitScrool();
+                  dataProduct.getProduct(product: listProduct[indice]);
+                  dataProduct.changingProductImageIndex(0);
+                  isScreenHome ? null : dataProduct.setInitScrool();
 
                   isScreenHome
                       ? Navigator.pushNamed(
@@ -127,11 +128,11 @@ class GridProduct extends StatelessWidget {
                                         radius: constraints.maxHeight * 0.07,
                                         isBadge: false,
                                         fun: () {
-                                          storageProduct.getProduct(
+                                          dataProduct.getProduct(
                                               product: listProduct[indice]);
-                                          storageProduct
+                                          dataProduct
                                               .changingProductImageIndex(0);
-                                          storageProduct.addFavorite(
+                                          dataProduct.addFavorite(
                                               listProduct[indice].id);
                                         },
                                       ),

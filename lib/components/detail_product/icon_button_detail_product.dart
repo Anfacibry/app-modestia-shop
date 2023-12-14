@@ -1,5 +1,6 @@
 import 'package:app_fashion_shop/components/home/navigator_screens.dart';
-import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -11,8 +12,8 @@ class IconButtonDetailProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StorageProduct storageProduct =
-        Provider.of<StorageProduct>(context, listen: false);
+    final ConfigData dataProduct =
+        Provider.of<ConfigData>(context, listen: false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -24,17 +25,17 @@ class IconButtonDetailProduct extends StatelessWidget {
               "assets/icons/voltar.png",
             )),
         IconMenuFloating(
-          corImagem: storageProduct.product!.isFavorite
+          corImagem: dataProduct.product!.isFavorite
               ? Theme.of(context).colorScheme.onInverseSurface
               : AppColor.primaryColor,
           imagem: "assets/icons/favorito.png",
-          cor: storageProduct.product!.isFavorite
+          cor: dataProduct.product!.isFavorite
               ? AppColor.primaryColor
               : Theme.of(context).colorScheme.onInverseSurface,
           radius: 25,
           isBadge: false,
           fun: () {
-            storageProduct.addFavorite(storageProduct.product!.id);
+            dataProduct.addFavorite(dataProduct.product!.id);
           },
         ),
       ],

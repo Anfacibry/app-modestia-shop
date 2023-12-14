@@ -4,7 +4,7 @@ import 'package:app_fashion_shop/components/detail_product/information_product.d
 import 'package:app_fashion_shop/components/home/navigator_screens.dart';
 
 import 'package:app_fashion_shop/config/style/app_style.dart';
-import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/store/config_data.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -17,19 +17,19 @@ class DetailProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StorageProduct storageProduct =
-        Provider.of<StorageProduct>(context, listen: false);
+    final ConfigData dataProduct =
+        Provider.of<ConfigData>(context, listen: false);
 
     final (double height, double width) = AppStyle.screenSize(context);
 
     return Scaffold(
       appBar: appBarWithIcons(
         context: context,
-        storageProduct: storageProduct,
+        configData: dataProduct,
         width: width,
       ),
       body: SingleChildScrollView(
-        controller: storageProduct.controller,
+        controller: dataProduct.controller,
         child: Column(
           children: [
             Observer(
@@ -39,9 +39,9 @@ class DetailProduct extends StatelessWidget {
                 child: Stack(children: [
                   PageView(
                     onPageChanged: (indice) {
-                      storageProduct.changingProductImageIndex(indice);
+                      dataProduct.changingProductImageIndex(indice);
                     },
-                    children: storageProduct.product!.imageColor
+                    children: dataProduct.product!.imageColor
                         .map(
                           (elemento) => InkWell(
                             onTap: () {
@@ -75,18 +75,17 @@ class DetailProduct extends StatelessWidget {
                     right: width * .03,
                     child: Observer(
                       builder: (ctx) => IconMenuFloating(
-                        corImagem: storageProduct.product!.isFavorite
+                        corImagem: dataProduct.product!.isFavorite
                             ? AppColor.surfaceColor
                             : AppColor.primaryColor,
                         imagem: "assets/icons/favorito.png",
-                        cor: storageProduct.product!.isFavorite
+                        cor: dataProduct.product!.isFavorite
                             ? AppColor.primaryColor
                             : AppColor.surfaceColor,
                         radius: 25,
                         isBadge: false,
                         fun: () {
-                          storageProduct
-                              .addFavorite(storageProduct.product!.id);
+                          dataProduct.addFavorite(dataProduct.product!.id);
                         },
                       ),
                     ),
@@ -113,10 +112,13 @@ class DetailProduct extends StatelessWidget {
                   SizedBox(
                     height: height * .7,
                     width: width,
-                    child: GridProduct(
-                      isScreenHome: false,
-                      storageProduct: storageProduct,
-                      width: width,
+                    child: Observer(
+                      builder: (ctx) => GridProduct(
+                        isScreenHome: false,
+                        listProduct: dataProduct.listProductSelection,
+                        sizeList: dataProduct.sizeList,
+                        width: width,
+                      ),
                     ),
                   ),
                 ],

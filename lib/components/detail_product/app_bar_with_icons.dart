@@ -1,5 +1,5 @@
 import "package:app_fashion_shop/config/routes/named_routes.dart";
-import "package:app_fashion_shop/store/data/storage_product.dart";
+import "package:app_fashion_shop/store/config_data.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 
@@ -10,12 +10,12 @@ import "../../store/store_home.dart";
 AppBar appBarWithIcons({
   required BuildContext context,
   required double width,
-  required StorageProduct storageProduct,
+  required ConfigData configData,
 }) {
   return AppBar(
     title: Observer(
       builder: (ctx) => Text(
-        storageProduct.product!.name,
+        configData.product!.name,
         style: AppStyle.textTitleSecondary(size: width * .06),
       ),
     ),
@@ -40,8 +40,8 @@ AppBar appBarWithIcons({
             backgroundColor: Theme.of(context).colorScheme.primary,
             alignment: Alignment.lerp(
                 const Alignment(0, 5), const Alignment(1, 1.5), 2),
-            isLabelVisible: storageProduct.isEmptyCart,
-            label: Text("${storageProduct.cartProduct.length}"),
+            isLabelVisible: configData.isEmptyCart,
+            label: Text("${configData.cartProduct.length}"),
             child: Image.asset("assets/icons/carrinho.png"),
           ),
         ),
@@ -50,7 +50,7 @@ AppBar appBarWithIcons({
         padding: EdgeInsets.only(right: width * .02),
         child: PopupMenuButton<Selection>(
           onSelected: (value) {
-            storageProduct.selectingListProduct(value);
+            configData.selectingListProduct(value);
           },
           elevation: 5,
           color: AppColor.primaryColor,
