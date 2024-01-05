@@ -37,38 +37,41 @@ class DetailProduct extends StatelessWidget {
                 height: height * .6,
                 width: width,
                 child: Stack(children: [
-                  PageView(
+                  PageView.builder(
                     onPageChanged: (indice) {
                       dataProduct.changingProductImageIndex(indice);
                     },
-                    children: dataProduct.product!.imageColor
-                        .map(
-                          (elemento) => InkWell(
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (ctx) => AlertDialog(
-                                        clipBehavior: Clip.antiAlias,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        contentPadding: const EdgeInsets.all(0),
-                                        content: Image.asset(
-                                          elemento.image,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ));
-                            },
-                            child: Image.asset(
-                              elemento.image,
-                              height: height * .5,
-                              width: width,
-                              fit: BoxFit.cover,
-                              alignment: Alignment.topCenter,
-                            ),
-                          ),
-                        )
-                        .toList(),
+                    controller: dataProduct.pagController,
+                    itemCount: dataProduct.product!.imageColor.length,
+                    itemBuilder: (ctx, index) => InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                                  clipBehavior: Clip.antiAlias,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  contentPadding: const EdgeInsets.all(0),
+                                  content: Image.asset(
+                                    dataProduct
+                                        .product!
+                                        .imageColor[
+                                            dataProduct.indexImageProduct]
+                                        .image,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ));
+                      },
+                      child: Observer(
+                        builder: (ctx) => Image.asset(
+                          dataProduct.product!.imageColor[index].image,
+                          height: height * .5,
+                          width: width,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                        ),
+                      ),
+                    ),
                   ),
                   Positioned(
                     top: width * .03,
@@ -90,6 +93,28 @@ class DetailProduct extends StatelessWidget {
                       ),
                     ),
                   ),
+                  dataProduct.indexImageProduct == 0
+                      ? const SizedBox()
+                      : Positioned(
+                          top: width * .5,
+                          left: width * .0005,
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: Image.asset("assets/icons/voltar.png")),
+                        ),
+                  dataProduct.indexImageProduct ==
+                          dataProduct.product!.imageColor.length - 1
+                      ? const SizedBox()
+                      : Positioned(
+                          top: width * .5,
+                          right: width * .0005,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Image.asset(
+                              "assets/icons/next.png",
+                            ),
+                          ),
+                        ),
                 ]),
               ),
             ),
@@ -107,23 +132,21 @@ class DetailProduct extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(left: width * .03, right: width * .03),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: height * .7,
+              child: SizedBox(
+                height: height * .7,
+                width: width,
+                child: Observer(
+                  builder: (ctx) => GridProduct(
+                    axisDirection: Axis.horizontal,
+                    isScreenHome: false,
+                    listProduct: dataProduct.listProductSelection,
+                    sizeList: dataProduct.sizeList,
                     width: width,
-                    child: Observer(
-                      builder: (ctx) => GridProduct(
-                        isScreenHome: false,
-                        listProduct: dataProduct.listProductSelection,
-                        sizeList: dataProduct.sizeList,
-                        width: width,
-                      ),
-                    ),
                   ),
-                ],
+                ),
               ),
             ),
+            AppStyle.space()
           ],
         ),
       ),
