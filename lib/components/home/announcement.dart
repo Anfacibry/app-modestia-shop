@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/link.dart';
 
 import '../../store/store_home.dart';
 import '../../config/style/app_style.dart';
@@ -9,28 +10,40 @@ import '../../config/theme/app_color.dart';
 
 class AnnouncementContainer extends StatelessWidget {
   final String image;
-  const AnnouncementContainer({required this.image, super.key});
+  final String url;
+  const AnnouncementContainer({
+    required this.url,
+    required this.image,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColor.primaryColor,
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
-        image: DecorationImage(
-          image: AssetImage(
-            image,
+    return Link(
+      target: LinkTarget.blank,
+      uri: Uri.parse(url),
+      builder: (ctx, fun) => InkWell(
+        onTap: fun,
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColor.primaryColor,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            image: DecorationImage(
+              image: AssetImage(
+                image,
+              ),
+              fit: BoxFit.cover,
+            ),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                offset: Offset(0, 8),
+                blurRadius: 5,
+                blurStyle: BlurStyle.normal,
+              )
+            ],
           ),
-          fit: BoxFit.cover,
         ),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            offset: Offset(0, 8),
-            blurRadius: 5,
-            blurStyle: BlurStyle.normal,
-          )
-        ],
       ),
     );
   }
@@ -99,7 +112,9 @@ class AnnouncementHome extends StatelessWidget {
             itemBuilder: (ctx, index, realIdx) {
               return Padding(
                 padding: const EdgeInsets.only(left: 5, right: 5),
-                child: AnnouncementContainer(image: storeHome.listImage[index]),
+                child: AnnouncementContainer(
+                    url: storeHome.listImage[index]["url"]!,
+                    image: storeHome.listImage[index]["image"]!),
               );
             },
             options: CarouselOptions(

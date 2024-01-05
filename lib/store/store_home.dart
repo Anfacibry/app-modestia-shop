@@ -47,17 +47,29 @@ abstract class _StoreHome with Store {
   }
 
   @observable
-  ObservableList<String> listImage = ObservableList.of([
-    AppStyle.imageAnnouncement001,
-    AppStyle.imageAnnouncement002,
-    AppStyle.imageAnnouncement003,
-    AppStyle.imageAnnouncement004,
+  ObservableList<Map<String, String>> listImage = ObservableList.of([
+    {
+      "url": "",
+      "image": AppStyle.imageAnnouncement001,
+    },
+    {
+      "url": "",
+      "image": AppStyle.imageAnnouncement002,
+    },
+    {
+      "url": "https://guiadoiphone.com.br/",
+      "image": AppStyle.imageAnnouncement003,
+    },
+    {
+      "url": "",
+      "image": AppStyle.imageAnnouncement004,
+    }
   ]);
 
   @observable
   int index = 0;
   @computed
-  String get imageAnnouncement => listImage[index];
+  String get imageAnnouncement => listImage[index]["image"]!;
 
   @action
   void getIndex(int value) {

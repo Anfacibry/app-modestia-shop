@@ -85,13 +85,13 @@ mixin _$StoreHome on _StoreHome, Store {
       Atom(name: '_StoreHome.listImage', context: context);
 
   @override
-  ObservableList<String> get listImage {
+  ObservableList<Map<String, String>> get listImage {
     _$listImageAtom.reportRead();
     return super.listImage;
   }
 
   @override
-  set listImage(ObservableList<String> value) {
+  set listImage(ObservableList<Map<String, String>> value) {
     _$listImageAtom.reportWrite(value, super.listImage, () {
       super.listImage = value;
     });

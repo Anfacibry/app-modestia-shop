@@ -42,6 +42,7 @@ class Login extends StatelessWidget {
                       style: AppStyle.textBody(size: 20),
                     ),
                     BoxTextFormeField(
+                      controller: TextEditingController(),
                       height: width * .15,
                       text: "E-mail",
                       isSenha: false,
@@ -50,6 +51,7 @@ class Login extends StatelessWidget {
                     ),
                     AppStyle.space(),
                     BoxTextFormeField(
+                      controller: TextEditingController(),
                       height: width * .15,
                       text: "Senha",
                       isSenha: true,

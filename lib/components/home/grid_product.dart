@@ -14,11 +14,14 @@ class GridProduct extends StatelessWidget {
   final List<Product> listProduct;
   final double width;
   final int sizeList;
+  final Axis axisDirection;
+
   const GridProduct({
     required this.isScreenHome,
     required this.listProduct,
     required this.sizeList,
     required this.width,
+    required this.axisDirection,
     super.key,
   });
 
@@ -37,13 +40,13 @@ class GridProduct extends StatelessWidget {
               top: 10,
             ),
             child: GridView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: axisDirection,
               itemCount: sizeList,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
-                childAspectRatio: 1.8,
+                childAspectRatio: axisDirection == Axis.horizontal ? 1.8 : .6,
               ),
               itemBuilder: (contextGrid, indice) => InkWell(
                 onTap: () {

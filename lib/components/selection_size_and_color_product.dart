@@ -12,18 +12,22 @@ class SelectionColorProduct extends StatelessWidget {
   final Product product;
   final double fontSize;
   final double sizeCircular;
+  final double width;
   final double widthBorder;
 
   const SelectionColorProduct({
     required this.fontSize,
     required this.product,
     required this.sizeCircular,
+    required this.width,
     required this.widthBorder,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final ConfigData configData =
+        Provider.of<ConfigData>(context, listen: false);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,31 +35,43 @@ class SelectionColorProduct extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Observer(
             builder: (ctx) => Text(
-              "Cor: ${product.imageColor[0].name}",
+              "Cor: ${product.imageColor[configData.indexImageProduct].name}",
               style: AppStyle.textBody(
                 size: fontSize,
               ),
             ),
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Observer(
-            builder: (ctx) => Row(
-              children: product.imageColor
-                  .map((cores) => Container(
+        SizedBox(
+          height: sizeCircular,
+          width: width * .5,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              clipBehavior: Clip.none,
+              itemCount: product.imageColor.length,
+              itemBuilder: (ctx, index) => InkWell(
+                    onTap: () {
+                      configData.pagControllerImage(index: index);
+                    },
+                    child: Observer(
+                      builder: (ctx) => Container(
                         margin: const EdgeInsets.only(right: 5),
                         height: sizeCircular,
                         width: sizeCircular,
                         decoration: BoxDecoration(
-                          color: cores.color,
+                          color: product.imageColor[index].color,
                           borderRadius: BorderRadius.circular(35),
-                          border: product.imageColor[0].color == cores.color
+                          border: product
+                                      .imageColor[configData.indexImageProduct]
+                                      .color ==
+                                  product.imageColor[index].color
                               ? Border.all(
                                   color: AppColor.secundaryColor,
                                   width: widthBorder,
                                 )
-                              : null,
+                              : Border.all(
+                                  color: Colors.transparent,
+                                ),
                           boxShadow: [
                             AppStyle.shadow(
                                 backgroundColor: Colors.black38,
@@ -63,10 +79,9 @@ class SelectionColorProduct extends StatelessWidget {
                                 blurRadius: 2)
                           ],
                         ),
-                      ))
-                  .toList(),
-            ),
-          ),
+                      ),
+                    ),
+                  )),
         ),
       ],
     );

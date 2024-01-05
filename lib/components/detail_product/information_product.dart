@@ -55,6 +55,7 @@ class InformationProduct extends StatelessWidget {
                   SizedBox(
                     width: constraints.maxWidth * .4,
                     child: SelectionColorProduct(
+                      width: width,
                       fontSize: constraints.maxWidth * .045,
                       product: dataProduct.product!,
                       sizeCircular: constraints.maxWidth * .1,
@@ -79,15 +80,31 @@ class InformationProduct extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColor.primaryColor,
-                        foregroundColor: AppColor.onPrimaryColor,
+                        backgroundColor: AppColor.onPrimaryColor,
+                        foregroundColor: AppColor.primaryColor,
                         elevation: 5,
+                        fixedSize: Size(constraints.maxWidth * .3,
+                            constraints.maxHeight * .2),
+                        padding: const EdgeInsets.all(0),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
                       dataProduct.addProductCart(dataProduct.product!);
                     },
-                    child: const Text("Add carrinho"),
+                    child: Text(
+                      "Add carrinho",
+                      style: AppStyle.textTitleSecondary(size: 16),
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.primaryColor,
+                        foregroundColor: AppColor.onPrimaryColor,
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onPressed: () {},
+                    child: const Text("Comprar agora"),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

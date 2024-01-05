@@ -62,6 +62,7 @@ class RegistrationUser extends StatelessWidget {
                         style: AppStyle.textBody(size: width * .045),
                       ),
                       BoxTextFormeField(
+                        controller: TextEditingController(),
                         height: width * .14,
                         text: "Nome e sobrenome",
                         isSenha: false,
@@ -69,6 +70,7 @@ class RegistrationUser extends StatelessWidget {
                       ),
                       AppStyle.space(),
                       BoxTextFormeField(
+                        controller: TextEditingController(),
                         height: width * .14,
                         text: "E-mail",
                         isSenha: false,
@@ -76,6 +78,7 @@ class RegistrationUser extends StatelessWidget {
                       ),
                       AppStyle.space(),
                       BoxTextFormeField(
+                        controller: TextEditingController(),
                         height: width * .14,
                         text: "Senha",
                         isSenha: true,
@@ -83,6 +86,7 @@ class RegistrationUser extends StatelessWidget {
                       ),
                       AppStyle.space(),
                       BoxTextFormeField(
+                        controller: TextEditingController(),
                         height: width * .14,
                         text: " Repetir senha",
                         isSenha: true,

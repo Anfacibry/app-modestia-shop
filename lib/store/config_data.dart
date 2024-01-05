@@ -14,6 +14,13 @@ class ConfigData = _ConfigData with _$ConfigData;
 abstract class _ConfigData with Store {
   StorageProduct dataProduct = StorageProduct();
   final controller = ScrollController();
+  final pagController = PageController();
+
+  @action
+  void pagControllerImage({required int index}) {
+    pagController.animateToPage(index,
+        duration: const Duration(milliseconds: 500), curve: Curves.linear);
+  }
 
   @observable
   double initScrool = 0.0;
@@ -34,10 +41,10 @@ abstract class _ConfigData with Store {
   ObservableList<Product> cartProduct = ObservableList();
 
   @observable
-  Color? productColorTack;
+  int productColorTack = 0;
 
   @action
-  void tackProductColor(Color productColor) {
+  void tackProductColor(int productColor) {
     productColorTack = productColor;
   }
 
@@ -49,9 +56,9 @@ abstract class _ConfigData with Store {
       price: product.price,
       imageColor: ObservableList.of([
         ImageColor(
-          name: product.imageColor[indexProduct].name,
-          color: productColorTack ?? product.imageColor[indexProduct].color,
-          image: product.imageColor[indexProduct].image,
+          name: product.imageColor[indexImageProduct].name,
+          color: product.imageColor[indexImageProduct].color,
+          image: product.imageColor[indexImageProduct].image,
         )
       ]),
       size: ObservableList.of([""]),
@@ -71,6 +78,23 @@ abstract class _ConfigData with Store {
   @computed
   List<Product> get listProductSelection =>
       dataProduct.mapListProduct[selectionTake]!;
+
+  @observable
+  String searchController = "";
+
+  @action
+  void searchControllerTack(String controller) {
+    searchController = controller;
+  }
+
+  @computed
+  ObservableList<Product> get searchList => searchController == ""
+      ? ObservableList()
+      : ObservableList.of(dataProduct.mapListProduct.values
+          .reduce((value, element) => value + element)
+          .where((element) =>
+              element.name.contains(searchController) ||
+              element.name.contains(searchController.toUpperCase())));
 
   @computed
   ObservableList<Product> get listProductFavorite =>
@@ -95,9 +119,6 @@ abstract class _ConfigData with Store {
   }
 
   @observable
-  int indexProduct = 0;
-
-  @observable
   Product? product;
 
   @action
@@ -112,9 +133,12 @@ abstract class _ConfigData with Store {
     }
   }
 
+  @observable
+  int indexImageProduct = 0;
+
   @action
-  void changingProductImageIndex(int index) {
-    indexProduct = index;
+  void changingProductImageIndex(int indexImage) {
+    indexImageProduct = indexImage;
   }
 
   @observable

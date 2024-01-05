@@ -29,6 +29,13 @@ mixin _$ConfigData on _ConfigData, Store {
           Computed<List<Product>>(() => super.listProductSelection,
               name: '_ConfigData.listProductSelection'))
       .value;
+  Computed<ObservableList<Product>>? _$searchListComputed;
+
+  @override
+  ObservableList<Product> get searchList => (_$searchListComputed ??=
+          Computed<ObservableList<Product>>(() => super.searchList,
+              name: '_ConfigData.searchList'))
+      .value;
   Computed<ObservableList<Product>>? _$listProductFavoriteComputed;
 
   @override
@@ -81,13 +88,13 @@ mixin _$ConfigData on _ConfigData, Store {
       Atom(name: '_ConfigData.productColorTack', context: context);
 
   @override
-  Color? get productColorTack {
+  int get productColorTack {
     _$productColorTackAtom.reportRead();
     return super.productColorTack;
   }
 
   @override
-  set productColorTack(Color? value) {
+  set productColorTack(int value) {
     _$productColorTackAtom.reportWrite(value, super.productColorTack, () {
       super.productColorTack = value;
     });
@@ -109,19 +116,19 @@ mixin _$ConfigData on _ConfigData, Store {
     });
   }
 
-  late final _$indexProductAtom =
-      Atom(name: '_ConfigData.indexProduct', context: context);
+  late final _$searchControllerAtom =
+      Atom(name: '_ConfigData.searchController', context: context);
 
   @override
-  int get indexProduct {
-    _$indexProductAtom.reportRead();
-    return super.indexProduct;
+  String get searchController {
+    _$searchControllerAtom.reportRead();
+    return super.searchController;
   }
 
   @override
-  set indexProduct(int value) {
-    _$indexProductAtom.reportWrite(value, super.indexProduct, () {
-      super.indexProduct = value;
+  set searchController(String value) {
+    _$searchControllerAtom.reportWrite(value, super.searchController, () {
+      super.searchController = value;
     });
   }
 
@@ -138,6 +145,22 @@ mixin _$ConfigData on _ConfigData, Store {
   set product(Product? value) {
     _$productAtom.reportWrite(value, super.product, () {
       super.product = value;
+    });
+  }
+
+  late final _$indexImageProductAtom =
+      Atom(name: '_ConfigData.indexImageProduct', context: context);
+
+  @override
+  int get indexImageProduct {
+    _$indexImageProductAtom.reportRead();
+    return super.indexImageProduct;
+  }
+
+  @override
+  set indexImageProduct(int value) {
+    _$indexImageProductAtom.reportWrite(value, super.indexImageProduct, () {
+      super.indexImageProduct = value;
     });
   }
 
@@ -172,7 +195,7 @@ mixin _$ConfigData on _ConfigData, Store {
   }
 
   @override
-  void tackProductColor(Color productColor) {
+  void tackProductColor(int productColor) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
         name: '_ConfigData.tackProductColor');
     try {
@@ -188,6 +211,17 @@ mixin _$ConfigData on _ConfigData, Store {
         name: '_ConfigData.addProductCart');
     try {
       return super.addProductCart(product);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void searchControllerTack(String controller) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.searchControllerTack');
+    try {
+      return super.searchControllerTack(controller);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
@@ -227,11 +261,11 @@ mixin _$ConfigData on _ConfigData, Store {
   }
 
   @override
-  void changingProductImageIndex(int index) {
+  void changingProductImageIndex(int indexImage) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
         name: '_ConfigData.changingProductImageIndex');
     try {
-      return super.changingProductImageIndex(index);
+      return super.changingProductImageIndex(indexImage);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
@@ -255,12 +289,14 @@ initScrool: ${initScrool},
 cartProduct: ${cartProduct},
 productColorTack: ${productColorTack},
 selectionTake: ${selectionTake},
-indexProduct: ${indexProduct},
+searchController: ${searchController},
 product: ${product},
+indexImageProduct: ${indexImageProduct},
 positionTake: ${positionTake},
 isEmptyCart: ${isEmptyCart},
 sizeList: ${sizeList},
 listProductSelection: ${listProductSelection},
+searchList: ${searchList},
 listProductFavorite: ${listProductFavorite},
 bestSellers: ${bestSellers}
     ''';

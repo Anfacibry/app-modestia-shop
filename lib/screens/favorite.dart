@@ -151,6 +151,7 @@ class FavoriteProduct extends StatelessWidget {
                                                 size: width * .04),
                                           ),
                                           SelectionColorProduct(
+                                            width: width,
                                             fontSize: constraints.maxWidth *
                                                         .4 >
                                                     width * .3
