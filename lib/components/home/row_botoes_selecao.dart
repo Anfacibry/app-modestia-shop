@@ -60,37 +60,37 @@ class RowSelectionButton extends StatelessWidget {
       builder: (_) => Row(
         children: [
           SelectionButton(
-            selection: storeHome.selectionVestidos,
+            selection: 0 == storeHome.takeIndexPage,
             titleButton: "Vestidos",
             fun: () {
-              storeHome.selecionandoAba(Selection.vestidos);
+              storeHome.updateIndex(0);
               dataProduct.selectingListProduct(Selection.vestidos);
             },
           ),
           AppStyle.space(top: 20),
           SelectionButton(
-            selection: storeHome.selectionBlusa,
+            selection: 1 == storeHome.takeIndexPage,
             titleButton: "Blusas",
             fun: () {
-              storeHome.selecionandoAba(Selection.blusas);
+              storeHome.updateIndex(1);
               dataProduct.selectingListProduct(Selection.blusas);
             },
           ),
           AppStyle.space(top: 20),
           SelectionButton(
-            selection: storeHome.selectionSaias,
+            selection: 2 == storeHome.takeIndexPage,
             titleButton: "Saias",
             fun: () {
-              storeHome.selecionandoAba(Selection.saias);
+              storeHome.updateIndex(2);
               dataProduct.selectingListProduct(Selection.saias);
             },
           ),
           AppStyle.space(top: 20),
           SelectionButton(
-            selection: storeHome.selectionBolsas,
+            selection: 3 == storeHome.takeIndexPage,
             titleButton: "Bolsas",
             fun: () {
-              storeHome.selecionandoAba(Selection.bolsas);
+              storeHome.updateIndex(3);
               dataProduct.selectingListProduct(Selection.bolsas);
             },
           ),

@@ -17,67 +17,19 @@ mixin _$StoreHome on _StoreHome, Store {
               name: '_StoreHome.imageAnnouncement'))
       .value;
 
-  late final _$selectionVestidosAtom =
-      Atom(name: '_StoreHome.selectionVestidos', context: context);
+  late final _$takeIndexPageAtom =
+      Atom(name: '_StoreHome.takeIndexPage', context: context);
 
   @override
-  bool get selectionVestidos {
-    _$selectionVestidosAtom.reportRead();
-    return super.selectionVestidos;
+  int get takeIndexPage {
+    _$takeIndexPageAtom.reportRead();
+    return super.takeIndexPage;
   }
 
   @override
-  set selectionVestidos(bool value) {
-    _$selectionVestidosAtom.reportWrite(value, super.selectionVestidos, () {
-      super.selectionVestidos = value;
-    });
-  }
-
-  late final _$selectionBlusaAtom =
-      Atom(name: '_StoreHome.selectionBlusa', context: context);
-
-  @override
-  bool get selectionBlusa {
-    _$selectionBlusaAtom.reportRead();
-    return super.selectionBlusa;
-  }
-
-  @override
-  set selectionBlusa(bool value) {
-    _$selectionBlusaAtom.reportWrite(value, super.selectionBlusa, () {
-      super.selectionBlusa = value;
-    });
-  }
-
-  late final _$selectionSaiasAtom =
-      Atom(name: '_StoreHome.selectionSaias', context: context);
-
-  @override
-  bool get selectionSaias {
-    _$selectionSaiasAtom.reportRead();
-    return super.selectionSaias;
-  }
-
-  @override
-  set selectionSaias(bool value) {
-    _$selectionSaiasAtom.reportWrite(value, super.selectionSaias, () {
-      super.selectionSaias = value;
-    });
-  }
-
-  late final _$selectionBolsasAtom =
-      Atom(name: '_StoreHome.selectionBolsas', context: context);
-
-  @override
-  bool get selectionBolsas {
-    _$selectionBolsasAtom.reportRead();
-    return super.selectionBolsas;
-  }
-
-  @override
-  set selectionBolsas(bool value) {
-    _$selectionBolsasAtom.reportWrite(value, super.selectionBolsas, () {
-      super.selectionBolsas = value;
+  set takeIndexPage(int value) {
+    _$takeIndexPageAtom.reportWrite(value, super.takeIndexPage, () {
+      super.takeIndexPage = value;
     });
   }
 
@@ -177,11 +129,11 @@ mixin _$StoreHome on _StoreHome, Store {
       ActionController(name: '_StoreHome', context: context);
 
   @override
-  void selecionandoAba(Selection selectionPega) {
+  void updateIndex(int index) {
     final _$actionInfo = _$_StoreHomeActionController.startAction(
-        name: '_StoreHome.selecionandoAba');
+        name: '_StoreHome.updateIndex');
     try {
-      return super.selecionandoAba(selectionPega);
+      return super.updateIndex(index);
     } finally {
       _$_StoreHomeActionController.endAction(_$actionInfo);
     }
@@ -212,10 +164,7 @@ mixin _$StoreHome on _StoreHome, Store {
   @override
   String toString() {
     return '''
-selectionVestidos: ${selectionVestidos},
-selectionBlusa: ${selectionBlusa},
-selectionSaias: ${selectionSaias},
-selectionBolsas: ${selectionBolsas},
+takeIndexPage: ${takeIndexPage},
 listImage: ${listImage},
 index: ${index},
 home: ${home},

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import '../config/style/app_style.dart';
@@ -12,37 +13,26 @@ enum Selection { vestidos, blusas, saias, bolsas }
 enum IconSelection { home, favorito, carrinho, perfil }
 
 abstract class _StoreHome with Store {
+  ScrollController controllerPage = ScrollController();
+
   @observable
-  bool selectionVestidos = true;
-  @observable
-  bool selectionBlusa = false;
-  @observable
-  bool selectionSaias = false;
-  @observable
-  bool selectionBolsas = false;
+  int takeIndexPage = 0;
 
   @action
-  void selecionandoAba(Selection selectionPega) {
-    if (Selection.vestidos == selectionPega) {
-      selectionVestidos = true;
-      selectionBlusa = false;
-      selectionSaias = false;
-      selectionBolsas = false;
-    } else if (Selection.blusas == selectionPega) {
-      selectionVestidos = false;
-      selectionBlusa = true;
-      selectionSaias = false;
-      selectionBolsas = false;
-    } else if (Selection.saias == selectionPega) {
-      selectionVestidos = false;
-      selectionBlusa = false;
-      selectionSaias = true;
-      selectionBolsas = false;
-    } else if (Selection.bolsas == selectionPega) {
-      selectionVestidos = false;
-      selectionBlusa = false;
-      selectionSaias = false;
-      selectionBolsas = true;
+  void updateIndex(int index) {
+    takeIndexPage = index;
+    if (index <= 1) {
+      controllerPage.animateTo(
+        index * 0,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.linear,
+      );
+    } else {
+      controllerPage.animateTo(
+        index * 80,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.linear,
+      );
     }
   }
 
