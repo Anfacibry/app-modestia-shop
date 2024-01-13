@@ -184,6 +184,17 @@ mixin _$ConfigData on _ConfigData, Store {
       ActionController(name: '_ConfigData', context: context);
 
   @override
+  void pagControllerImage({required int index}) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.pagControllerImage');
+    try {
+      return super.pagControllerImage(index: index);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setInitScrool() {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
         name: '_ConfigData.setInitScrool');

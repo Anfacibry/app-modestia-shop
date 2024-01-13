@@ -11,6 +11,7 @@ AppBar appBarWithIcons({
   required BuildContext context,
   required double width,
   required ConfigData configData,
+  required StoreHome storeHome,
 }) {
   return AppBar(
     title: Observer(
@@ -55,9 +56,12 @@ AppBar appBarWithIcons({
           elevation: 5,
           color: AppColor.primaryColor,
           itemBuilder: (contx) => <PopupMenuEntry<Selection>>[
-            const PopupMenuItem(
+            PopupMenuItem(
+              onTap: () {
+                storeHome.updateIndex(0);
+              },
               value: Selection.vestidos,
-              child: Text(
+              child: const Text(
                 "Vestidos",
                 style: TextStyle(
                   color: Colors.white,
@@ -65,9 +69,12 @@ AppBar appBarWithIcons({
                 ),
               ),
             ),
-            const PopupMenuItem(
+            PopupMenuItem(
+              onTap: () {
+                storeHome.updateIndex(1);
+              },
               value: Selection.blusas,
-              child: Text(
+              child: const Text(
                 "Blusas",
                 style: TextStyle(
                   color: Colors.white,
@@ -75,9 +82,12 @@ AppBar appBarWithIcons({
                 ),
               ),
             ),
-            const PopupMenuItem(
+            PopupMenuItem(
+              onTap: () {
+                storeHome.updateIndex(2);
+              },
               value: Selection.saias,
-              child: Text(
+              child: const Text(
                 "Saias",
                 style: TextStyle(
                   color: Colors.white,
@@ -85,9 +95,12 @@ AppBar appBarWithIcons({
                 ),
               ),
             ),
-            const PopupMenuItem(
+            PopupMenuItem(
+              onTap: () {
+                storeHome.updateIndex(3);
+              },
               value: Selection.bolsas,
-              child: Text(
+              child: const Text(
                 "Bolsas",
                 style: TextStyle(
                   color: Colors.white,

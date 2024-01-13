@@ -5,6 +5,7 @@ import 'package:app_fashion_shop/components/home/navigator_screens.dart';
 
 import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
+import 'package:app_fashion_shop/store/store_home.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -19,6 +20,7 @@ class DetailProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     final ConfigData dataProduct =
         Provider.of<ConfigData>(context, listen: false);
+    final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
 
     final (double height, double width) = AppStyle.screenSize(context);
 
@@ -27,6 +29,7 @@ class DetailProduct extends StatelessWidget {
         context: context,
         configData: dataProduct,
         width: width,
+        storeHome: storeHome,
       ),
       body: SingleChildScrollView(
         controller: dataProduct.controller,

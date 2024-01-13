@@ -16,6 +16,8 @@ abstract class _ConfigData with Store {
   final controller = ScrollController();
   final pagController = PageController();
 
+  Map<Selection, List<Product>> get listProduct => dataProduct.mapListProduct;
+
   @action
   void pagControllerImage({required int index}) {
     pagController.animateToPage(index,
