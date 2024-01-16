@@ -7,4 +7,5 @@ class NamedRoutes {
       "/socialNetworkRegistration";
   static const String routeFavorite = "/favorite";
   static const String routeProductDetail = "/productDetail";
+  static const String routeCarProduct = "/carProduct";
 }

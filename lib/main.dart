@@ -1,4 +1,5 @@
 import 'package:app_fashion_shop/config/style/app_style.dart';
+import 'package:app_fashion_shop/screens/car_product.dart';
 import 'package:app_fashion_shop/screens/detail_product.dart';
 import 'package:app_fashion_shop/screens/favorite.dart';
 import 'package:app_fashion_shop/screens/home.dart';
@@ -50,6 +51,7 @@ class AppFashionShop extends StatelessWidget {
               const RegistrationUserNetwork(),
           NamedRoutes.routeProductDetail: (ctx) => const DetailProduct(),
           NamedRoutes.routeFavorite: (ctx) => const FavoriteProduct(),
+          NamedRoutes.routeCarProduct: (ctx) => const CarProduct(),
         },
       ),
     );
