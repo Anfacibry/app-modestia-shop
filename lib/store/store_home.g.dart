@@ -64,64 +64,19 @@ mixin _$StoreHome on _StoreHome, Store {
     });
   }
 
-  late final _$homeAtom = Atom(name: '_StoreHome.home', context: context);
+  late final _$indexIconNavigatorAtom =
+      Atom(name: '_StoreHome.indexIconNavigator', context: context);
 
   @override
-  bool get home {
-    _$homeAtom.reportRead();
-    return super.home;
+  int get indexIconNavigator {
+    _$indexIconNavigatorAtom.reportRead();
+    return super.indexIconNavigator;
   }
 
   @override
-  set home(bool value) {
-    _$homeAtom.reportWrite(value, super.home, () {
-      super.home = value;
-    });
-  }
-
-  late final _$favoriteAtom =
-      Atom(name: '_StoreHome.favorite', context: context);
-
-  @override
-  bool get favorite {
-    _$favoriteAtom.reportRead();
-    return super.favorite;
-  }
-
-  @override
-  set favorite(bool value) {
-    _$favoriteAtom.reportWrite(value, super.favorite, () {
-      super.favorite = value;
-    });
-  }
-
-  late final _$cartAtom = Atom(name: '_StoreHome.cart', context: context);
-
-  @override
-  bool get cart {
-    _$cartAtom.reportRead();
-    return super.cart;
-  }
-
-  @override
-  set cart(bool value) {
-    _$cartAtom.reportWrite(value, super.cart, () {
-      super.cart = value;
-    });
-  }
-
-  late final _$profileAtom = Atom(name: '_StoreHome.profile', context: context);
-
-  @override
-  bool get profile {
-    _$profileAtom.reportRead();
-    return super.profile;
-  }
-
-  @override
-  set profile(bool value) {
-    _$profileAtom.reportWrite(value, super.profile, () {
-      super.profile = value;
+  set indexIconNavigator(int value) {
+    _$indexIconNavigatorAtom.reportWrite(value, super.indexIconNavigator, () {
+      super.indexIconNavigator = value;
     });
   }
 
@@ -151,11 +106,11 @@ mixin _$StoreHome on _StoreHome, Store {
   }
 
   @override
-  void selectingIcon(IconSelection getIcon) {
+  void getIndexIconNavigator(int value) {
     final _$actionInfo = _$_StoreHomeActionController.startAction(
-        name: '_StoreHome.selectingIcon');
+        name: '_StoreHome.getIndexIconNavigator');
     try {
-      return super.selectingIcon(getIcon);
+      return super.getIndexIconNavigator(value);
     } finally {
       _$_StoreHomeActionController.endAction(_$actionInfo);
     }
@@ -167,10 +122,7 @@ mixin _$StoreHome on _StoreHome, Store {
 takeIndexPage: ${takeIndexPage},
 listImage: ${listImage},
 index: ${index},
-home: ${home},
-favorite: ${favorite},
-cart: ${cart},
-profile: ${profile},
+indexIconNavigator: ${indexIconNavigator},
 imageAnnouncement: ${imageAnnouncement}
     ''';
   }

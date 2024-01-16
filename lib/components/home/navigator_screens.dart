@@ -27,59 +27,69 @@ class NavigatorScreens extends StatelessWidget {
         destinations: [
           IconMenuFloating(
             imagem: "assets/icons/home.png",
-            cor: storeHome.home
+            cor: storeHome.indexIconNavigator == 0
                 ? AppColor.primaryColor
                 : Theme.of(context).colorScheme.onInverseSurface,
-            corImagem: storeHome.home
+            corImagem: storeHome.indexIconNavigator == 0
                 ? Theme.of(context).colorScheme.onInverseSurface
                 : AppColor.primaryColor,
             radius: 20,
             isBadge: false,
             fun: () {
-              storeHome.selectingIcon(IconSelection.home);
+              storeHome.getIndexIconNavigator(0);
+              if (storeHome.indexIconNavigator == 0) {
+                Navigator.pushReplacementNamed(context, NamedRoutes.routeHome);
+              }
             },
           ),
           IconMenuFloating(
             imagem: "assets/icons/favorito.png",
-            cor: storeHome.favorite
+            cor: storeHome.indexIconNavigator == 1
                 ? AppColor.primaryColor
                 : Theme.of(context).colorScheme.onInverseSurface,
-            corImagem: storeHome.favorite
+            corImagem: storeHome.indexIconNavigator == 1
                 ? Theme.of(context).colorScheme.onInverseSurface
                 : AppColor.primaryColor,
-            radius: 25,
+            radius: 20,
             isBadge: false,
             fun: () {
-              storeHome.selectingIcon(IconSelection.home);
-              Navigator.pushNamed(context, NamedRoutes.routeFavorite);
+              storeHome.getIndexIconNavigator(1);
+              if (storeHome.indexIconNavigator == 1) {
+                Navigator.pushReplacementNamed(
+                    context, NamedRoutes.routeFavorite);
+              }
             },
           ),
           IconMenuFloating(
             imagem: "assets/icons/carrinho.png",
-            cor: storeHome.cart
+            cor: storeHome.indexIconNavigator == 2
                 ? AppColor.primaryColor
                 : Theme.of(context).colorScheme.onInverseSurface,
-            corImagem: storeHome.cart
+            corImagem: storeHome.indexIconNavigator == 2
                 ? Theme.of(context).colorScheme.onInverseSurface
                 : AppColor.primaryColor,
-            radius: 25,
+            radius: 20,
             isBadge: dataProduct.isEmptyCart,
             fun: () {
-              storeHome.selectingIcon(IconSelection.carrinho);
+              storeHome.getIndexIconNavigator(2);
+              if (storeHome.indexIconNavigator == 2) {
+                Navigator.pushReplacementNamed(
+                    context, NamedRoutes.routeCarProduct);
+              }
             },
           ),
           IconMenuFloating(
             imagem: "assets/icons/perfil.png",
-            cor: storeHome.profile
+            cor: storeHome.indexIconNavigator == 3
                 ? AppColor.primaryColor
                 : Theme.of(context).colorScheme.onInverseSurface,
-            corImagem: storeHome.profile
+            corImagem: storeHome.indexIconNavigator == 3
                 ? Theme.of(context).colorScheme.onInverseSurface
                 : AppColor.primaryColor,
-            radius: 25,
+            radius: 20,
             isBadge: false,
             fun: () {
-              storeHome.selectingIcon(IconSelection.perfil);
+              storeHome.getIndexIconNavigator(3);
             },
           ),
         ],

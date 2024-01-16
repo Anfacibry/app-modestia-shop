@@ -67,36 +67,10 @@ abstract class _StoreHome with Store {
   }
 
   @observable
-  bool home = true;
-  @observable
-  bool favorite = false;
-  @observable
-  bool cart = false;
-  @observable
-  bool profile = false;
+  int indexIconNavigator = 0;
 
   @action
-  void selectingIcon(IconSelection getIcon) {
-    if (IconSelection.home == getIcon) {
-      home = true;
-      favorite = false;
-      cart = false;
-      profile = false;
-    } else if (IconSelection.favorito == getIcon) {
-      home = false;
-      favorite = true;
-      cart = false;
-      profile = false;
-    } else if (IconSelection.carrinho == getIcon) {
-      home = false;
-      favorite = false;
-      cart = true;
-      profile = false;
-    } else if (IconSelection.perfil == getIcon) {
-      home = false;
-      favorite = false;
-      cart = false;
-      profile = true;
-    }
+  void getIndexIconNavigator(int value) {
+    indexIconNavigator = value;
   }
 }

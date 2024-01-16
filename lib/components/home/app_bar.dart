@@ -16,8 +16,8 @@ AppBar appBarHome(double largura) {
     ),
     centerTitle: true,
     title: Text(
-      "Nome do Usuário",
-      style: AppStyle.textFormFild(),
+      "Glória Cortez",
+      style: AppStyle.textTitleSecondary(size: 24),
     ),
   );
 }
