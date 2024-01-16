@@ -94,9 +94,9 @@ abstract class _ConfigData with Store {
       ? ObservableList()
       : ObservableList.of(dataProduct.mapListProduct.values
           .reduce((value, element) => value + element)
-          .where((element) =>
-              element.name.contains(searchController) ||
-              element.name.contains(searchController.toUpperCase())));
+          .where((element) => element.name
+              .toLowerCase()
+              .contains(searchController.toLowerCase())));
 
   @computed
   ObservableList<Product> get listProductFavorite =>
