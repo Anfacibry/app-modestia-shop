@@ -74,4 +74,6 @@ class AppStyle {
   ///Seção de icones
   static const String iconDrawer = "assets/icons/drawer.png";
   static const String iconSearch = "assets/icons/lupa.png";
+  static const String iconBack = "assets/icons/voltar.png";
+  static const String iconNext = "assets/icons/next.png";
 }
