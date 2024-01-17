@@ -35,7 +35,9 @@ AppBar appBarWithIcons({
         icon: Image.asset("assets/icons/favorito.png"),
       ),
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, NamedRoutes.routeCarProduct);
+        },
         icon: Observer(
           builder: (ctx) => Badge(
             backgroundColor: Theme.of(context).colorScheme.primary,

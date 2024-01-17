@@ -37,9 +37,8 @@ class NavigatorScreens extends StatelessWidget {
             isBadge: false,
             fun: () {
               storeHome.getIndexIconNavigator(0);
-              if (storeHome.indexIconNavigator == 0) {
-                Navigator.pushReplacementNamed(context, NamedRoutes.routeHome);
-              }
+
+              Navigator.pushNamed(context, NamedRoutes.routeHome);
             },
           ),
           IconMenuFloating(
@@ -54,10 +53,8 @@ class NavigatorScreens extends StatelessWidget {
             isBadge: false,
             fun: () {
               storeHome.getIndexIconNavigator(1);
-              if (storeHome.indexIconNavigator == 1) {
-                Navigator.pushReplacementNamed(
-                    context, NamedRoutes.routeFavorite);
-              }
+
+              Navigator.pushNamed(context, NamedRoutes.routeFavorite);
             },
           ),
           IconMenuFloating(
@@ -72,10 +69,8 @@ class NavigatorScreens extends StatelessWidget {
             isBadge: dataProduct.isEmptyCart,
             fun: () {
               storeHome.getIndexIconNavigator(2);
-              if (storeHome.indexIconNavigator == 2) {
-                Navigator.pushReplacementNamed(
-                    context, NamedRoutes.routeCarProduct);
-              }
+
+              Navigator.pushNamed(context, NamedRoutes.routeCarProduct);
             },
           ),
           IconMenuFloating(

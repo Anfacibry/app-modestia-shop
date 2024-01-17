@@ -23,17 +23,16 @@ class FavoriteProduct extends StatelessWidget {
 
     final (double heigth, double width) = AppStyle.screenSize(context);
     return PopScope(
-      canPop: false,
       onPopInvoked: (value) {
         storeHome.getIndexIconNavigator(0);
-        Navigator.pushReplacementNamed(context, NamedRoutes.routeHome);
+        Navigator.canPop(context);
       },
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
                 storeHome.getIndexIconNavigator(0);
-                Navigator.pushReplacementNamed(context, NamedRoutes.routeHome);
+                Navigator.pop(context);
               },
               icon: Image.asset(
                 "assets/icons/voltar.png",
