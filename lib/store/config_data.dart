@@ -1,4 +1,5 @@
 import 'package:app_fashion_shop/store/data/storage_product.dart';
+import 'package:app_fashion_shop/store/models/product_car.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
@@ -37,10 +38,13 @@ abstract class _ConfigData with Store {
   }
 
   @computed
-  bool get isEmptyCart => cartProduct.isNotEmpty;
+  bool get isEmptyCart => listProductCar.isNotEmpty;
+
+  @computed
+  int get sizeListProductCar => listProductCar.length;
 
   @observable
-  ObservableList<Product> cartProduct = ObservableList();
+  ObservableList<ProductCar> listProductCar = ObservableList();
 
   @observable
   int productColorTack = 0;
@@ -52,23 +56,50 @@ abstract class _ConfigData with Store {
 
   @action
   void addProductCart(Product product) {
-    Product updateProduct = Product(
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      imageColor: ObservableList.of([
-        ImageColor(
-          name: product.imageColor[indexImageProduct].name,
-          color: product.imageColor[indexImageProduct].color,
-          image: product.imageColor[indexImageProduct].image,
-        )
-      ]),
-      size: ObservableList.of([""]),
-      tackSize: "",
-      valuation: product.valuation,
-      isFavorite: product.isFavorite,
-    );
-    cartProduct.add(updateProduct);
+    bool idIdentified = true;
+    int index = 0;
+    for (int i = 0; i < listProductCar.length; i++) {
+      if (listProductCar[i].product.id == product.id) {
+        idIdentified = false;
+        index = i;
+      }
+    }
+    if (idIdentified) {
+      Product updateProduct = Product(
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        imageColor: ObservableList.of([
+          ImageColor(
+            name: product.imageColor[indexImageProduct].name,
+            color: product.imageColor[indexImageProduct].color,
+            image: product.imageColor[indexImageProduct].image,
+          )
+        ]),
+        size: ObservableList.of([""]),
+        tackSize: product.tackSize,
+        valuation: product.valuation,
+        isFavorite: product.isFavorite,
+      );
+      listProductCar.add(ProductCar(product: updateProduct, amount: 1));
+    } else {
+      listProductCar[index].amount++;
+      listProductCar[index].product.tackSize = product.tackSize;
+    }
+  }
+
+  @action
+  void addProductMore(ProductCar productCar) {
+    productCar.amount++;
+  }
+
+  @action
+  void removeProduct({required ProductCar productCar, required int index}) {
+    if (productCar.amount > 1) {
+      productCar.amount--;
+    } else {
+      listProductCar.remove(productCar);
+    }
   }
 
   @observable
