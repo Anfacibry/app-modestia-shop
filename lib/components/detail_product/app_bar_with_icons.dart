@@ -44,7 +44,7 @@ AppBar appBarWithIcons({
             alignment: Alignment.lerp(
                 const Alignment(0, 5), const Alignment(1, 1.5), 2),
             isLabelVisible: configData.isEmptyCart,
-            label: Text("${configData.cartProduct.length}"),
+            label: Text("${configData.listProductCar.length}"),
             child: Image.asset("assets/icons/carrinho.png"),
           ),
         ),
