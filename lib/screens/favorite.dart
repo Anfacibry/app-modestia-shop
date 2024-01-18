@@ -53,7 +53,7 @@ class FavoriteProduct extends StatelessWidget {
                     alignment: Alignment.lerp(
                         const Alignment(0, 5), const Alignment(1, 1.5), 2),
                     isLabelVisible: dataProduct.isEmptyCart,
-                    label: Text("${dataProduct.cartProduct.length}"),
+                    label: Text("${dataProduct.listProductCar.length}"),
                     child: Image.asset("assets/icons/carrinho.png"),
                   ),
                 ),
