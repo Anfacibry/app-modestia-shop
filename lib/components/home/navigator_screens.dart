@@ -123,7 +123,8 @@ class IconMenuFloating extends StatelessWidget {
           alignment:
               Alignment.lerp(const Alignment(0, 5), const Alignment(1, 1.5), 2),
           label: isBadge
-              ? Observer(builder: (ctx) => Text("${dados.cartProduct.length}"))
+              ? Observer(
+                  builder: (ctx) => Text("${dados.listProductCar.length}"))
               : null,
           isLabelVisible: isBadge,
           child: Image.asset(
