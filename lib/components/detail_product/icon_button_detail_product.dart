@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/components/home/navigator_screens.dart';
+import 'package:app_fashion_shop/components/icon_menu_floating.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
 
 import 'package:flutter/material.dart';
@@ -25,6 +25,7 @@ class IconButtonDetailProduct extends StatelessWidget {
               "assets/icons/voltar.png",
             )),
         IconMenuFloating(
+          isLable: false,
           corImagem: dataProduct.product!.isFavorite
               ? Theme.of(context).colorScheme.onInverseSurface
               : AppColor.primaryColor,

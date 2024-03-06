@@ -1,5 +1,10 @@
 import 'package:app_fashion_shop/config/theme/app_color.dart';
+import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../../components/icon_menu_floating.dart';
 
 class AppStyle {
   ///Tamanho pego do app: largura e altura
@@ -35,6 +40,36 @@ class AppStyle {
 
   static Widget space({double top = 10}) =>
       Padding(padding: EdgeInsets.only(top: top, right: 10));
+
+  static BottomNavigationBarItem itemNavigator({
+    required BuildContext context,
+    required bool isLable,
+    String? lable,
+    required String icon,
+    required String title,
+    required int index,
+    required bool isBadge,
+  }) {
+    final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
+    return BottomNavigationBarItem(
+      label: title,
+      icon: Observer(
+        builder: (ctx) => IconMenuFloating(
+          lable: lable,
+          isLable: isLable,
+          imagem: icon,
+          cor: storeHome.indexIconNavigator == index
+              ? AppColor.primaryColor
+              : Theme.of(context).colorScheme.surface,
+          corImagem: storeHome.indexIconNavigator == index
+              ? Theme.of(context).colorScheme.surface
+              : AppColor.primaryColor,
+          radius: 20,
+          isBadge: isBadge,
+        ),
+      ),
+    );
+  }
 
   ///Estilos de textos que serão usados no app
   static TextStyle textBody({double size = 20}) => TextStyle(

@@ -3,6 +3,7 @@ import 'package:app_fashion_shop/screens/car_product.dart';
 import 'package:app_fashion_shop/screens/detail_product.dart';
 import 'package:app_fashion_shop/screens/favorite.dart';
 import 'package:app_fashion_shop/screens/home.dart';
+import 'package:app_fashion_shop/screens/marketplace.dart';
 import 'package:app_fashion_shop/screens/registration_user.dart';
 import 'package:app_fashion_shop/screens/registration_user_network.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
@@ -46,6 +47,7 @@ class AppFashionShop extends StatelessWidget {
         routes: {
           NamedRoutes.routeHome: (ctx) => const Home(),
           NamedRoutes.routeLogin: (ctx) => const Login(),
+          NamedRoutes.routMarketplace: (ctx) => const Marketplace(),
           NamedRoutes.routeLoginRegistration: (ctx) => const RegistrationUser(),
           NamedRoutes.routeSocialNetworkRegistration: (ctx) =>
               const RegistrationUserNetwork(),

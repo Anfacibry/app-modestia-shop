@@ -1,5 +1,7 @@
 import 'package:app_fashion_shop/components/selection_size_and_color_product.dart';
+import 'package:app_fashion_shop/config/routes/named_routes.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
+import 'package:app_fashion_shop/store/store_home.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -16,6 +18,7 @@ class InformationProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     final ConfigData dataProduct =
         Provider.of<ConfigData>(context, listen: false);
+    final StoreHome storeHome = Provider.of(context, listen: false);
     final (double _, double width) = AppStyle.screenSize(context);
     return Container(
       padding: EdgeInsets.only(
@@ -103,7 +106,11 @@ class InformationProduct extends StatelessWidget {
                         elevation: 5,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: () {},
+                    onPressed: () {
+                      storeHome.setIsHome(true);
+                      dataProduct.addProductCart(dataProduct.product!);
+                      Navigator.pushNamed(context, NamedRoutes.routeCarProduct);
+                    },
                     child: const Text("Comprar agora"),
                   ),
                   Column(

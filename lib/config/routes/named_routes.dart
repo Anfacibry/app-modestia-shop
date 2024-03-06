@@ -2,6 +2,8 @@ class NamedRoutes {
   static const String routeLogin = "/login";
   static const String routeHome = "/home";
   //Tela de login
+  static const String routMarketplace = "/marketplace";
+
   static const String routeLoginRegistration = "/loginRegistration";
   static const String routeSocialNetworkRegistration =
       "/socialNetworkRegistration";

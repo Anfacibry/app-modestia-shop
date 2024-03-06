@@ -11,7 +11,7 @@ enum Account { facebook, google, x, vazio }
 
 abstract class _StoreLogin with Store {
   @observable
-  bool isLogin = true;
+  bool isLogin = false;
 
   @action
   void login() {

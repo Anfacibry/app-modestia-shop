@@ -37,6 +37,7 @@ AppBar appBarWithIcons({
       IconButton(
         onPressed: () {
           Navigator.pushNamed(context, NamedRoutes.routeCarProduct);
+          storeHome.setIsHome(true);
         },
         icon: Observer(
           builder: (ctx) => Badge(

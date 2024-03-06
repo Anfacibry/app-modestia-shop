@@ -16,6 +16,13 @@ mixin _$ConfigData on _ConfigData, Store {
       (_$isEmptyCartComputed ??= Computed<bool>(() => super.isEmptyCart,
               name: '_ConfigData.isEmptyCart'))
           .value;
+  Computed<int>? _$sizeListProductCarComputed;
+
+  @override
+  int get sizeListProductCar => (_$sizeListProductCarComputed ??= Computed<int>(
+          () => super.sizeListProductCar,
+          name: '_ConfigData.sizeListProductCar'))
+      .value;
   Computed<int>? _$sizeListComputed;
 
   @override
@@ -68,19 +75,19 @@ mixin _$ConfigData on _ConfigData, Store {
     });
   }
 
-  late final _$cartProductAtom =
-      Atom(name: '_ConfigData.cartProduct', context: context);
+  late final _$listProductCarAtom =
+      Atom(name: '_ConfigData.listProductCar', context: context);
 
   @override
-  ObservableList<Product> get cartProduct {
-    _$cartProductAtom.reportRead();
-    return super.cartProduct;
+  ObservableList<ProductCar> get listProductCar {
+    _$listProductCarAtom.reportRead();
+    return super.listProductCar;
   }
 
   @override
-  set cartProduct(ObservableList<Product> value) {
-    _$cartProductAtom.reportWrite(value, super.cartProduct, () {
-      super.cartProduct = value;
+  set listProductCar(ObservableList<ProductCar> value) {
+    _$listProductCarAtom.reportWrite(value, super.listProductCar, () {
+      super.listProductCar = value;
     });
   }
 
@@ -228,6 +235,28 @@ mixin _$ConfigData on _ConfigData, Store {
   }
 
   @override
+  void addProductMore(ProductCar productCar) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.addProductMore');
+    try {
+      return super.addProductMore(productCar);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeProduct({required ProductCar productCar, required int index}) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.removeProduct');
+    try {
+      return super.removeProduct(productCar: productCar, index: index);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void searchControllerTack(String controller) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
         name: '_ConfigData.searchControllerTack');
@@ -297,7 +326,7 @@ mixin _$ConfigData on _ConfigData, Store {
   String toString() {
     return '''
 initScrool: ${initScrool},
-cartProduct: ${cartProduct},
+listProductCar: ${listProductCar},
 productColorTack: ${productColorTack},
 selectionTake: ${selectionTake},
 searchController: ${searchController},
@@ -305,6 +334,7 @@ product: ${product},
 indexImageProduct: ${indexImageProduct},
 positionTake: ${positionTake},
 isEmptyCart: ${isEmptyCart},
+sizeListProductCar: ${sizeListProductCar},
 sizeList: ${sizeList},
 listProductSelection: ${listProductSelection},
 searchList: ${searchList},

@@ -10,8 +10,6 @@ class StoreHome = _StoreHome with _$StoreHome;
 
 enum Selection { vestidos, blusas, saias, bolsas }
 
-enum IconSelection { home, favorito, carrinho, perfil }
-
 abstract class _StoreHome with Store {
   ScrollController controllerPage = ScrollController();
 
@@ -72,5 +70,13 @@ abstract class _StoreHome with Store {
   @action
   void getIndexIconNavigator(int value) {
     indexIconNavigator = value;
+  }
+
+  @observable
+  bool isHome = false;
+
+  @action
+  void setIsHome(bool isHome) {
+    this.isHome = isHome;
   }
 }
