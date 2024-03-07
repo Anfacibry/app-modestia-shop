@@ -6,7 +6,6 @@ const shimmerGradient = LinearGradient(
     AppColor.primaryContainerColor,
     AppColor.secundaryColor,
     AppColor.primaryContainerColor,
-    AppColor.primaryContainerColor,
   ],
   stops: [0.1, 0.3, 0.4],
   begin: Alignment.centerRight,
