@@ -1,11 +1,11 @@
-import 'package:app_fashion_shop/components/icon_menu_floating.dart';
+import 'package:app_fashion_shop/widgets/icon_menu_floating.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../config/theme/app_color.dart';
+import '../../../config/theme/app_color.dart';
 
 class IconButtonDetailProduct extends StatelessWidget {
   const IconButtonDetailProduct({super.key});

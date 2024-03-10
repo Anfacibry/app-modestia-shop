@@ -59,6 +59,22 @@ mixin _$ConfigData on _ConfigData, Store {
               name: '_ConfigData.bestSellers'))
       .value;
 
+  late final _$isShimmerAtom =
+      Atom(name: '_ConfigData.isShimmer', context: context);
+
+  @override
+  bool get isShimmer {
+    _$isShimmerAtom.reportRead();
+    return super.isShimmer;
+  }
+
+  @override
+  set isShimmer(bool value) {
+    _$isShimmerAtom.reportWrite(value, super.isShimmer, () {
+      super.isShimmer = value;
+    });
+  }
+
   late final _$initScroolAtom =
       Atom(name: '_ConfigData.initScrool', context: context);
 
@@ -189,6 +205,17 @@ mixin _$ConfigData on _ConfigData, Store {
 
   late final _$_ConfigDataActionController =
       ActionController(name: '_ConfigData', context: context);
+
+  @override
+  void isShimmerMod() {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.isShimmerMod');
+    try {
+      return super.isShimmerMod();
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void pagControllerImage({required int index}) {
@@ -325,6 +352,7 @@ mixin _$ConfigData on _ConfigData, Store {
   @override
   String toString() {
     return '''
+isShimmer: ${isShimmer},
 initScrool: ${initScrool},
 listProductCar: ${listProductCar},
 productColorTack: ${productColorTack},

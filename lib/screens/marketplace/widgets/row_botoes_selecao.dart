@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../config/style/app_style.dart';
+import '../../../config/style/app_style.dart';
 
 import 'package:app_fashion_shop/config/theme/app_color.dart';
 

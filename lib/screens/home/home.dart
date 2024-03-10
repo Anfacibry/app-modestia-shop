@@ -1,7 +1,7 @@
 import 'package:app_fashion_shop/config/style/app_style.dart';
-import 'package:app_fashion_shop/screens/car_product.dart';
-import 'package:app_fashion_shop/screens/favorite.dart';
-import 'package:app_fashion_shop/screens/marketplace.dart';
+import 'package:app_fashion_shop/screens/car_product/car_product.dart';
+import 'package:app_fashion_shop/screens/favorite/favorite.dart';
+import 'package:app_fashion_shop/screens/marketplace/marketplace.dart';
 import 'package:app_fashion_shop/screens/perfil.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
 

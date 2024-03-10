@@ -1,8 +1,8 @@
 import 'package:app_fashion_shop/store/models/store_product.dart';
 import 'package:flutter/material.dart';
 
-import '../../config/style/app_style.dart';
-import '../../config/theme/app_color.dart';
+import '../../../config/style/app_style.dart';
+import '../../../config/theme/app_color.dart';
 
 class DiscountCard extends StatelessWidget {
   final double height;

@@ -1,6 +1,6 @@
-import 'package:app_fashion_shop/components/box_text_form_field.dart';
-import 'package:app_fashion_shop/components/card_product/card_product_car.dart';
-import 'package:app_fashion_shop/components/card_product/information_value_car_product.dart';
+import 'package:app_fashion_shop/widgets/box_text_form_field.dart';
+import 'package:app_fashion_shop/screens/car_product/widgets/card_product_car.dart';
+import 'package:app_fashion_shop/screens/car_product/widgets/information_value_car_product.dart';
 import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:app_fashion_shop/config/theme/app_color.dart';
 
@@ -22,6 +22,7 @@ class CarProduct extends StatelessWidget {
     return Observer(
       builder: (ctx) => Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           leading: storeHome.isHome
               ? IconButton(

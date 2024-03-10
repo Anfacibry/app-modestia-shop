@@ -1,9 +1,9 @@
 import 'package:app_fashion_shop/config/style/app_style.dart';
-import 'package:app_fashion_shop/screens/car_product.dart';
-import 'package:app_fashion_shop/screens/detail_product.dart';
-import 'package:app_fashion_shop/screens/favorite.dart';
-import 'package:app_fashion_shop/screens/home.dart';
-import 'package:app_fashion_shop/screens/marketplace.dart';
+import 'package:app_fashion_shop/screens/car_product/car_product.dart';
+import 'package:app_fashion_shop/screens/datail_product/detail_product.dart';
+import 'package:app_fashion_shop/screens/favorite/favorite.dart';
+import 'package:app_fashion_shop/screens/home/home.dart';
+import 'package:app_fashion_shop/screens/marketplace/marketplace.dart';
 import 'package:app_fashion_shop/screens/registration_user.dart';
 import 'package:app_fashion_shop/screens/registration_user_network.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
@@ -14,7 +14,7 @@ import 'package:app_fashion_shop/config/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'screens/login.dart';
+import 'screens/login/login.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(

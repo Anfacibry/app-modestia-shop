@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../components/icon_menu_floating.dart';
+import '../../widgets/icon_menu_floating.dart';
 
 class AppStyle {
   ///Tamanho pego do app: largura e altura

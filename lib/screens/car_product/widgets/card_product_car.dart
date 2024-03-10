@@ -2,8 +2,8 @@ import 'package:app_fashion_shop/store/config_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../../config/style/app_style.dart';
-import '../../config/theme/app_color.dart';
+import '../../../config/style/app_style.dart';
+import '../../../config/theme/app_color.dart';
 import 'bottom_add_remove_product.dart';
 
 class CardProductCar extends StatelessWidget {

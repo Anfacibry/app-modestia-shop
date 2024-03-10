@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../config/style/app_style.dart';
-import '../../config/theme/app_color.dart';
+import '../../../config/style/app_style.dart';
+import '../../../config/theme/app_color.dart';
 
 class OptionalSelection extends StatelessWidget {
   final double width;

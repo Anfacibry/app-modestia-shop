@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/components/login/components/botao_escolha.dart';
+import 'package:app_fashion_shop/screens/login/widgets/botao_escolha.dart';
 import 'package:flutter/material.dart';
 
 class ListaLoginRedeEscolhida extends StatelessWidget {

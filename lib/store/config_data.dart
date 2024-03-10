@@ -17,6 +17,15 @@ abstract class _ConfigData with Store {
   final controller = ScrollController();
   final pagController = PageController();
 
+  @observable
+  bool isShimmer = true;
+
+  @action
+  void isShimmerMod() {
+    Future.delayed(const Duration(seconds: 3))
+        .then((value) => isShimmer = !isShimmer);
+  }
+
   Map<Selection, List<Product>> get listProduct => dataProduct.mapListProduct;
 
   @action

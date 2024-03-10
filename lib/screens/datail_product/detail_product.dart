@@ -1,7 +1,7 @@
-import 'package:app_fashion_shop/components/detail_product/app_bar_with_icons.dart';
-import 'package:app_fashion_shop/components/detail_product/information_product.dart';
+import 'package:app_fashion_shop/screens/datail_product/widgets/app_bar_with_icons.dart';
+import 'package:app_fashion_shop/screens/datail_product/widgets/information_product.dart';
 
-import 'package:app_fashion_shop/components/icon_menu_floating.dart';
+import 'package:app_fashion_shop/widgets/icon_menu_floating.dart';
 
 import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
@@ -10,8 +10,8 @@ import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import '../components/marketplace/grid_product.dart';
-import '../config/theme/app_color.dart';
+import '../marketplace/widgets/grid_product.dart';
+import '../../config/theme/app_color.dart';
 
 class DetailProduct extends StatelessWidget {
   const DetailProduct({super.key});

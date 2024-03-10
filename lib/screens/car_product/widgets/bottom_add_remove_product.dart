@@ -1,7 +1,7 @@
 import 'package:app_fashion_shop/store/config_data.dart';
 import 'package:flutter/material.dart';
 
-import '../../config/style/app_style.dart';
+import '../../../config/style/app_style.dart';
 
 class BottomAddRemoveProduct extends StatelessWidget {
   final double height;

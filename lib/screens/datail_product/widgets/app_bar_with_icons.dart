@@ -3,9 +3,9 @@ import "package:app_fashion_shop/store/config_data.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 
-import "../../config/style/app_style.dart";
-import "../../config/theme/app_color.dart";
-import "../../store/store_home.dart";
+import "../../../config/style/app_style.dart";
+import "../../../config/theme/app_color.dart";
+import "../../../store/store_home.dart";
 
 AppBar appBarWithIcons({
   required BuildContext context,

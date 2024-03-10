@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/components/selection_size_and_color_product.dart';
+import 'package:app_fashion_shop/widgets/selection_size_and_color_product.dart';
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
 
 import 'package:app_fashion_shop/config/style/app_style.dart';
@@ -21,6 +21,7 @@ class FavoriteProduct extends StatelessWidget {
     final (double heigth, double width) = AppStyle.screenSize(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Favoritos",
           style: AppStyle.textTitleSecondary(size: 24),

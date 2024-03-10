@@ -80,6 +80,21 @@ mixin _$StoreHome on _StoreHome, Store {
     });
   }
 
+  late final _$isHomeAtom = Atom(name: '_StoreHome.isHome', context: context);
+
+  @override
+  bool get isHome {
+    _$isHomeAtom.reportRead();
+    return super.isHome;
+  }
+
+  @override
+  set isHome(bool value) {
+    _$isHomeAtom.reportWrite(value, super.isHome, () {
+      super.isHome = value;
+    });
+  }
+
   late final _$_StoreHomeActionController =
       ActionController(name: '_StoreHome', context: context);
 
@@ -117,12 +132,24 @@ mixin _$StoreHome on _StoreHome, Store {
   }
 
   @override
+  void setIsHome(bool isHome) {
+    final _$actionInfo =
+        _$_StoreHomeActionController.startAction(name: '_StoreHome.setIsHome');
+    try {
+      return super.setIsHome(isHome);
+    } finally {
+      _$_StoreHomeActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 takeIndexPage: ${takeIndexPage},
 listImage: ${listImage},
 index: ${index},
 indexIconNavigator: ${indexIconNavigator},
+isHome: ${isHome},
 imageAnnouncement: ${imageAnnouncement}
     ''';
   }

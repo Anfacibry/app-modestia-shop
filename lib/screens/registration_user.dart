@@ -1,5 +1,5 @@
-import 'package:app_fashion_shop/components/login/components/imagem_logo.dart';
-import 'package:app_fashion_shop/components/login/components/list_network_button.dart';
+import 'package:app_fashion_shop/screens/login/widgets/imagem_logo.dart';
+import 'package:app_fashion_shop/screens/login/widgets/list_network_button.dart';
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
 import 'package:app_fashion_shop/config/theme/app_color.dart';
 
@@ -9,7 +9,7 @@ import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../components/box_text_form_field.dart';
+import '../widgets/box_text_form_field.dart';
 
 class RegistrationUser extends StatelessWidget {
   const RegistrationUser({super.key});

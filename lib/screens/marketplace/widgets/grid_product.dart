@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../icon_menu_floating.dart';
-import '../../config/style/app_style.dart';
-import '../../config/theme/app_color.dart';
+import '../../../widgets/icon_menu_floating.dart';
+import '../../../config/style/app_style.dart';
+import '../../../config/theme/app_color.dart';
 
 class GridProduct extends StatelessWidget {
   final bool isScreenHome;
