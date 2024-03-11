@@ -1,4 +1,5 @@
-import 'package:app_fashion_shop/widgets/selection_size_and_color_product.dart';
+import 'package:app_fashion_shop/screens/favorite/widgets/information_product_favorit.dart';
+
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
 
 import 'package:app_fashion_shop/config/style/app_style.dart';
@@ -15,7 +16,7 @@ class FavoriteProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ConfigData dataProduct =
+    final ConfigData configData =
         Provider.of<ConfigData>(context, listen: false);
 
     final (double heigth, double width) = AppStyle.screenSize(context);
@@ -34,7 +35,7 @@ class FavoriteProduct extends StatelessWidget {
           builder: (ctx) => SizedBox(
             height: heigth,
             width: width,
-            child: dataProduct.listProductFavorite.isEmpty
+            child: configData.listProductFavorite.isEmpty
                 ? Center(
                     child: Text(
                       "Você não possui produtos favoritos",
@@ -56,7 +57,7 @@ class FavoriteProduct extends StatelessWidget {
                         ],
                       ),
                       childrenDelegate: SliverChildBuilderDelegate(
-                        childCount: dataProduct.listProductFavorite.length,
+                        childCount: configData.listProductFavorite.length,
                         (context, index) => Card(
                           surfaceTintColor: AppColor.onPrimaryContainerColor,
                           elevation: 5,
@@ -70,8 +71,8 @@ class FavoriteProduct extends StatelessWidget {
                                     onTap: () {
                                       Navigator.pushNamed(context,
                                           NamedRoutes.routeProductDetail);
-                                      dataProduct.getProduct(
-                                          product: dataProduct
+                                      configData.getProduct(
+                                          product: configData
                                               .listProductFavorite[index]);
                                     },
                                     child: Container(
@@ -82,7 +83,7 @@ class FavoriteProduct extends StatelessWidget {
                                               BorderRadius.circular(10),
                                           image: DecorationImage(
                                             image: AssetImage(
-                                              dataProduct
+                                              configData
                                                   .listProductFavorite[index]
                                                   .imageColor[0]
                                                   .image,
@@ -100,133 +101,11 @@ class FavoriteProduct extends StatelessWidget {
                                     child: SizedBox(
                                       height: constraints.maxHeight * .9,
                                       width: constraints.maxWidth * .4,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            dataProduct
-                                                        .listProductFavorite[
-                                                            index]
-                                                        .name
-                                                        .length <
-                                                    8
-                                                ? dataProduct
-                                                    .listProductFavorite[index]
-                                                    .name
-                                                : "${dataProduct.listProductFavorite[index].name.characters.take(8)}...",
-                                            style: AppStyle.textTitlePrimary(
-                                                size: width * .03),
-                                          ),
-                                          Text(
-                                            dataProduct
-                                                .listProductFavorite[index]
-                                                .price
-                                                .toString(),
-                                            style: AppStyle.textTitleSecondary(
-                                                size: width * .04),
-                                          ),
-                                          SelectionColorProduct(
-                                            width: width,
-                                            fontSize: constraints.maxWidth *
-                                                        .4 >
-                                                    width * .3
-                                                ? constraints.maxWidth * .035
-                                                : constraints.maxWidth * .07,
-                                            sizeCircular:
-                                                constraints.maxWidth * .4 >
-                                                        width * .3
-                                                    ? constraints.maxWidth * .05
-                                                    : constraints.maxWidth * .1,
-                                            widthBorder: 02,
-                                            product: dataProduct
-                                                .listProductFavorite[index],
-                                          ),
-                                          SelectionProductSize(
-                                            heightButton: constraints.maxWidth *
-                                                        .4 >
-                                                    width * .3
-                                                ? constraints.maxWidth * .04
-                                                : constraints.maxWidth * .08,
-                                            widthButton: constraints.maxWidth *
-                                                        .4 >
-                                                    width * .3
-                                                ? constraints.maxWidth * .04
-                                                : constraints.maxWidth * .08,
-                                            fontSize: constraints.maxWidth *
-                                                        .4 >
-                                                    width * .3
-                                                ? constraints.maxWidth * .035
-                                                : constraints.maxWidth * .06,
-                                            radiusSize:
-                                                constraints.maxWidth * .01,
-                                            sizePadding:
-                                                constraints.maxWidth * .01,
-                                            product: dataProduct
-                                                .listProductFavorite[index],
-                                          ),
-                                          Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: constraints.maxHeight *
-                                                      .04)),
-                                          SizedBox(
-                                            height: width * .04,
-                                            width: width * .2,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                dataProduct.addProductCart(
-                                                    dataProduct
-                                                            .listProductFavorite[
-                                                        index]);
-                                              },
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor:
-                                                    AppColor.primaryColor,
-                                                foregroundColor:
-                                                    AppColor.onPrimaryColor,
-                                                padding:
-                                                    const EdgeInsets.all(0),
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            width * .01)),
-                                              ),
-                                              child: Text(
-                                                "Add Carrinho",
-                                                style: TextStyle(
-                                                  fontSize: width * .025,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: constraints.maxHeight *
-                                                      .03)),
-                                          InkWell(
-                                            onTap: () {
-                                              dataProduct.getProduct(
-                                                  product: dataProduct
-                                                          .listProductFavorite[
-                                                      index]);
-                                              dataProduct.addFavorite(
-                                                  dataProduct
-                                                      .listProductFavorite[
-                                                          index]
-                                                      .id);
-                                            },
-                                            child: SizedBox(
-                                              width: width * .2,
-                                              child: Text(
-                                                "Excluir",
-                                                style:
-                                                    AppStyle.textTitleSecondary(
-                                                        size: width * .025),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      child: InformationProductFavorit(
+                                        configData: configData,
+                                        index: index,
+                                        width: width,
+                                        constraints: constraints,
                                       ),
                                     ),
                                   ),
