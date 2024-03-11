@@ -34,46 +34,54 @@ class _BoxTextFormeField extends State<BoxTextFormeField> {
     // final ConfigData configData =
     //     Provider.of<ConfigData>(context, listen: false);
     final (_, width) = AppStyle.screenSize(context);
-    return SizedBox(
-      height: widget.height,
-      width: width,
-      child: TextFormField(
-        onChanged: widget.fun,
-        controller: widget.controller,
-        cursorColor: const Color(0xFF696969),
-        obscureText: widget.isSenha & !seePassword,
-        decoration: InputDecoration(
-          suffixIcon: widget.isSenha
-              ? InkWell(
-                  onTap: () {
-                    setState(() {
-                      seePassword = !seePassword;
-                    });
-                  },
-                  child: seePassword
-                      ? const Icon(
-                          Icons.remove_red_eye_rounded,
-                          color: Color(0xFF696969),
-                        )
-                      : const Icon(
-                          Icons.remove_red_eye_outlined,
-                          color: Color(0xFF696969),
-                        ),
-                )
-              : null,
-          labelText: widget.text,
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          hintText: widget.hintText,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            borderSide: BorderSide(
-              color: widget.borderColor,
+    return Material(
+      clipBehavior: Clip.none,
+      elevation: 5,
+      shadowColor: Colors.black87,
+      borderRadius: BorderRadius.circular(20),
+      child: SizedBox(
+        height: widget.height,
+        width: width,
+        child: TextFormField(
+          onChanged: widget.fun,
+          controller: widget.controller,
+          cursorColor: const Color(0xFF696969),
+          obscureText: widget.isSenha & !seePassword,
+          decoration: InputDecoration(
+            fillColor: AppColor.onPrimaryColor,
+            filled: true,
+            suffixIcon: widget.isSenha
+                ? InkWell(
+                    onTap: () {
+                      setState(() {
+                        seePassword = !seePassword;
+                      });
+                    },
+                    child: seePassword
+                        ? const Icon(
+                            Icons.remove_red_eye_rounded,
+                            color: Color(0xFF696969),
+                          )
+                        : const Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: Color(0xFF696969),
+                          ),
+                  )
+                : null,
+            labelText: widget.text,
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            hintText: widget.hintText,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              borderSide: BorderSide(
+                color: widget.borderColor,
+              ),
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            borderSide: BorderSide(
-              color: widget.borderColor,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              borderSide: BorderSide(
+                color: widget.borderColor,
+              ),
             ),
           ),
         ),
