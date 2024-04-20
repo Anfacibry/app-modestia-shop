@@ -26,7 +26,7 @@ abstract class _Product with Store {
   String tackSize;
 
   @observable
-  double valuation;
+  ObservableList<int> valuation;
 
   @observable
   bool isFavorite;

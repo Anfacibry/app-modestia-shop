@@ -3,16 +3,56 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../config/style/app_style.dart';
+import '../../model/cupom.dart';
 import '../models/image_color.dart';
+import '../models/product_car.dart';
 import '../models/store_product.dart';
 
-part 'storage_product.g.dart';
+part 'data_product.g.dart';
 
 // ignore: library_private_types_in_public_api
-class StorageProduct = _StorageProduct with _$StorageProduct;
+class DataProduct = _DataProduct with _$DataProduct;
 
-abstract class _StorageProduct with Store {
+abstract class _DataProduct with Store {
+  ///Lista de cupons
+  List<Cupom> listCupom = [
+    Cupom(cupom: "CINT2", discount: 2),
+    Cupom(cupom: "CINT5", discount: 5),
+    Cupom(cupom: "CINT10", discount: 10),
+    Cupom(cupom: "CINT15", discount: 15),
+    Cupom(cupom: "CINT20", discount: 20),
+    Cupom(cupom: "CINT25", discount: 25),
+    Cupom(cupom: "CINT30", discount: 30),
+  ];
+
+  /// Lista de imagens da propaganda
+  @observable
+  ObservableList<Map<String, String>> listImage = ObservableList.of([
+    {
+      "url": "",
+      "image": AppStyle.imageAnnouncement001,
+    },
+    {
+      "url": "",
+      "image": AppStyle.imageAnnouncement002,
+    },
+    {
+      "url": "https://guiadoiphone.com.br/",
+      "image": AppStyle.imageAnnouncement003,
+    },
+    {
+      "url": "",
+      "image": AppStyle.imageAnnouncement004,
+    }
+  ]);
+
+  @observable
+  ObservableList<ProductCar> listProductCar = ObservableList();
+
   static Uuid uuid = const Uuid();
+
+  /// Dados de produtos
   @observable
   Map<Selection, List<Product>> mapListProduct =
       ObservableMap<Selection, List<Product>>.of(
@@ -29,7 +69,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/bluende.jpg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.5,
+          valuation: ObservableList.of([4, 5, 5, 5, 4, 4, 5, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -44,7 +84,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/casualMed.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.8,
+          valuation: ObservableList.of([4, 5, 5, 5, 5, 5, 5, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -59,7 +99,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/elegante.png")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.2,
+          valuation: ObservableList.of([4, 5, 5, 3, 4, 4, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -78,7 +118,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/lop002.jpeg"),
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 5, 5, 6, 4, 5, 5, 6]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -93,7 +133,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/vestido02.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 4, 4, 5, 5, 3, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -108,7 +148,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/vestido05.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([4, 5, 5, 5, 4, 5, 4, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -123,7 +163,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/vestido06.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([4, 4, 4, 5, 5, 4, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -138,7 +178,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/barbie.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 5,
+          valuation: ObservableList.of([5, 5, 5, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -153,7 +193,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/meigo.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 5,
+          valuation: ObservableList.of([5, 5, 4, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -168,7 +208,9 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/vestidos/vestido_midi.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 5,
+          valuation: ObservableList.of([
+            5,
+          ]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -185,7 +227,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/blusas/blind_elegante.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.5,
+          valuation: ObservableList.of([4, 5, 5, 5, 4, 4, 5, 3]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -200,7 +242,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/blusas/blusa_pink.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.8,
+          valuation: ObservableList.of([4, 5, 5, 5, 5, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -215,7 +257,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/blusas/dealing.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.2,
+          valuation: ObservableList.of([4, 5, 5, 4, 4, 3, 4, 3]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -230,7 +272,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/blusas/elegante.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 4, 4, 5, 5, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -245,7 +287,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/blusas/karmani.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 4, 5, 5, 3, 4, 5, 1, 5, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -260,7 +302,9 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/blusas/style_flash.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([
+            4,
+          ]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -277,7 +321,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/camp.png"),
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.5,
+          valuation: ObservableList.of([4, 5, 5, 6, 3, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -292,7 +336,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/elegant.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.8,
+          valuation: ObservableList.of([4, 4, 4, 5, 5, 3, 3]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -307,7 +351,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/saia_bluend.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.2,
+          valuation: ObservableList.of([4, 4, 4, 5, 5, 3]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -322,7 +366,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/saia_golme.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 3, 4, 5, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -337,7 +381,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/saia_midi.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 5, 5, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -352,7 +396,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/saia_social.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([4, 5, 5, 5, 3, 4, 3, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -367,7 +411,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/saias/saind.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([4, 5, 5, 5, 4, 5, 3, 5, 5, 4, 5, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -384,7 +428,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/bag_bragmybag.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.5,
+          valuation: ObservableList.of([4, 5, 4, 3, 5, 5, 5, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -399,7 +443,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/bag.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.8,
+          valuation: ObservableList.of([4, 4, 5, 5]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -414,7 +458,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/bolsa_slip.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.2,
+          valuation: ObservableList.of([4, 4, 6, 7]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -433,7 +477,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/borboleta02.jpeg"),
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 4, 5, 2]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -448,7 +492,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/crint.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4.7,
+          valuation: ObservableList.of([4, 5, 5, 4]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -471,7 +515,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/neve03.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([4, 4, 2]),
           isFavorite: false,
           tackSize: "",
         ),
@@ -486,7 +530,7 @@ abstract class _StorageProduct with Store {
                 image: "assets/image/bolsas/slot.jpeg")
           ]),
           size: ObservableList.of(["P", "M", "G"]),
-          valuation: 4,
+          valuation: ObservableList.of([4, 5, 2, 3]),
           isFavorite: false,
           tackSize: "",
         ),

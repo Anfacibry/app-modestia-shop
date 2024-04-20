@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../widgets/icon_menu_floating.dart';
+import '../../screens/widgets/icon_menu_floating.dart';
 
 class AppStyle {
   ///Tamanho pego do app: largura e altura
@@ -29,12 +29,13 @@ class AppStyle {
 
   static TextTheme textTheme() => const TextTheme(
       headlineLarge: TextStyle(
-        color: AppColor.textHeadline5Color,
+        fontSize: 22,
+        color: AppColor.textHeadline4Color,
         fontWeight: FontWeight.bold,
       ),
       titleLarge: TextStyle(
-        color: AppColor.textHeadline4Color,
-        fontSize: 20,
+        color: AppColor.textFormFildColor,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ));
 
@@ -78,7 +79,7 @@ class AppStyle {
         fontWeight: FontWeight.bold,
       );
   static TextStyle textTitlePrimary({double size = 20}) => TextStyle(
-        color: AppColor.textHeadline5Color,
+        color: AppColor.textHeadline4Color,
         fontSize: size,
         fontWeight: FontWeight.bold,
       );

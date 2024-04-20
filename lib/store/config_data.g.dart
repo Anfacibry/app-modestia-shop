@@ -9,6 +9,22 @@ part of 'config_data.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ConfigData on _ConfigData, Store {
+  Computed<ObservableMap<Selection, List<Product>>>? _$listProductComputed;
+
+  @override
+  ObservableMap<Selection, List<Product>> get listProduct =>
+      (_$listProductComputed ??=
+              Computed<ObservableMap<Selection, List<Product>>>(
+                  () => super.listProduct,
+                  name: '_ConfigData.listProduct'))
+          .value;
+  Computed<ObservableList<ProductCar>>? _$listProductCarComputed;
+
+  @override
+  ObservableList<ProductCar> get listProductCar => (_$listProductCarComputed ??=
+          Computed<ObservableList<ProductCar>>(() => super.listProductCar,
+              name: '_ConfigData.listProductCar'))
+      .value;
   Computed<bool>? _$isEmptyCartComputed;
 
   @override
@@ -23,25 +39,33 @@ mixin _$ConfigData on _ConfigData, Store {
           () => super.sizeListProductCar,
           name: '_ConfigData.sizeListProductCar'))
       .value;
+  Computed<double>? _$valueTotalProductCarComputed;
+
+  @override
+  double get valueTotalProductCar => (_$valueTotalProductCarComputed ??=
+          Computed<double>(() => super.valueTotalProductCar,
+              name: '_ConfigData.valueTotalProductCar'))
+      .value;
+  Computed<double>? _$assessmentAverageComputed;
+
+  @override
+  double get assessmentAverage => (_$assessmentAverageComputed ??=
+          Computed<double>(() => super.assessmentAverage,
+              name: '_ConfigData.assessmentAverage'))
+      .value;
+  Computed<ObservableList<Product>>? _$listProductSelectionComputed;
+
+  @override
+  ObservableList<Product> get listProductSelection =>
+      (_$listProductSelectionComputed ??= Computed<ObservableList<Product>>(
+              () => super.listProductSelection,
+              name: '_ConfigData.listProductSelection'))
+          .value;
   Computed<int>? _$sizeListComputed;
 
   @override
   int get sizeList => (_$sizeListComputed ??=
           Computed<int>(() => super.sizeList, name: '_ConfigData.sizeList'))
-      .value;
-  Computed<List<Product>>? _$listProductSelectionComputed;
-
-  @override
-  List<Product> get listProductSelection => (_$listProductSelectionComputed ??=
-          Computed<List<Product>>(() => super.listProductSelection,
-              name: '_ConfigData.listProductSelection'))
-      .value;
-  Computed<ObservableList<Product>>? _$searchListComputed;
-
-  @override
-  ObservableList<Product> get searchList => (_$searchListComputed ??=
-          Computed<ObservableList<Product>>(() => super.searchList,
-              name: '_ConfigData.searchList'))
       .value;
   Computed<ObservableList<Product>>? _$listProductFavoriteComputed;
 
@@ -59,51 +83,35 @@ mixin _$ConfigData on _ConfigData, Store {
               name: '_ConfigData.bestSellers'))
       .value;
 
-  late final _$isShimmerAtom =
-      Atom(name: '_ConfigData.isShimmer', context: context);
+  late final _$productAtom =
+      Atom(name: '_ConfigData.product', context: context);
 
   @override
-  bool get isShimmer {
-    _$isShimmerAtom.reportRead();
-    return super.isShimmer;
+  Product? get product {
+    _$productAtom.reportRead();
+    return super.product;
   }
 
   @override
-  set isShimmer(bool value) {
-    _$isShimmerAtom.reportWrite(value, super.isShimmer, () {
-      super.isShimmer = value;
+  set product(Product? value) {
+    _$productAtom.reportWrite(value, super.product, () {
+      super.product = value;
     });
   }
 
-  late final _$initScroolAtom =
-      Atom(name: '_ConfigData.initScrool', context: context);
+  late final _$indexImageProductAtom =
+      Atom(name: '_ConfigData.indexImageProduct', context: context);
 
   @override
-  double get initScrool {
-    _$initScroolAtom.reportRead();
-    return super.initScrool;
+  int get indexImageProduct {
+    _$indexImageProductAtom.reportRead();
+    return super.indexImageProduct;
   }
 
   @override
-  set initScrool(double value) {
-    _$initScroolAtom.reportWrite(value, super.initScrool, () {
-      super.initScrool = value;
-    });
-  }
-
-  late final _$listProductCarAtom =
-      Atom(name: '_ConfigData.listProductCar', context: context);
-
-  @override
-  ObservableList<ProductCar> get listProductCar {
-    _$listProductCarAtom.reportRead();
-    return super.listProductCar;
-  }
-
-  @override
-  set listProductCar(ObservableList<ProductCar> value) {
-    _$listProductCarAtom.reportWrite(value, super.listProductCar, () {
-      super.listProductCar = value;
+  set indexImageProduct(int value) {
+    _$indexImageProductAtom.reportWrite(value, super.indexImageProduct, () {
+      super.indexImageProduct = value;
     });
   }
 
@@ -120,6 +128,104 @@ mixin _$ConfigData on _ConfigData, Store {
   set productColorTack(int value) {
     _$productColorTackAtom.reportWrite(value, super.productColorTack, () {
       super.productColorTack = value;
+    });
+  }
+
+  late final _$isShimmerAtom =
+      Atom(name: '_ConfigData.isShimmer', context: context);
+
+  @override
+  bool get isShimmer {
+    _$isShimmerAtom.reportRead();
+    return super.isShimmer;
+  }
+
+  @override
+  set isShimmer(bool value) {
+    _$isShimmerAtom.reportWrite(value, super.isShimmer, () {
+      super.isShimmer = value;
+    });
+  }
+
+  late final _$valuationAtom =
+      Atom(name: '_ConfigData.valuation', context: context);
+
+  @override
+  int get valuation {
+    _$valuationAtom.reportRead();
+    return super.valuation;
+  }
+
+  @override
+  set valuation(int value) {
+    _$valuationAtom.reportWrite(value, super.valuation, () {
+      super.valuation = value;
+    });
+  }
+
+  late final _$valueTotalProductDiscountCartAtom =
+      Atom(name: '_ConfigData.valueTotalProductDiscountCart', context: context);
+
+  @override
+  double get valueTotalProductDiscountCart {
+    _$valueTotalProductDiscountCartAtom.reportRead();
+    return super.valueTotalProductDiscountCart;
+  }
+
+  @override
+  set valueTotalProductDiscountCart(double value) {
+    _$valueTotalProductDiscountCartAtom
+        .reportWrite(value, super.valueTotalProductDiscountCart, () {
+      super.valueTotalProductDiscountCart = value;
+    });
+  }
+
+  late final _$discountAtom =
+      Atom(name: '_ConfigData.discount', context: context);
+
+  @override
+  double get discount {
+    _$discountAtom.reportRead();
+    return super.discount;
+  }
+
+  @override
+  set discount(double value) {
+    _$discountAtom.reportWrite(value, super.discount, () {
+      super.discount = value;
+    });
+  }
+
+  late final _$nameCupomAtom =
+      Atom(name: '_ConfigData.nameCupom', context: context);
+
+  @override
+  String get nameCupom {
+    _$nameCupomAtom.reportRead();
+    return super.nameCupom;
+  }
+
+  @override
+  set nameCupom(String value) {
+    _$nameCupomAtom.reportWrite(value, super.nameCupom, () {
+      super.nameCupom = value;
+    });
+  }
+
+  late final _$nameCupomTextControllerAtom =
+      Atom(name: '_ConfigData.nameCupomTextController', context: context);
+
+  @override
+  String get nameCupomTextController {
+    _$nameCupomTextControllerAtom.reportRead();
+    return super.nameCupomTextController;
+  }
+
+  @override
+  set nameCupomTextController(String value) {
+    _$nameCupomTextControllerAtom
+        .reportWrite(value, super.nameCupomTextController, () {
+      super.nameCupomTextController = value;
     });
   }
 
@@ -155,35 +261,19 @@ mixin _$ConfigData on _ConfigData, Store {
     });
   }
 
-  late final _$productAtom =
-      Atom(name: '_ConfigData.product', context: context);
+  late final _$initScroolAtom =
+      Atom(name: '_ConfigData.initScrool', context: context);
 
   @override
-  Product? get product {
-    _$productAtom.reportRead();
-    return super.product;
+  double get initScrool {
+    _$initScroolAtom.reportRead();
+    return super.initScrool;
   }
 
   @override
-  set product(Product? value) {
-    _$productAtom.reportWrite(value, super.product, () {
-      super.product = value;
-    });
-  }
-
-  late final _$indexImageProductAtom =
-      Atom(name: '_ConfigData.indexImageProduct', context: context);
-
-  @override
-  int get indexImageProduct {
-    _$indexImageProductAtom.reportRead();
-    return super.indexImageProduct;
-  }
-
-  @override
-  set indexImageProduct(int value) {
-    _$indexImageProductAtom.reportWrite(value, super.indexImageProduct, () {
-      super.indexImageProduct = value;
+  set initScrool(double value) {
+    _$initScroolAtom.reportWrite(value, super.initScrool, () {
+      super.initScrool = value;
     });
   }
 
@@ -205,17 +295,6 @@ mixin _$ConfigData on _ConfigData, Store {
 
   late final _$_ConfigDataActionController =
       ActionController(name: '_ConfigData', context: context);
-
-  @override
-  void isShimmerMod() {
-    final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.isShimmerMod');
-    try {
-      return super.isShimmerMod();
-    } finally {
-      _$_ConfigDataActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   void pagControllerImage({required int index}) {
@@ -240,55 +319,44 @@ mixin _$ConfigData on _ConfigData, Store {
   }
 
   @override
-  void tackProductColor(int productColor) {
+  void setPosition(double position) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.tackProductColor');
+        name: '_ConfigData.setPosition');
     try {
-      return super.tackProductColor(productColor);
+      return super.setPosition(position);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addProductCart(Product product) {
+  void changingProductImageIndex(int indexImage) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.addProductCart');
+        name: '_ConfigData.changingProductImageIndex');
     try {
-      return super.addProductCart(product);
+      return super.changingProductImageIndex(indexImage);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addProductMore(ProductCar productCar) {
+  void addMoreProduct(ProductCar productCar) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.addProductMore');
+        name: '_ConfigData.addMoreProduct');
     try {
-      return super.addProductMore(productCar);
+      return super.addMoreProduct(productCar);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void removeProduct({required ProductCar productCar, required int index}) {
+  void removeProductCar({required ProductCar productCar, required int index}) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.removeProduct');
+        name: '_ConfigData.removeProductCar');
     try {
-      return super.removeProduct(productCar: productCar, index: index);
-    } finally {
-      _$_ConfigDataActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void searchControllerTack(String controller) {
-    final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.searchControllerTack');
-    try {
-      return super.searchControllerTack(controller);
+      return super.removeProductCar(productCar: productCar, index: index);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
@@ -328,22 +396,88 @@ mixin _$ConfigData on _ConfigData, Store {
   }
 
   @override
-  void changingProductImageIndex(int indexImage) {
+  void tackProductColor(int productColor) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.changingProductImageIndex');
+        name: '_ConfigData.tackProductColor');
     try {
-      return super.changingProductImageIndex(indexImage);
+      return super.tackProductColor(productColor);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setPosition(double position) {
+  void addValuationProduct({required Product product, required int valuation}) {
     final _$actionInfo = _$_ConfigDataActionController.startAction(
-        name: '_ConfigData.setPosition');
+        name: '_ConfigData.addValuationProduct');
     try {
-      return super.setPosition(position);
+      return super.addValuationProduct(product: product, valuation: valuation);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void isShimmerMod() {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.isShimmerMod');
+    try {
+      return super.isShimmerMod();
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void tackValuationAssessment(int value) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.tackValuationAssessment');
+    try {
+      return super.tackValuationAssessment(value);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void tackNameCupom(String nameCupom) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.tackNameCupom');
+    try {
+      return super.tackNameCupom(nameCupom);
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void clearNameCupomTextController() {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.clearNameCupomTextController');
+    try {
+      return super.clearNameCupomTextController();
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void valueTotalDiscountTack() {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.valueTotalDiscountTack');
+    try {
+      return super.valueTotalDiscountTack();
+    } finally {
+      _$_ConfigDataActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void searchControllerTack(String controller) {
+    final _$actionInfo = _$_ConfigDataActionController.startAction(
+        name: '_ConfigData.searchControllerTack');
+    try {
+      return super.searchControllerTack(controller);
     } finally {
       _$_ConfigDataActionController.endAction(_$actionInfo);
     }
@@ -352,20 +486,27 @@ mixin _$ConfigData on _ConfigData, Store {
   @override
   String toString() {
     return '''
-isShimmer: ${isShimmer},
-initScrool: ${initScrool},
-listProductCar: ${listProductCar},
-productColorTack: ${productColorTack},
-selectionTake: ${selectionTake},
-searchController: ${searchController},
 product: ${product},
 indexImageProduct: ${indexImageProduct},
+productColorTack: ${productColorTack},
+isShimmer: ${isShimmer},
+valuation: ${valuation},
+valueTotalProductDiscountCart: ${valueTotalProductDiscountCart},
+discount: ${discount},
+nameCupom: ${nameCupom},
+nameCupomTextController: ${nameCupomTextController},
+selectionTake: ${selectionTake},
+searchController: ${searchController},
+initScrool: ${initScrool},
 positionTake: ${positionTake},
+listProduct: ${listProduct},
+listProductCar: ${listProductCar},
 isEmptyCart: ${isEmptyCart},
 sizeListProductCar: ${sizeListProductCar},
-sizeList: ${sizeList},
+valueTotalProductCar: ${valueTotalProductCar},
+assessmentAverage: ${assessmentAverage},
 listProductSelection: ${listProductSelection},
-searchList: ${searchList},
+sizeList: ${sizeList},
 listProductFavorite: ${listProductFavorite},
 bestSellers: ${bestSellers}
     ''';

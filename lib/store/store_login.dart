@@ -19,6 +19,14 @@ abstract class _StoreLogin with Store {
   }
 
   @observable
+  bool isPassword = true;
+
+  @action
+  void isGetPasswordo() {
+    isPassword = !isPassword;
+  }
+
+  @observable
   String account = "";
 
   @observable

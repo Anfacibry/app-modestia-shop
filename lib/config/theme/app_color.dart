@@ -20,6 +20,5 @@ class AppColor {
   ///Cores que serão usadas para modificar os textos do app
   static const Color textHeadline4Color = Color(0xFF696969);
   static const Color textHeadline6Color = Color(0xFFFF437B);
-  static const Color textHeadline5Color = Color(0xFF1E1E1E);
   static const Color textFormFildColor = Color(0xFFA6A6A6);
 }

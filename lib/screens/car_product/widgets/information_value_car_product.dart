@@ -7,10 +7,12 @@ class InformationValueCarProduct extends StatelessWidget {
   final String title;
   final double value;
   final bool isTotal;
+  final int lengthList;
   const InformationValueCarProduct({
     required this.title,
     required this.value,
     required this.isTotal,
+    required this.lengthList,
     super.key,
   });
 
@@ -18,22 +20,22 @@ class InformationValueCarProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          title,
-          style: AppStyle.textFormFild(size: 22),
-        ),
+        Text(title,
+            style: isTotal
+                ? Theme.of(context).textTheme.headlineLarge
+                : Theme.of(context).textTheme.titleLarge),
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              for (int i = 0; i < 8; i++)
+              for (int i = 0; i < lengthList; i++)
                 Container(
                   decoration: BoxDecoration(
                     color: AppColor.textFormFildColor,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  height: 3,
-                  width: 15,
+                  height: 2,
+                  width: 10,
                 ),
             ],
           ),

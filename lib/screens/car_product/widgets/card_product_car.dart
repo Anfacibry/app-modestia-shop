@@ -1,4 +1,5 @@
 import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -8,10 +9,10 @@ import 'bottom_add_remove_product.dart';
 
 class CardProductCar extends StatelessWidget {
   final double height, width;
-  final ConfigData configData;
+  final ConfigData dataProduct;
   final int index;
   const CardProductCar({
-    required this.configData,
+    required this.dataProduct,
     required this.height,
     required this.width,
     required this.index,
@@ -37,7 +38,7 @@ class CardProductCar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Image.asset(
-                    configData
+                    dataProduct
                         .listProductCar[index].product.imageColor[0].image,
                     width: height * .12,
                     height: height * 9,
@@ -50,13 +51,13 @@ class CardProductCar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      configData.listProductCar[index].product.name,
+                      dataProduct.listProductCar[index].product.name,
                       style: AppStyle.textBody(),
                     ),
                     Observer(
                       builder: (ctx) => Text(
-                        (configData.listProductCar[index].product.price *
-                                configData.listProductCar[index].amount)
+                        (dataProduct.listProductCar[index].product.price *
+                                dataProduct.listProductCar[index].amount)
                             .toStringAsFixed(2),
                         style: AppStyle.textTitleSecondary(),
                       ),
@@ -71,32 +72,35 @@ class CardProductCar extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             BottomAddRemoveProduct(
-                              title: "-",
+                              icon: Icons.remove_circle_outline,
                               height: constraints.maxHeight,
-                              dataProduct: configData,
+                              dataProduct: dataProduct,
                               index: index,
                               fun: () {
-                                configData.removeProduct(
-                                  productCar: configData.listProductCar[index],
+                                dataProduct.removeProductCar(
+                                  productCar: dataProduct.listProductCar[index],
                                   index: index,
                                 );
+                                dataProduct.valueTotalDiscountTack();
                               },
                             ),
                             Observer(
                               builder: (ctx) => Text(
-                                configData.listProductCar[index].amount
+                                dataProduct.listProductCar[index].amount
                                     .toString(),
                                 style: AppStyle.textBody(),
                               ),
                             ),
                             BottomAddRemoveProduct(
-                              title: "+",
+                              icon: Icons.add_circle_outline,
                               height: constraints.maxHeight,
-                              dataProduct: configData,
+                              dataProduct: dataProduct,
                               index: index,
                               fun: () {
-                                configData.addProductMore(
-                                    configData.listProductCar[index]);
+                                dataProduct.addMoreProduct(
+                                  dataProduct.listProductCar[index],
+                                );
+                                dataProduct.valueTotalDiscountTack();
                               },
                             ),
                           ],
@@ -109,7 +113,7 @@ class CardProductCar extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(right: constraints.maxWidth * .1),
                   child: Text(
-                    configData.listProductCar[index].product.tackSize,
+                    dataProduct.listProductCar[index].product.tackSize,
                     style: AppStyle.textBody(),
                   ),
                 ),

@@ -33,19 +33,19 @@ mixin _$StoreHome on _StoreHome, Store {
     });
   }
 
-  late final _$listImageAtom =
-      Atom(name: '_StoreHome.listImage', context: context);
+  late final _$keyboardAtom =
+      Atom(name: '_StoreHome.keyboard', context: context);
 
   @override
-  ObservableList<Map<String, String>> get listImage {
-    _$listImageAtom.reportRead();
-    return super.listImage;
+  double get keyboard {
+    _$keyboardAtom.reportRead();
+    return super.keyboard;
   }
 
   @override
-  set listImage(ObservableList<Map<String, String>> value) {
-    _$listImageAtom.reportWrite(value, super.listImage, () {
-      super.listImage = value;
+  set keyboard(double value) {
+    _$keyboardAtom.reportWrite(value, super.keyboard, () {
+      super.keyboard = value;
     });
   }
 
@@ -99,6 +99,17 @@ mixin _$StoreHome on _StoreHome, Store {
       ActionController(name: '_StoreHome', context: context);
 
   @override
+  void tackKeyboard(double value) {
+    final _$actionInfo = _$_StoreHomeActionController.startAction(
+        name: '_StoreHome.tackKeyboard');
+    try {
+      return super.tackKeyboard(value);
+    } finally {
+      _$_StoreHomeActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void updateIndex(int index) {
     final _$actionInfo = _$_StoreHomeActionController.startAction(
         name: '_StoreHome.updateIndex');
@@ -146,7 +157,7 @@ mixin _$StoreHome on _StoreHome, Store {
   String toString() {
     return '''
 takeIndexPage: ${takeIndexPage},
-listImage: ${listImage},
+keyboard: ${keyboard},
 index: ${index},
 indexIconNavigator: ${indexIconNavigator},
 isHome: ${isHome},

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import 'login/widgets/imagem_logo.dart';
-import 'login/widgets/list_network_button.dart';
-import 'login/widgets/lista_login_rede_escolhida.dart';
-import '../store/store_login.dart';
+import '../login/widgets/imagem_logo.dart';
+import '../login/widgets/list_network_button.dart';
+import '../login/widgets/lista_login_rede_escolhida.dart';
+import '../../store/store_login.dart';
 
 class RegistrationUserNetwork extends StatelessWidget {
   const RegistrationUserNetwork({super.key});

@@ -1,9 +1,10 @@
 import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../../config/style/app_style.dart';
 import '../../../config/theme/app_color.dart';
-import '../../../widgets/selection_size_and_color_product.dart';
+import '../../widgets/selection_size_and_color_product.dart';
 
 class InformationProductFavorit extends StatelessWidget {
   final ConfigData configData;

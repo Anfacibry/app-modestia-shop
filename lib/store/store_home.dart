@@ -1,7 +1,6 @@
+import 'package:app_fashion_shop/store/data/data_product.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-
-import '../config/style/app_style.dart';
 
 part 'store_home.g.dart';
 
@@ -11,10 +10,19 @@ class StoreHome = _StoreHome with _$StoreHome;
 enum Selection { vestidos, blusas, saias, bolsas }
 
 abstract class _StoreHome with Store {
+  DataProduct product = DataProduct();
   ScrollController controllerPage = ScrollController();
 
   @observable
   int takeIndexPage = 0;
+
+  @observable
+  double keyboard = 0.0;
+
+  @action
+  void tackKeyboard(double value) {
+    keyboard = value;
+  }
 
   @action
   void updateIndex(int index) {
@@ -35,29 +43,9 @@ abstract class _StoreHome with Store {
   }
 
   @observable
-  ObservableList<Map<String, String>> listImage = ObservableList.of([
-    {
-      "url": "",
-      "image": AppStyle.imageAnnouncement001,
-    },
-    {
-      "url": "",
-      "image": AppStyle.imageAnnouncement002,
-    },
-    {
-      "url": "https://guiadoiphone.com.br/",
-      "image": AppStyle.imageAnnouncement003,
-    },
-    {
-      "url": "",
-      "image": AppStyle.imageAnnouncement004,
-    }
-  ]);
-
-  @observable
   int index = 0;
   @computed
-  String get imageAnnouncement => listImage[index]["image"]!;
+  String get imageAnnouncement => product.listImage[index]["image"]!;
 
   @action
   void getIndex(int value) {

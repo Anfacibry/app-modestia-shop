@@ -1,8 +1,6 @@
 import 'package:app_fashion_shop/screens/datail_product/widgets/app_bar_with_icons.dart';
 import 'package:app_fashion_shop/screens/datail_product/widgets/information_product.dart';
 
-import 'package:app_fashion_shop/widgets/icon_menu_floating.dart';
-
 import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
 import 'package:app_fashion_shop/store/store_home.dart';
@@ -10,6 +8,7 @@ import 'package:app_fashion_shop/store/store_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import '../widgets/icon_menu_floating.dart';
 import '../marketplace/widgets/grid_product.dart';
 import '../../config/theme/app_color.dart';
 
@@ -18,7 +17,7 @@ class DetailProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ConfigData dataProduct =
+    final ConfigData configData =
         Provider.of<ConfigData>(context, listen: false);
     final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
 
@@ -27,12 +26,12 @@ class DetailProduct extends StatelessWidget {
     return Scaffold(
       appBar: appBarWithIcons(
         context: context,
-        configData: dataProduct,
+        dataProduct: configData,
         width: width,
         storeHome: storeHome,
       ),
       body: SingleChildScrollView(
-        controller: dataProduct.controller,
+        controller: configData.controller,
         child: Column(
           children: [
             Observer(
@@ -42,10 +41,10 @@ class DetailProduct extends StatelessWidget {
                 child: Stack(children: [
                   PageView.builder(
                     onPageChanged: (indice) {
-                      dataProduct.changingProductImageIndex(indice);
+                      configData.changingProductImageIndex(indice);
                     },
-                    controller: dataProduct.pagController,
-                    itemCount: dataProduct.product!.imageColor.length,
+                    controller: configData.pagController,
+                    itemCount: configData.product!.imageColor.length,
                     itemBuilder: (ctx, index) => InkWell(
                       onTap: () {
                         showDialog(
@@ -56,10 +55,10 @@ class DetailProduct extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20)),
                                   contentPadding: const EdgeInsets.all(0),
                                   content: Image.asset(
-                                    dataProduct
+                                    configData
                                         .product!
                                         .imageColor[
-                                            dataProduct.indexImageProduct]
+                                            configData.indexImageProduct]
                                         .image,
                                     fit: BoxFit.cover,
                                   ),
@@ -67,7 +66,7 @@ class DetailProduct extends StatelessWidget {
                       },
                       child: Observer(
                         builder: (ctx) => Image.asset(
-                          dataProduct.product!.imageColor[index].image,
+                          configData.product!.imageColor[index].image,
                           height: height * .5,
                           width: width,
                           fit: BoxFit.cover,
@@ -81,23 +80,23 @@ class DetailProduct extends StatelessWidget {
                     right: width * .03,
                     child: Observer(
                       builder: (ctx) => IconMenuFloating(
-                        corImagem: dataProduct.product!.isFavorite
+                        corImagem: configData.product!.isFavorite
                             ? AppColor.surfaceColor
                             : AppColor.primaryColor,
                         imagem: "assets/icons/favorito.png",
-                        cor: dataProduct.product!.isFavorite
+                        cor: configData.product!.isFavorite
                             ? AppColor.primaryColor
                             : AppColor.surfaceColor,
                         radius: 25,
                         isLable: false,
                         isBadge: false,
                         fun: () {
-                          dataProduct.addFavorite(dataProduct.product!.id);
+                          configData.addFavorite(configData.product!.id);
                         },
                       ),
                     ),
                   ),
-                  dataProduct.indexImageProduct == 0
+                  configData.indexImageProduct == 0
                       ? const SizedBox()
                       : Positioned(
                           top: width * .5,
@@ -106,8 +105,8 @@ class DetailProduct extends StatelessWidget {
                               onPressed: () {},
                               icon: Image.asset("assets/icons/voltar.png")),
                         ),
-                  dataProduct.indexImageProduct ==
-                          dataProduct.product!.imageColor.length - 1
+                  configData.indexImageProduct ==
+                          configData.product!.imageColor.length - 1
                       ? const SizedBox()
                       : Positioned(
                           top: width * .5,
@@ -143,8 +142,8 @@ class DetailProduct extends StatelessWidget {
                   builder: (ctx) => GridProduct(
                     axisDirection: Axis.horizontal,
                     isScreenHome: false,
-                    listProduct: dataProduct.listProductSelection,
-                    sizeList: dataProduct.sizeList,
+                    listProduct: configData.listProductSelection,
+                    sizeList: configData.sizeList,
                     width: width,
                   ),
                 ),

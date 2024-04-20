@@ -104,13 +104,13 @@ mixin _$Product on _Product, Store {
       Atom(name: '_Product.valuation', context: context);
 
   @override
-  double get valuation {
+  ObservableList<int> get valuation {
     _$valuationAtom.reportRead();
     return super.valuation;
   }
 
   @override
-  set valuation(double value) {
+  set valuation(ObservableList<int> value) {
     _$valuationAtom.reportWrite(value, super.valuation, () {
       super.valuation = value;
     });

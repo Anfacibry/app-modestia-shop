@@ -1,11 +1,12 @@
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:app_fashion_shop/store/models/store_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../../../widgets/icon_menu_floating.dart';
+import '../../widgets/icon_menu_floating.dart';
 import '../../../config/style/app_style.dart';
 import '../../../config/theme/app_color.dart';
 
@@ -27,7 +28,7 @@ class GridProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ConfigData dataProduct =
+    final ConfigData configData =
         Provider.of<ConfigData>(context, listen: false);
     return SizedBox(
       width: width,
@@ -50,9 +51,9 @@ class GridProduct extends StatelessWidget {
               ),
               itemBuilder: (contextGrid, indice) => InkWell(
                 onTap: () {
-                  dataProduct.getProduct(product: listProduct[indice]);
-                  dataProduct.changingProductImageIndex(0);
-                  isScreenHome ? null : dataProduct.setInitScrool();
+                  configData.getProduct(product: listProduct[indice]);
+                  configData.changingProductImageIndex(0);
+                  isScreenHome ? null : configData.setInitScrool();
 
                   isScreenHome
                       ? Navigator.pushNamed(
@@ -132,11 +133,11 @@ class GridProduct extends StatelessWidget {
                                         radius: constraints.maxHeight * 0.07,
                                         isBadge: false,
                                         fun: () {
-                                          dataProduct.getProduct(
+                                          configData.getProduct(
                                               product: listProduct[indice]);
-                                          dataProduct
+                                          configData
                                               .changingProductImageIndex(0);
-                                          dataProduct.addFavorite(
+                                          configData.addFavorite(
                                               listProduct[indice].id);
                                         },
                                       ),

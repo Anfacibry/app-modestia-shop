@@ -1,4 +1,4 @@
-import 'package:app_fashion_shop/widgets/box_text_form_field.dart';
+import 'package:app_fashion_shop/screens/widgets/box_text_form_field.dart';
 import 'package:app_fashion_shop/screens/login/widgets/imagem_logo.dart';
 import 'package:app_fashion_shop/screens/login/widgets/list_network_button.dart';
 import 'package:app_fashion_shop/config/routes/named_routes.dart';
@@ -17,7 +17,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final storeLogin = Provider.of<StoreLogin>(context, listen: false);
+    final StoreLogin storeLogin =
+        Provider.of<StoreLogin>(context, listen: false);
 
     final (height, width) = AppStyle.screenSize(context);
 
@@ -47,7 +48,6 @@ class Login extends StatelessWidget {
                       text: "E-mail",
                       isSenha: false,
                       hintText: "Ex: joao@gmail.com",
-                      borderColor: const Color(0xFF696969),
                     ),
                     AppStyle.space(),
                     BoxTextFormeField(
@@ -56,7 +56,6 @@ class Login extends StatelessWidget {
                       text: "Senha",
                       isSenha: true,
                       hintText: "Ex: Bob@076",
-                      borderColor: const Color(0xFF696969),
                     ),
                     Row(
                       children: [

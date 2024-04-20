@@ -54,7 +54,7 @@ class RowSelectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
-    final ConfigData dataProduct =
+    final ConfigData configData =
         Provider.of<ConfigData>(context, listen: false);
     return Observer(
       builder: (_) => Row(
@@ -64,7 +64,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Vestidos",
             fun: () {
               storeHome.updateIndex(0);
-              dataProduct.selectingListProduct(Selection.vestidos);
+              configData.selectingListProduct(Selection.vestidos);
             },
           ),
           AppStyle.space(top: 20),
@@ -73,7 +73,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Blusas",
             fun: () {
               storeHome.updateIndex(1);
-              dataProduct.selectingListProduct(Selection.blusas);
+              configData.selectingListProduct(Selection.blusas);
             },
           ),
           AppStyle.space(top: 20),
@@ -82,7 +82,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Saias",
             fun: () {
               storeHome.updateIndex(2);
-              dataProduct.selectingListProduct(Selection.saias);
+              configData.selectingListProduct(Selection.saias);
             },
           ),
           AppStyle.space(top: 20),
@@ -91,7 +91,7 @@ class RowSelectionButton extends StatelessWidget {
             titleButton: "Bolsas",
             fun: () {
               storeHome.updateIndex(3);
-              dataProduct.selectingListProduct(Selection.bolsas);
+              configData.selectingListProduct(Selection.bolsas);
             },
           ),
         ],

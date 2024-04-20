@@ -1,4 +1,5 @@
 import 'package:app_fashion_shop/store/config_data.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -34,15 +35,16 @@ class IconButtonVoluation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ConfigData dataProduct = Provider.of(context, listen: false);
+    final ConfigData configData =
+        Provider.of<ConfigData>(context, listen: false);
     return Observer(
       builder: (ctx) => IconButton(
           padding: EdgeInsets.zero,
           onPressed: () {
-            dataProduct.tackValuationAssessment(index);
+            configData.tackValuationAssessment(index);
           },
           icon: Icon(
-            dataProduct.valuationAssessment >= index
+            configData.valuation >= index
                 ? Icons.star_rounded
                 : Icons.star_border_rounded,
             color: Colors.orange,

@@ -1,5 +1,7 @@
 import 'package:app_fashion_shop/config/style/shimmer_loading_effect/shimmer_gradient.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
+
+import 'package:app_fashion_shop/store/data/data_product.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -101,7 +103,10 @@ class AnnouncementHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ConfigData configData = Provider.of(context, listen: false);
+    final ConfigData configData =
+        Provider.of<ConfigData>(context, listen: false);
+    final DataProduct dataProduct =
+        Provider.of<DataProduct>(context, listen: false);
     return Observer(
       builder: (ctx) => !configData.isShimmer
           ? Column(
@@ -114,13 +119,13 @@ class AnnouncementHome extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: CarouselSlider.builder(
-                      itemCount: storeHome.listImage.length,
+                      itemCount: dataProduct.listImage.length,
                       itemBuilder: (ctx, index, realIdx) {
                         return Padding(
                           padding: const EdgeInsets.only(left: 5, right: 5),
                           child: AnnouncementContainer(
-                              url: storeHome.listImage[index]["url"]!,
-                              image: storeHome.listImage[index]["image"]!),
+                              url: dataProduct.listImage[index]["url"]!,
+                              image: dataProduct.listImage[index]["image"]!),
                         );
                       },
                       options: CarouselOptions(

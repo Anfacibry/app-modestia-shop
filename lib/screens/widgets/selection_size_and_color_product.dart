@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-import '../config/style/app_style.dart';
-import '../config/theme/app_color.dart';
+import '../../../config/style/app_style.dart';
+import '../../../config/theme/app_color.dart';
 
 class SelectionColorProduct extends StatelessWidget {
   final Product product;
@@ -26,8 +26,9 @@ class SelectionColorProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ConfigData configData =
+    final ConfigData dataProduct =
         Provider.of<ConfigData>(context, listen: false);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,7 +36,7 @@ class SelectionColorProduct extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Observer(
             builder: (ctx) => Text(
-              "Cor: ${product.imageColor[configData.indexImageProduct].name}",
+              "Cor: ${product.imageColor[dataProduct.indexImageProduct].name}",
               style: AppStyle.textBody(
                 size: fontSize,
               ),
@@ -51,7 +52,7 @@ class SelectionColorProduct extends StatelessWidget {
               itemCount: product.imageColor.length,
               itemBuilder: (ctx, index) => InkWell(
                     onTap: () {
-                      configData.pagControllerImage(index: index);
+                      dataProduct.pagControllerImage(index: index);
                     },
                     child: Observer(
                       builder: (ctx) => Container(
@@ -62,7 +63,7 @@ class SelectionColorProduct extends StatelessWidget {
                           color: product.imageColor[index].color,
                           borderRadius: BorderRadius.circular(35),
                           border: product
-                                      .imageColor[configData.indexImageProduct]
+                                      .imageColor[dataProduct.indexImageProduct]
                                       .color ==
                                   product.imageColor[index].color
                               ? Border.all(
@@ -95,6 +96,7 @@ class SelectionProductSize extends StatelessWidget {
   final double radiusSize;
   final double sizePadding;
   final Product product;
+  final bool nameSize;
 
   const SelectionProductSize({
     required this.heightButton,
@@ -103,18 +105,22 @@ class SelectionProductSize extends StatelessWidget {
     required this.fontSize,
     required this.sizePadding,
     required this.product,
+    this.nameSize = true,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    ConfigData dataProduct = Provider.of<ConfigData>(context, listen: false);
+    ConfigData configData = Provider.of<ConfigData>(context, listen: false);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Tamanho",
-          style: AppStyle.textBody(size: fontSize),
+        Visibility(
+          visible: nameSize,
+          child: Text(
+            "Tamanho",
+            style: AppStyle.textBody(size: fontSize),
+          ),
         ),
         SingleChildScrollView(
           clipBehavior: Clip.none,
@@ -127,7 +133,7 @@ class SelectionProductSize extends StatelessWidget {
                       padding: EdgeInsets.only(right: sizePadding),
                       child: InkWell(
                         onTap: () {
-                          dataProduct.tackSizeProduct(
+                          configData.tackSizeProduct(
                               size: size, product: product);
                         },
                         child: Observer(

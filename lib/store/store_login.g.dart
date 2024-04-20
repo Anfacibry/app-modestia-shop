@@ -25,6 +25,22 @@ mixin _$StoreLogin on _StoreLogin, Store {
     });
   }
 
+  late final _$isPasswordAtom =
+      Atom(name: '_StoreLogin.isPassword', context: context);
+
+  @override
+  bool get isPassword {
+    _$isPasswordAtom.reportRead();
+    return super.isPassword;
+  }
+
+  @override
+  set isPassword(bool value) {
+    _$isPasswordAtom.reportWrite(value, super.isPassword, () {
+      super.isPassword = value;
+    });
+  }
+
   late final _$accountAtom =
       Atom(name: '_StoreLogin.account', context: context);
 
@@ -104,6 +120,17 @@ mixin _$StoreLogin on _StoreLogin, Store {
   }
 
   @override
+  void isGetPasswordo() {
+    final _$actionInfo = _$_StoreLoginActionController.startAction(
+        name: '_StoreLogin.isGetPasswordo');
+    try {
+      return super.isGetPasswordo();
+    } finally {
+      _$_StoreLoginActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void isRememberPassword(bool value) {
     final _$actionInfo = _$_StoreLoginActionController.startAction(
         name: '_StoreLogin.isRememberPassword');
@@ -129,6 +156,7 @@ mixin _$StoreLogin on _StoreLogin, Store {
   String toString() {
     return '''
 isLogin: ${isLogin},
+isPassword: ${isPassword},
 account: ${account},
 rememberPassword: ${rememberPassword},
 accountAccessed: ${accountAccessed},

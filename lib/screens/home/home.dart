@@ -2,7 +2,7 @@ import 'package:app_fashion_shop/config/style/app_style.dart';
 import 'package:app_fashion_shop/screens/car_product/car_product.dart';
 import 'package:app_fashion_shop/screens/favorite/favorite.dart';
 import 'package:app_fashion_shop/screens/marketplace/marketplace.dart';
-import 'package:app_fashion_shop/screens/perfil.dart';
+import 'package:app_fashion_shop/screens/perfil/perfil.dart';
 import 'package:app_fashion_shop/store/config_data.dart';
 
 import 'package:app_fashion_shop/store/store_home.dart';
@@ -16,8 +16,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final StoreHome storeHome = Provider.of(context, listen: false);
-    final ConfigData configData = Provider.of(context, listen: false);
+    final StoreHome storeHome = Provider.of<StoreHome>(context, listen: false);
+    final ConfigData configData =
+        Provider.of<ConfigData>(context, listen: false);
     final (double _, double _) = AppStyle.screenSize(context);
 
     List<Widget> listWidgets = const [
@@ -43,6 +44,7 @@ class Home extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           onTap: (index) {
             storeHome.getIndexIconNavigator(index);
+            configData.valueTotalDiscountTack();
           },
           items: [
             AppStyle.itemNavigator(
